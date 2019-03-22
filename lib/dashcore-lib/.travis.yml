@@ -1,0 +1,27 @@
+language: node_js
+sudo: required
+addons:
+ chrome: stable
+branches:
+ only:
+   - develop
+   - master
+node_js:
+- '8'
+before_install:
+  - export DISPLAY=:99.0
+  - sh -e /etc/init.d/xvfb start
+  - echo "//registry.npmjs.org/:_authToken=\${NPM_TOKEN}" > .npmrc
+install:
+  - npm install
+before_script:
+  - npm run lint
+after_script:
+  - gulp coveralls
+deploy:
+  - provider: script
+    skip_cleanup: true
+    script: npm publish
+    on:
+      repo: dashevo/dashcore-lib
+      branch: master

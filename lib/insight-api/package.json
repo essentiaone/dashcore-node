@@ -1,0 +1,79 @@
+{
+  "name": "@dashevo/insight-api",
+  "description": "A Dash blockchain REST and WebSocket API Service",
+  "version": "2.1.0",
+  "repository": "git://github.com/dashevo/insight-api.git",
+  "contributors": [
+    {
+      "name": "Gustavo Cortez",
+      "email": "cmgustavo83@gmail.com"
+    },
+    {
+      "name": "Ivan Socolsky",
+      "email": "jungans@gmail.com"
+    },
+    {
+      "name": "Juan Ignacio Sosa Lopez",
+      "email": "bechilandia@gmail.com"
+    },
+    {
+      "name": "Manuel Araoz",
+      "email": "manuelaraoz@gmail.com"
+    },
+    {
+      "name": "Matias Alejo Garcia",
+      "email": "ematiu@gmail.com"
+    },
+    {
+      "name": "Mario Colque",
+      "email": "colquemario@gmail.com"
+    },
+    {
+      "name": "Patrick Nagurny",
+      "email": "patrick@bitpay.com"
+    },
+    {
+      "name": "Braydon Fuller",
+      "email": "braydon@bitpay.com"
+    }
+  ],
+  "bugs": {
+    "url": "https://github.com/dashevo/insight-api/issues"
+  },
+  "homepage": "https://github.com/dashevo/insight-api",
+  "license": "MIT",
+  "keywords": [
+    "insight",
+    "insight api",
+    "blockchain",
+    "dash api",
+    "blockchain api",
+    "json",
+    "bitcore-dash",
+    "dashcore"
+  ],
+  "engines": {
+    "node": ">=6"
+  },
+  "scripts": {
+    "test": "NODE_ENV=test mocha -R spec --recursive"
+  },
+  "main": "lib/index.js",
+  "dependencies": {
+    "async": "^2.6.1",
+    "@dashevo/dashcore-lib": "^0.16.8",
+    "body-parser": "^1.18.3",
+    "compression": "^1.7.3",
+    "lodash": "^4.17.11",
+    "lru-cache": "^5.1.1",
+    "morgan": "^1.9.1",
+    "request": "^2.88.0"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^5.2.0",
+    "proxyquire": "^1.8.0",
+    "should": "^13.2.3",
+    "sinon": "^7.1.1"
+  }
+}

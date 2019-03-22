@@ -36,7 +36,7 @@ npm install @dashevo/dashcore-node
 ```
 
 ```javascript
-const dashcore = require('@dashevo/dashcore-node');
+const dashcore = require(essx-node);
 const config = require('./dashcore-node.json');
 
 let node = dashcore.scaffold.start({ path: "", config: config });

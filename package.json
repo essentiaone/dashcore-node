@@ -1,11 +1,11 @@
 {
-  "name": "@dashevo/dashcore-node",
-  "description": "Full node with extended capabilities using Dashcore and Dash Core (dashd)",
-  "author": "BitPay <dev@bitpay.com>",
+  "name": "@essentiaone/essx-node",
+  "description": "Full node with extended capabilities using ESSNode and ESS Core (essd)",
+  "author": "Essentia Team",
   "version": "5.1.1",
   "main": "./index.js",
-  "repository": "git://github.com/dashevo/dashcore-node.git",
-  "homepage": "https://github.com/dashevo/dashcore-node",
+  "repository": "git://github.com/essentiaone/essx-node",
+  "homepage": "https://github.com/essentiaone/essx-node",
   "bugs": {
     "url": "https://github.com/dashevo/dashcore-node/issues"
   },
@@ -24,12 +24,17 @@
     {
       "name": "Patrick Nagurny",
       "email": "patrick@bitpay.com"
+    },
+    {
+      "name": "Oksana Zakharchuk",
+      "email": "zaharchuk2ksenia@gmail.com"
     }
   ],
   "bin": {
-    "dashcore-node": "./bin/dashcore-node"
+    "essx-node": "./bin/essx-node"
   },
   "scripts": {
+    "dev": "nodemon ./bin/essx-node start",
     "test": "mocha -R spec --recursive",
     "regtest": "./regtest/regtest",
     "jshint": "jshint --reporter=node_modules/jshint-stylish ./lib",
@@ -42,12 +47,14 @@
     "dashd_test": "./node_modules/.bin/mocha test/services/dashd.unit.js"
   },
   "tags": [
-    "dash",
-    "dashd"
+    "ess",
+    "essd"
   ],
   "dependencies": {
-    "@dashevo/dashcore-lib": "^0.16.8",
-    "@dashevo/dashd-rpc": "^1.2.1",
+    "@dashevo/dashcore-lib": "file:lib/dashcore-lib",
+    "@dashevo/dashd-rpc": "1.2.1",
+    "@dashevo/insight-api": "file:lib/insight-api",
+    "@dashevo/insight-ui": "file:lib/insight-ui",
     "async": "^2.6.1",
     "body-parser": "^1.18.3",
     "colors": "^1.3.3",
@@ -57,6 +64,7 @@
     "liftoff": "^2.5.0",
     "lru-cache": "^4.0.1",
     "mkdirp": "0.5.1",
+    "nodemon": "^1.18.10",
     "path-is-absolute": "^1.0.0",
     "semver": "^5.6.0",
     "socket.io": "^2.2.0",
@@ -68,7 +76,7 @@
     "utf-8-validate": "~5.0.2"
   },
   "devDependencies": {
-    "@dashevo/dashcore-p2p": "^1.1.9",
+    "@dashevo/dashcore-p2p": "1.1.9",
     "benchmark": "2.1.4",
     "chai": "^4.2.0",
     "coveralls": "^3.0.2",

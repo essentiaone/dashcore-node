@@ -23,7 +23,7 @@ describe('#findConfig', function() {
         throw err;
       }
       fs.writeFile(
-        testDir + '/p2/dashcore-node.json',
+        testDir + '/p2/essx-node.json',
         JSON.stringify(expectedConfig),
         function() {
           mkdirp(testDir + '/e0', function(err) {

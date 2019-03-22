@@ -1,0 +1,32 @@
+{
+  "network": "livenet",
+  "port": 3001,
+  "services": [
+    "@dashevo/insight-api",
+    "@dashevo/insight-ui",
+    "essd",
+    "web"
+  ],
+  "servicesConfig": {
+    "essd": {
+      "spawn": {
+        "datadir": "/home/oksana/.ess",
+        "exec": "/home/oksana/.ess"
+      },
+      "connect": [
+        {
+          "rpchost": "127.0.0.1",
+          "rpcport": 31489,
+          "rpcuser": "user",
+          "rpcpassword": 111,
+          "zmqpubrawtx": "tcp://127.0.0.1:28332",
+          "path": "/home/oksana/.ess/",
+          "reindex": 1
+        }
+      ]
+    },
+    "insight-api": {
+      "disableRateLimiter": true
+    }
+  }
+}

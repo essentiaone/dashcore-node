@@ -32,7 +32,7 @@ describe('#defaultConfig', function() {
       fs: {
         existsSync: sinon.stub().returns(false),
         writeFileSync: function(path, data) {
-          path.should.equal(process.env.HOME + '/.dashcore/dashcore-node.json');
+          path.should.equal(process.env.HOME + '/.dashcore/essx-node.json');
           data.should.equal(config);
         },
         readFileSync: function() {
@@ -78,7 +78,7 @@ describe('#defaultConfig', function() {
       fs: {
         existsSync: sinon.stub().returns(false),
         writeFileSync: function(path, data) {
-          path.should.equal(process.env.HOME + '/.dashcore/dashcore-node.json');
+          path.should.equal(process.env.HOME + '/.dashcore/essx-node.json');
           data.should.equal(config);
         },
         readFileSync: function() {

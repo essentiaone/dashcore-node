@@ -1,0 +1,85 @@
+<div class="alert alert-danger" data-ng-show="flashMessage">
+  {{$root.flashMessage}}
+</div>
+<div data-ng-include src="'views/includes/connection.html'"></div>
+<section data-ng-controller="IndexController" data-ng-init="index()">
+  <div class="container">
+    <div id="home" class="row">
+      <div class="col-xs-12 col-md-8">
+
+        <div id="search-form-mobile" class="visible-xs" data-ng-include src="'views/includes/search.html'"></div>
+
+        <h1 translate>Latest Blocks</h1>
+        <table class="table table-hover table-striped" style="table-layout: fixed">
+          <thead>
+            <tr>
+              <th translate>Height</th>
+              <th translate>Age</th>
+              <th class="text-right"><span class="ellipsis" translate>Transactions</span></th>
+              <th class="text-right hidden-xs"><span class="ellipsis" translate>Mined by</span></th>
+              <th class="text-right" translate>Size</th>
+            </tr>
+          </thead>
+          <tbody>
+          <tr data-ng-show="!blocks.length"><td colspan="4" translate>Waiting for blocks...</td></tr>
+          <tr class="fader" data-ng-repeat='b in blocks'>
+            <td>
+              <a href="block/{{b.hash}}">{{b.height}}</a>
+            </td>
+            <td><span class="ellipsis">{{humanSince(b.time)}}</span></td>
+            <td class="text-right">{{b.txlength}}</td>
+            <td class="text-right hidden-xs"><a href="{{b.poolInfo.url}}" title="{{b.poolInfo.poolName}}" target="_blank" data-ng-show="b.poolInfo">{{b.poolInfo.poolName}}</a></td>
+            <td class="text-right">{{b.size}}</td>
+          </tr>
+          </tbody>
+        </table>
+        <div class="btn-more">
+          <a href="blocks" class="btn btn-default" translate>See all blocks</a>
+        </div>
+
+        <h2 translate>Latest Transactions</h2>
+
+        <table class="table table-hover table-striped" style="table-layout: fixed;">
+          <thead>
+            <tr>
+              <th style="width:50%">Hash</th>
+              <th style="width:30%;text-align:center"></th>
+              <th class="text-right" translate>Value Out</th>
+            </tr>
+          </thead>
+          <tbody>
+          <tr data-ng-show="!txs.length"><td colspan="3" translate>Waiting for transactions...</td></tr>
+          <tr class="fader" data-ng-repeat='tx in txs'>
+            <td>
+              <a class="ellipsis" href="tx/{{tx.txid}}">{{tx.txid}}</a>
+            </td>
+            <td style='font-size:small'>
+              <span data-ng-show="tx.version === 3 && tx.type >= 1" style="background-color: #e0efef"><a href="https://github.com/dashpay/dips/blob/master/dip-0002-special-transactions.md">Special Transaction</a></span>
+              <span data-ng-show="tx.txlock" style="background-color: #e0ffe4">InstantSend</span>
+              <span data-ng-show="(tx.vin.length === tx.vout.length && tx.vin.length >= 3) || (tx.vin.length === 1 && tx.vout.length >= 3 && (Object.values(tx.vout[0])[0] === 100001 || Object.values(tx.vout[0])[0] === 1000010 || Object.values(tx.vout[0])[0] === 10000100 || Object.values(tx.vout[0])[0] === 100001000 || Object.values(tx.vout[0])[0] === 1000010000 || Object.values(tx.vout[1])[0] === 100001 || Object.values(tx.vout[1])[0] === 1000010 || Object.values(tx.vout[1])[0] === 100001000 || Object.values(tx.vout[1])[0] === 1000010000))" style="background-color: #ffe9c9">PrivateSend</span>
+              <span data-ng-show="(tx.vout.length >= 1 && Object.values(tx.vout[0])[0] === 100000000000) || (tx.valueOut >= 1000)" style="background-color: #bfbfff">Masternode</span>
+              <span data-ng-show="tx.op_return_message && tx.op_return_message.length > 0 || tx.valueOut===0" style="background-color: #e6ffff">OP_RETURN</span>
+              <span data-ng-show="tx.vin.length === 1 && tx.vout.length === 1 && tx.fees === 0.00000192" style="background-color: #ffe0ff">Stresstest</span>
+              <span data-ng-show="tx.knownaddress && tx.knownaddress.length > 0" style="background-color: #e0ffff">{{tx.knownaddress}}</span>
+            </td>
+            <td class="text-right"><span class="ellipsis">{{$root.currency.getConvertion(tx.valueOut) || tx.valueOut + ' DASH'}}</span></td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="col-xs-12 col-md-4 col-gray">
+        <a href="https://dash.org" target="_blank"><img src='./img/dash_about.jpg' alt="About Dash" style='max-width:360px;' /></a>
+        <div id="powered" class="row">
+          <div class="powered-text">
+            <small class="text-muted" translate>Powered by</small>
+          </div>
+          <a href="http://bitcore.io" target="_blank" class="bitcore" title="Bitcore"></a>
+          <a href="http://angularjs.org" target="_blank" class="angularjs" title="AngularJS"></a>
+          <a href="https://code.google.com/p/leveldb/" target="_blank" class="leveldb" title="LevelDB"></a>
+          <a href="http://nodejs.org" target="_blank" class="nodejs" title="NodeJs"></a>
+        </div>
+      </div> <!-- END OF COL-3 -->
+    </div>
+  </div>
+</section>

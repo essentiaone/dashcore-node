@@ -421,7 +421,7 @@ describe('Dash Service', function() {
       var config = {
         node: {
           network: dashcore.Networks.testnet,
-          configPath: '/tmp/.dashcore/dashcore-node.json'
+          configPath: '/tmp/.dashcore/essx-node.json'
         },
         spawn: {
           datadir: './data',

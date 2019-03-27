@@ -1,15 +1,15 @@
-Dashcore Node
+Essentia Node
 ============
 
-A Dash full node for building applications and services with Node.js. A node is extensible and can be configured to run additional services. At the minimum a node has an interface to [Dash Core (dashd) v0.13.0](https://github.com/dashpay/dash/tree/v0.13.0.x) for more advanced address queries. Additional services can be enabled to make a node more useful such as exposing new APIs, running a block explorer and wallet service.
+A Ess full node for building applications and services with Node.js. A node is extensible and can be configured to run additional services. At the minimum a node has an interface to [ESSX Core (essd)](https://github.com/essentiaone/essx) for more advanced address queries. Additional services can be enabled to make a node more useful such as exposing new APIs, running a block explorer and wallet service.
 
 ## Usages
 
 ### As a standalone server
 
 ```bash
-git clone https://github.com/dashevo/dashcore-node
-cd dashcore-node
+git clone https://github.com/essentiaone/essx-node
+cd essx-node
 npm install
 ./bin/essx-node start
 ```
@@ -18,10 +18,9 @@ When running the start command, it will seek for a .ess folder with a ess.conf f
 If it doesn't exist, it will create it, with basic task to connect to essd.
 
 ## Prerequisites
-
+- Docker
 - Ess Core (essd) with support for additional indexing *(see above)*
 - Node.js v8+
-- ZeroMQ *(libzmq3-dev for Ubuntu/Debian or zeromq on OSX)*
 - ~20GB of disk storage
 - ~1GB of RAM
 

@@ -5,9 +5,7 @@
 <section data-ng-controller="IndexController" data-ng-init="index()">
   <div class="container">
     <div id="home" class="row">
-      <div class="col-xs-12 col-md-8">
-
-        <div id="search-form-mobile" class="visible-xs" data-ng-include src="'views/includes/search.html'"></div>
+      <div class="col-xs-12 col-md-12">
 
         <h1 translate>Latest Blocks</h1>
         <table class="table table-hover table-striped" style="table-layout: fixed">
@@ -67,19 +65,6 @@
           </tbody>
         </table>
       </div>
-
-      <div class="col-xs-12 col-md-4 col-gray">
-        <a href="https://dash.org" target="_blank"><img src='./img/dash_about.jpg' alt="About Dash" style='max-width:360px;' /></a>
-        <div id="powered" class="row">
-          <div class="powered-text">
-            <small class="text-muted" translate>Powered by</small>
-          </div>
-          <a href="http://bitcore.io" target="_blank" class="bitcore" title="Bitcore"></a>
-          <a href="http://angularjs.org" target="_blank" class="angularjs" title="AngularJS"></a>
-          <a href="https://code.google.com/p/leveldb/" target="_blank" class="leveldb" title="LevelDB"></a>
-          <a href="http://nodejs.org" target="_blank" class="nodejs" title="NodeJs"></a>
-        </div>
-      </div> <!-- END OF COL-3 -->
     </div>
   </div>
 </section>

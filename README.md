@@ -30,7 +30,6 @@ If it doesn't exist, it will create it, with basic task to connect to essd.
 For developing UI change start main process.
 Change directory to ./lib/insight-ui/
 Install dependencies.
-Change project and build it with command 
 ```bash
 npm run build
 ```

@@ -11,15 +11,35 @@ A Ess full node for building applications and services with Node.js. A node is e
 git clone https://github.com/essentiaone/essx-node
 cd essx-node
 npm install
-./bin/essx-node start
 ```
-
+###Use 
+Install docker.
+Rename essx-node.json.example  into essx-node.json. Change "datadir" parameter to your local essx storage, or create one.
+````bash
+npm run dev  // "dev": "nodemon ./bin/essx-node start"
+````
+or
+````bash
+npm run start  // "start": "./bin/essx-node start"
+````
 When running the start command, it will seek for a .ess folder with a ess.conf file.
 If it doesn't exist, it will create it, with basic task to connect to essd.
 
+###Insight-ui
+For developing UI change start main process.
+Change directory to ./lib/insight-ui/
+Install dependencies.
+Change project and build it with command 
+```bash
+npm run build
+```
+or watch changes with 
+```bash
+npm run watch
+```
+
 ## Prerequisites
 - Docker
-- Ess Core (essd) with support for additional indexing *(see above)*
 - Node.js v8+
 - ~20GB of disk storage
 - ~1GB of RAM

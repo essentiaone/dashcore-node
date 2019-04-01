@@ -13,8 +13,9 @@ cd essx-node
 npm install
 ```
 ### Use 
-Install docker.
-Rename essx-node.json.example  into essx-node.json. Change "datadir" parameter to your local essx storage, or create one.
+ - Install docker.
+ - Rename `essx-node.json.example`  into `essx-node.json`.
+ - Change `datadir` parameter to your local essx storage, or create one.
 ````bash
 npm run dev  // "dev": "nodemon ./bin/essx-node start"
 ````

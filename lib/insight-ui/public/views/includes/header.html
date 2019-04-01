@@ -1,5 +1,5 @@
 <div class="container">
-  <div data-ng-controller="HeaderController">
+  <div data-ng-controller="HeaderController" class="header-controller">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" data-ng-click="isCollapsed = !isCollapsed">
         <span class="sr-only">Toggle navigation</span>
@@ -14,13 +14,19 @@
         </a>
       </div>
     </div>
+
+    <ul class="nav navbar-nav hidden-xs">
+        <li data-ng-repeat="item in menu" ui-route="{{item.link}}" data-ng-class="{active: $uiRoute}">
+          <a href="{{item.link}}">{{item.title|translate}}</a>
+        </li>
+      </ul>
+
     <div class="navbar-collapse" uib-collapse="isCollapsed">
       <ul class="nav navbar-nav" data-ng-click="isCollapsed = !isCollapsed">
         <li data-ng-repeat="item in menu" ui-route="{{item.link}}" data-ng-class="{active: $uiRoute}">
           <a href="{{item.link}}">{{item.title|translate}}</a>
         </li>
       </ul>
-      <span class="hidden-xs navbar-form navbar-left" data-ng-include src="'views/includes/search.html'"></span>
       <ul class="nav navbar-nav navbar-right">
         <li>
           <div class="status" data-ng-controller="StatusController">
@@ -45,5 +51,6 @@
       </ul>
     </div>
     <div id="search-form-mobile" data-ng-include src="'views/includes/search.html'" uib-collapse="!searcIsCollapsed"></div>
+    <div class="search-desktop" data-ng-include src="'views/includes/search.html'"></div>
   </div>
 </div>

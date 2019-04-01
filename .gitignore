@@ -28,4 +28,7 @@ regtest/data/node1/regtest
 regtest/data/node2/regtest
 regtest/data/node3/regtest
 .idea
+.history
+essx-node.json
+package-lock.json
 essx-node.json

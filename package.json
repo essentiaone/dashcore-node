@@ -7,7 +7,7 @@
   "repository": "git://github.com/essentiaone/essx-node",
   "homepage": "https://github.com/essentiaone/essx-node",
   "bugs": {
-    "url": "https://github.com/dashevo/dashcore-node/issues"
+    "url": "https://github.com/essentiaone/essx-node/issues"
   },
   "contributors": [
     {
@@ -35,6 +35,7 @@
   },
   "scripts": {
     "dev": "nodemon ./bin/essx-node start",
+    "start": "./bin/essx-node start",
     "test": "mocha -R spec --recursive",
     "regtest": "./regtest/regtest",
     "jshint": "jshint --reporter=node_modules/jshint-stylish ./lib",

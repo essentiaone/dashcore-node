@@ -12,7 +12,7 @@ git clone https://github.com/essentiaone/essx-node
 cd essx-node
 npm install
 ```
-###Use 
+### Use 
 Install docker.
 Rename essx-node.json.example  into essx-node.json. Change "datadir" parameter to your local essx storage, or create one.
 ````bash
@@ -25,7 +25,7 @@ npm run start  // "start": "./bin/essx-node start"
 When running the start command, it will seek for a .ess folder with a ess.conf file.
 If it doesn't exist, it will create it, with basic task to connect to essd.
 
-###Insight-ui
+### Insight-ui
 For developing UI change start main process.
 Change directory to ./lib/insight-ui/
 Install dependencies.

@@ -128,7 +128,7 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
   min-height: 100%;
   height: auto;
   /* Negative indent footer by its height */
-  margin: 0 auto -51px;
+  margin: 0 auto -48px;
   /* Pad bottom by footer height */
   padding: 0 0 75px;
 }
@@ -497,11 +497,31 @@ margin-left: 0;
 .progress-bar-info { background-color: #008de4; }
 
 /* Set the fixed height of the footer here */
+.footer__inner {
+  max-width: 1170px;
+  margin: 0 auto;
+  padding: 0 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.footer__status-info {
+  font-size: 14px;
+  border: solid 1px rgba(255,255,255,0.46);
+  padding: 6px 30px;
+  text-align: center;
+}
+.footer__status-info img {
+  display: inline-block;
+  margin-right: 5px;
+}
+.footer__status-info span {
+  vertical-align: middle;
+  display: inline-block;
+}
 #footer {
-  background-color: #111921;
+  background-color: #223953;
   color: #fff;
-  height: 51px;
-  overflow: hidden;
 }
 
 #footer a.insight {
@@ -951,6 +971,22 @@ a.v_highlight_more {
   }
   .btn-expand {
     font-size: 18px;
+  }
+  .footer__inner {
+    flex-direction: column;
+    padding: 22px 15px;
+  }
+  .footer__status-info {
+    order: 1;
+  }
+  .footer__inner .footer__logo {
+    order: 2;
+  }
+  .footer__inner .insight {
+    order: 3;
+  }
+  .footer__height {
+    margin-bottom: 25px;
   }
 }
 

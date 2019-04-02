@@ -315,6 +315,12 @@ margin-left: 0;
   font-family: 'Montserrat', sans-serif;
   font-weight: 100;
 }
+ /* Home page -------------------------------------------------- */
+ .home-wrapp {
+   max-width: 662px;
+   margin: 0 auto;
+ }
+ /* ------------------------------------------------------------ */
 
 .status {
   -moz-border-radius: 3px;

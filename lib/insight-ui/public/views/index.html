@@ -4,50 +4,60 @@
 <div data-ng-include src="'views/includes/connection.html'"></div>
 <section data-ng-controller="IndexController" data-ng-init="index()">
   <div class="container">
-    <div class="row">
-      <div class="col-xs-12">
-          <div class="table" data-ng-controller="StatusController" data-ng-init="getStatus('Info')">
-              <div>
-                <div>
-                  <span translate>Version</span>
-                  <span class="text-right">{{info.version}}</span>
+    <section class="info">
+        <div class="row">
+          <div class="col-xs-12">
+              <div class="home-wrapp" data-ng-controller="StatusController" data-ng-init="getStatus('Info')">
+                <div class="row">
+                  <div class="col-md-4 col-lg-4">Version</div>
+                  <div class="col-md-4 col-lg-4">Protocol version</div>
+                  <div class="col-md-4 col-lg-4">Blocks</div>
+                  <div class="col-md-4 col-lg-4">Connections to other nodes</div>
+                  <div class="col-md-4 col-lg-4">Mining Difficulty</div>
+                  <div class="col-md-4 col-lg-4">Info Errors</div>
                 </div>
-                <div>
-                  <span translate>Protocol version</span>
-                  <span class="text-right">{{info.protocolversion}}</span>
+                  <div>
+                    <div>
+                      <span translate>Version</span>
+                      <span class="text-right">{{info.version}}</span>
+                    </div>
+                    <div>
+                      <span translate>Protocol version</span>
+                      <span class="text-right">{{info.protocolversion}}</span>
+                    </div>
+                    <div>
+                      <span translate>Blocks</span>
+                      <span class="text-right"><a href="block-index/{{info.blocks}}">{{info.blocks}}</a></span>
+                    </div>
+                    <div>
+                      <span translate>Time Offset</span>
+                      <span class="text-right">{{info.timeoffset}}</span>
+                    </div>
+                    <div>
+                      <span translate>Connections to other nodes</span>
+                      <span class="text-right">{{info.connections}}</span>
+                    </div>
+                    <div>
+                      <span divanslate>Mining Difficulty</span>
+                      <span class="text-right">{{info.difficulty.toFixed(2)}}</span>
+                    </div>
+                    <div>
+                      <span divanslate>Network</span>
+                      <span class="text-right">{{info.network}}</span>
+                    </div>
+                    <div>
+                      <span translate>Proxy setting</span>
+                      <span class="text-right">{{info.proxy}}</span>
+                    </div>
+                    <div>
+                      <span translate>Info Errors</span>
+                      <span class="text-right">{{info.infoErrors}}</span>
+                    </div>
+                  </div>
                 </div>
-                <div>
-                  <span translate>Blocks</span>
-                  <span class="text-right"><a href="block-index/{{info.blocks}}">{{info.blocks}}</a></span>
-                </div>
-                <div>
-                  <span translate>Time Offset</span>
-                  <span class="text-right">{{info.timeoffset}}</span>
-                </div>
-                <div>
-                  <span translate>Connections to other nodes</span>
-                  <span class="text-right">{{info.connections}}</span>
-                </div>
-                <div>
-                 <span divanslate>Mining Difficulty</span>
-                  <span class="text-right">{{info.difficulty.toFixed(2)}}</span>
-                </div>
-                <div>
-                  <span divanslate>Network</span>
-                  <span class="text-right">{{info.network}}</span>
-                </div>
-                <div>
-                  <span translate>Proxy setting</span>
-                  <span class="text-right">{{info.proxy}}</span>
-                </div>
-                <div>
-                  <span translate>Info Errors</span>
-                  <span class="text-right">{{info.infoErrors}}</span>
-                </div>
-              </div>
             </div>
-      </div>
-    </div>
+          </div>      
+    </section>
     <div id="home" class="row">
       <div class="col-xs-12 col-md-12">
         <h1 translate>Latest Blocks</h1>

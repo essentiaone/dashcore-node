@@ -59,6 +59,7 @@ body {
   color: #373D42;
   font-family: 'AvenirNext-Regular', sans-serif;
   height: 100%;
+  background-color: #f1f4f7;
   /* The html and body elements cannot have any padding or margin. */
 }
 
@@ -158,25 +159,67 @@ margin-left: 0;
   /*cfe3f4*/
 }
 .navbar { min-height: 64px; }
-.navbar-default .navbar-toggle {
-  border-color: #fff;
-  margin-top: 15px;
+
+.navbar-default .navbar-toggle .icon-bar {
+  background-color: #000;
+  opacity: 1;
+  transition: 0.4s
+}
+.navbar-default .navbar-toggle:hover .icon-bar,
+.navbar-default .navbar-toggle:focus .icon-bar {
+  opacity: 0.5;
+  transition: 0.4s
 }
 
-.navbar-default .navbar-toggle .icon-bar { background-color: #fff; }
-.navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {background-color: #373D42;}
-
 .navbar-default {
-  background-color: #012060;
+  background-color: #fff;
   margin: 0;
   border: 0;
 }
 
 .navbar-default .navbar-nav>li>a {
-  color: #cfe3f4;
-  font-family: 'Montserrat', sans-serif;
-  padding-left: 20px;
-  padding-right: 20px;
+  display: inline-block;
+  color: #223953;
+  font-family: 'AvenirNext-Regular', sans-serif;
+  font-size: 16px;
+  line-height: 19px;
+  border-left: 2px solid #5ba0ff;
+  padding: 0 0 0 7px;
+  margin: 15px auto 15px 40%;
+}
+
+.navbar-search {
+  outline: none;
+  width: 18px;
+  height: 18px;
+  float: right;
+  border: 0;
+  padding: 0;
+  margin-top: 18px;
+  background-color: transparent;
+  background-image: url('../img/search.svg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  opacity: 1;
+  transition: 0.4s
+}
+
+.search-desktop {
+  display: none;
+}
+
+.navbar-search:focus,
+.navbar-search:hover {
+  opacity: 0.5;
+  transition: 0.4s;
+}
+.navbar-toggle {
+  padding: 0;
+  border: 0;
+  margin: 20px 16px 16px;
+}
+.navbar-default .navbar-toggle:focus, .navbar-default .navbar-toggle:hover {
+  background-color: transparent;
 }
 
 .navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus {
@@ -250,17 +293,25 @@ margin-left: 0;
   margin-left: 5px;
 }
 
-#search { color: #fff; }
+#search {
+  color: #000;
+  background-color: rgba(217, 217, 217, 0.27);
+  border-radius: 0;
+  box-shadow: none;
+  border: none;
+  border-bottom: 1px solid #223953;
+ }
 
 #search::-webkit-input-placeholder {
-  color: #CFE3F4;
-  font-family: 'Montserrat', sans-serif;
-  font-style: italic;
-  font-weight: 100;
+  color: #46576e;
+  font-family: 'SFUIDisplay-Light', sans-serif;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 12px;
 }
 
 #search::-moz-placeholder {
-  color: #CFE3F4;
+  color: #46576e;
   font-family: 'Montserrat', sans-serif;
   font-weight: 100;
 }
@@ -842,8 +893,8 @@ a.v_highlight_more {
     font-size: 40px;
   }
   .navbar-default .navbar-nav>li>a {
-    padding-left: 13px;
-    padding-right: 13px;
+    /* padding-left: 13px;
+    padding-right: 13px; */
   }
 }
 
@@ -881,7 +932,7 @@ a.v_highlight_more {
     padding-right: 0;
   }
   .navbar-default .navbar-toggle {
-    margin-top: 7px;
+    margin-top: 22px;
   }
   .navbar {
     min-height: 50px;
@@ -939,12 +990,64 @@ a.v_highlight_more {
   }
 }
 
+@media (min-width: 767px) {
+  .header-controller {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+  .navbar-search {
+    position: absolute;
+    right: 0;
+  }
+  .navbar-form.navbar-left {
+    display: none
+  }
+  .navbar-collapse.collapse {
+    display: none !important;
+  }
+  .navbar-nav {
+    display: flex;
+  }
+  .navbar-nav>li {
+    float: none;
+    margin-left: 30px;
+  }
+  .navbar-nav>li:first-child {
+    margin-left: 15px;
+  }
+  .navbar-default .navbar-nav>li>a {
+    margin-left: auto;
+  }
+  #search-form-mobile {
+    position: relative;
+    top: 8px;
+    width: 100%;
+    margin: 0 25px 0px 15px;
+  }
+}
+
 @media (min-width: 1200px) {
   .col-gray-fixed {
     width: 280px;
   }
   .navbar-form .form-control {
     width: 340px;
+  }
+}
+
+@media (min-width: 1024px) {
+  #search-form-mobile {
+    display: none !important;
+  }
+  .search-desktop {
+    display: block;
+    right: -6px;
+    width: 409px;
+    position: absolute;
+  }
+  .search-desktop .form-group {
+    margin-bottom: 0;
   }
 }
 

@@ -1001,8 +1001,8 @@ a.v_highlight_more {
 }
 
 @media (min-width: 1024px) {
-  search-form-mobile {
-    display: block !important;
+  #search-form-mobile {
+    display: none !important;
   }
   .search-desktop {
     display: block;

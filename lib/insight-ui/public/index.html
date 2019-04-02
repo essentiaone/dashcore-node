@@ -44,27 +44,28 @@
 		<div class="navbar navbar-default navbar-fixed-top" data-ng-include="'views/includes/header.html'" role='navigation'></div>
 		<section class="container" data-ng-view></section>
 	</div>
-	<div id="footer" role="navigation">
-    <div class="container" data-ng-controller="FooterController">
-      <div class="links m20t pull-left">
-        <span class="languages" ng-show="availableLanguages[0]">
-          [
-          <a href="#"
-            ng-click="setLanguage(l.isoCode)"
-            ng-class="{'selected': defaultLanguage == l.isoCode}"
-            ng-repeat="l in availableLanguages">
-            <span ng-show="!$first"> &middot; </span> {{l.name}}
-          </a>
-          ]
-        </span>
-        &nbsp;
-        [
-        <a href="messages/verify" translate>verify message</a>
-        <span> &middot; </span>
-        <a href="tx/send" translate>broadcast transaction</a>
-        ]
+	<div id="footer" class="footer" role="navigation">
+    <div class="footer__inner">
+      <img class="footer__logo"  src="./img/logo_ess.svg" alt="essentia">
+      <div class="footer__height" data-ng-controller="StatusController">
+        <div data-ng-init="getSync()" class="pull-left">
+          <span class="t text-danger"  data-ng-show="sync.error" tooltip="{{sync.error}}" tooltip-placement="bottom">
+              <span  class="glyphicon glyphicon-warning-sign"></span>
+              ERROR
+          </span>
+          <span tooltip="Historic sync finished" tooltip-placement="bottom" data-ng-show="sync.status==='finished'"> </span>
+        </div>
+        <div class="footer__status-info" data-ng-init="getStatus('Info')">
+          <img src="./img/info.svg" alt="info">
+          <span class="info-connection">
+            {{'Conn'|translate}} {{info.connections}}
+          </span> - 
+          <span class="info-total-blocks">
+            {{'Height'|translate}} {{totalBlocks || info.blocks}}
+          </span>
+        </div>
       </div>
-      <a class="insight m10v pull-right" target="_blank" href="http://insight.is">insight <small>API v{{version}}</small></a>
+      <a class="insight m10v pull-right" data-ng-controller="FooterController" target="_blank" href="http://insight.is">insight <small>API v{{version}}</small></a>
     </div>
   </div>
   <script language="javascript">window.apiPrefix = '/api';</script>

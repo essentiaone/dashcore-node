@@ -315,6 +315,43 @@ margin-left: 0;
   font-family: 'Montserrat', sans-serif;
   font-weight: 100;
 }
+ /* Home page -------------------------------------------------- */
+ .home-wrapp {
+   max-width: 662px;
+   margin: 0 auto;
+ }
+ .info {
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: space-between;
+   margin: 39px auto 49px;
+ }
+.info-cell {
+  background-color: #fff;
+  width: 32%;
+  margin: 13px auto;
+  padding: 14px 5px 20px;
+  text-align: center;
+  text-transform: uppercase;
+  font-family: "AvenirNext-Regular", san-serif;
+  color: #90a1b8;
+  font-size: 12px;
+  line-height: 2.42;
+}
+.info-cell span {
+  display: inline-block;
+  width: 100%;
+  font-family: "AvenirNext-Medium", san-serif;
+  font-size: 16px;
+  color: #223953;
+  text-transform: initial;
+  line-height: 1.81;
+}
+.info-cell span:empty::after,
+.status-errors:empty::after {
+  content: '0';
+}
+ /* ------------------------------------------------------------ */
 
 .status {
   -moz-border-radius: 3px;
@@ -852,6 +889,12 @@ a.v_highlight_more {
 #search-form-mobile {
   margin-top: 15px;
 }
+.home-header {
+  font-size: 23px;
+  line-height: 1.26;
+  color: #223953;
+  margin: 10px 0 20px;
+}
 /*Blocks page*/
 .flex-center-row {
   display: flex;
@@ -873,6 +916,7 @@ a.v_highlight_more {
 .white-table>tbody>tr>td {
   padding: 15px 20px;
   font-family: AvenirNext-Medium, sans-serif;
+  color: #46576e;
 }
 .no-border {
   border: none!important;
@@ -919,7 +963,9 @@ a.v_highlight_more {
   color: #46576e;
   font-family: AvenirNext-Regular, sans-serif;
 }
-
+.status-table>tbody>tr>td,.last-block-table>tbody>tr>td  {
+  color: #90a1b8;
+}
 .status-table .progress {
   margin-bottom: 0;
   background-color: transparent;
@@ -939,6 +985,20 @@ a.v_highlight_more {
   margin: 0;
   padding: 20px 0 10px 25px;
   background-color: white;
+}
+.all-blocks-tr:hover,
+.all-blocks-tr:hover .all-blocks-td {
+  background-color: #fff !important;
+}
+.all-blocks-td {
+  background: #fff;
+  border-top: transparent !important;
+}
+.all-blocks-td a:hover {
+  opacity: 0.7;
+  transition: 0.4s;
+  background-color: #5ba0ff;
+  color: #fff;
 }
 @media (max-width: 1199px) {
   .status {
@@ -1065,7 +1125,18 @@ a.v_highlight_more {
   .btn-expand {
     font-size: 18px;
   }
+  /* Home page ------------------- */
+  .info {
+    margin: 11px auto 19px;
+  }
+  .info-cell {
+    width: 47%;
+  }
+  /* ----------------------------- */
   .page-container {
+    padding: 0 10px;
+  }
+  .blocks-page-container {
     padding: 0 10px;
   }
   .white-table {
@@ -1097,9 +1168,10 @@ a.v_highlight_more {
   .footer__height {
     margin-bottom: 25px;
   }
+
 }
 
-@media (min-width: 767px) {
+@media (min-width: 768px) {
   .header-controller {
     position: relative;
     display: flex;

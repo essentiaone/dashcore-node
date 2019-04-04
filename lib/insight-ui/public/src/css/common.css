@@ -347,7 +347,8 @@ margin-left: 0;
   text-transform: initial;
   line-height: 1.81;
 }
-.info-cell span:empty::after {
+.info-cell span:empty::after,
+.status-errors:empty::after {
   content: '0';
 }
  /* ------------------------------------------------------------ */
@@ -933,7 +934,6 @@ a.v_highlight_more {
 .btn-more-blocks:hover {
   border: none;
 }
-
 .last-block-table {
   margin-bottom: 39px;
 }
@@ -963,7 +963,9 @@ a.v_highlight_more {
   color: #46576e;
   font-family: AvenirNext-Regular, sans-serif;
 }
-
+.status-table>tbody>tr>td,.last-block-table>tbody>tr>td  {
+  color: #90a1b8;
+}
 .status-table .progress {
   margin-bottom: 0;
   background-color: transparent;
@@ -1123,9 +1125,6 @@ a.v_highlight_more {
   .btn-expand {
     font-size: 18px;
   }
-<<<<<<< HEAD
-  .page-container {
-=======
 
   /* Home page ------------------- */
   .info {
@@ -1135,9 +1134,10 @@ a.v_highlight_more {
     width: 47%;
   }
   /* ----------------------------- */
-
+  .page-container {
+    padding: 0 10px;
+  }
   .blocks-page-container {
->>>>>>> master
     padding: 0 10px;
   }
   .white-table {
@@ -1150,13 +1150,12 @@ a.v_highlight_more {
   .white-table>tbody>tr>td {
     padding: 15px 4px;
   }
-<<<<<<< HEAD
   .white-bg {
     padding: 20px 0 10px 13px;
   }
-=======
-
->>>>>>> master
+  .white-bg {
+    padding: 20px 0 10px 13px;
+  }
   .footer__inner {
     flex-direction: column;
     padding: 22px 15px;

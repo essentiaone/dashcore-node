@@ -919,6 +919,7 @@ a.v_highlight_more {
   color: #46576e;
   font-family: AvenirNext-Regular, sans-serif;
 }
+
 .status-table .progress {
   margin-bottom: 0;
   background-color: transparent;
@@ -932,6 +933,7 @@ a.v_highlight_more {
   border: none;
   box-shadow: unset;
   text-align: right;
+  transition: 0s;
 }
 .white-bg {
   margin: 0;

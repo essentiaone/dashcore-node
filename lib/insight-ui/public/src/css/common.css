@@ -736,6 +736,9 @@ margin-left: 0;
 .btn-copy {
   background: transparent url('../img/icons/copy.svg') center center no-repeat;
 }
+.btn-copy--dark {
+  background: transparent url('../img/icons/copy-dark.svg') center center no-repeat;
+}
 .coinbase-copy .btn-copy {
   background: transparent url('../img/icons/copy-dark.svg') center center no-repeat;
 }
@@ -1412,3 +1415,19 @@ fieldset[disabled] .btn-info:hover {
 .is:hover .tooltiptext {
   visibility: visible;
 } 
+.txvalues-danger {
+  background: #ff0022;
+  color: #fff;
+}
+.table-wrapper {
+  background-color: #fff;
+  color: #90a1b8;
+}
+.table-wrapper .white-table>tbody>tr>td {
+  font-weight: normal;
+  color: #90a1b8;
+  padding: 9px 20px;
+}
+.table-wrapper .white-table>tbody>tr>td strong {
+  font-weight: 400;
+}

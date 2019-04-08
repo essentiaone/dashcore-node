@@ -232,11 +232,11 @@
 </div>
 
 <div class="line-top row" data-ng-hide="!tx">
-  <div class="col-xs-6 col-sm-4 col-md-4">
+  <div class="col-xs-12 col-sm-4 col-md-4">
     <span data-ng-show="!tx.isCoinBase &&  !isNaN(parseFloat(tx.fees))"
       class="txvalues"><span translate>Fee</span>: {{$root.currency.getConvertion(tx.fees) || tx.fees + 'ESS'}} </span>
   </div>
-  <div class="col-xs-6 col-sm-8 col-md-8 text-right">
+  <div class="col-xs-12 col-sm-8 col-md-8 text-right">
     <span data-ng-show="tx.confirmations >= 0 || tx.txlock" class="txvalues
       txvalues-success">{{tx.confirmations}} <span translate>Confirmations</span> <span data-ng-show="tx.txlock"> InstantSend TxLock</span></span>
     <span data-ng-show="tx.confirmations < 0" class="txvalues txvalues-danger" translate>Unconfirmed Transaction!</span>

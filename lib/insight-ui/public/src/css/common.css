@@ -1185,19 +1185,13 @@ a.v_highlight_more {
   }
   #search { color: #000; }
   .txvalues {
-    display: block;
+    display: inline-block;
     margin: 5px;
     padding: 0.5em 2em;
     font-size: 11px;
   }
   .navbar-default .navbar-nav .open .dropdown-menu>li>a {
     color: #fff;
-  }
-  .txvalues {
-    display: inline;
-    margin: 0;
-    padding: 0;
-    font-weight: bold;
   }
   .txvalues-success {
     background: none;

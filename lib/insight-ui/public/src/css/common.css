@@ -1092,6 +1092,14 @@ a.v_highlight_more {
   background-color: #5ba0ff;
   color: #fff;
 }
+.qr-row {
+  background: #fff;
+  margin-right: 0;
+  margin-left: 0;
+}
+.border-none {
+  border-top: none !important;
+}
 
 @media (max-width: 1199px) {
   .status {
@@ -1141,6 +1149,9 @@ a.v_highlight_more {
   .navbar-default .navbar-nav>li>a {
     /* padding-left: 13px;
     padding-right: 13px; */
+  }
+  .qr-row {
+    padding-bottom: 31px;
   }
 }
 
@@ -1261,6 +1272,9 @@ a.v_highlight_more {
     flex-direction: column;
     font-size: 11px;
     margin-bottom: 7px;
+  }
+  .qr-row .white-table {
+    min-width: auto;
   }
 }
 

@@ -31,96 +31,98 @@
       </a>
     </div>
   </div>
-  <h1>Block #{{block.height}}</h1>
+  <h1 class="medium-title">Block #{{block.height}}</h1>
   <div class="text-muted" data-ng-if="!block.hash">
     <span translate>Loading Block Information</span>  <span class="loader-gif"></span>
   </div>
   <div data-ng-if="block.hash">
-    <div class="well well-sm ellipsis">
+    <div class="well well-sm ellipsis transaction-hash-field">
       <strong>BlockHash</strong> 
-      <span class="txid text-muted">{{block.hash}}</span>
+      <span class="txid">{{block.hash}}</span>
       <span class="btn-copy" clip-copy="block.hash"></span>
     </div>
-    <h2 translate>Summary</h2>
-    <div class="row">
-      <div class="col-md-6">
-        <table class="table" style="table-layout: fixed">
-          <tbody>
-          <tr>
-            <td><strong translate>Number Of Transactions</strong></td>
-            <td class="text-right text-muted">{{block.tx.length}}</td>
-          </tr>
-          <tr>
-            <td><strong translate>Height</strong></td>
-            <td class="text-right text-muted">{{block.height}}
-              <span data-ng-show="block.isMainChain" class="text-success">(Mainchain)</span>
-              <span data-ng-show="!block.isMainChain" class="text-danger"> <span class="glyphicon glyphicon-warning-sign"></span> (Orphaned)</span>
-            </td>
-          </tr>
-          <tr>
-            <td><strong translate>Block Reward</strong></td>
-            <td class="text-right text-muted">{{$root.currency.getConvertion(block.reward) || block.reward + ' DASH'}}</td>
-          </tr> 
-          <tr>
-            <td><strong translate>Timestamp</strong></td>
-            <td class="text-right text-muted">{{block.time * 1000 | date:'medium'}}</td>
-          </tr>
-          <tr data-ng-show="block.poolInfo">
-            <td><strong translate>Mined by</strong></td>
-            <td class="text-right text-muted">
-              <a href="{{block.poolInfo.url}}" target="_blank" title="{{block.poolInfo.poolName}}">{{block.poolInfo.poolName}}</a>
-            </td>
-          </tr>
-          <tr>
-            <td><strong>Merkle Root</strong></td>
-            <td class="text-right text-muted">
-              <div class="ellipsis">
-                <span class="btn-copy" clip-copy="block.merkleroot"></span>
-                <span>{{block.merkleroot}}</span>
-              </div>
-            </td>
-          </tr>
-          <tr data-ng-show="block.previousblockhash">
-            <td><strong translate>Previous Block</strong></td>
-            <td class="text-right"><a href="block/{{block.previousblockhash}}">{{block.height-1}}</a></td>
-          </tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="col-md-6">
-        <table class="table">
-          <tbody>
-          <tr>
-            <td> <strong translate>Difficulty</strong></td>
-            <td class="text-right text-muted">{{block.difficulty}}</td>
-          </tr>
-          <tr>
-            <td> <strong>Bits</strong></td>
-            <td class="text-right text-muted">{{block.bits}}</td>
-          </tr>
-          <tr>
-            <td> <strong translate>Size (bytes)</strong></td>
-            <td class="text-right text-muted">{{block.size}}</td>
-          </tr>
-          <tr>
-            <td> <strong translate>Version</strong></td>
-            <td class="text-right text-muted">{{block.version}}</td>
-          </tr>
-          <tr>
-            <td> <strong>Nonce</strong></td>
-            <td class="text-right text-muted">{{block.nonce}}</td>
-          </tr>
-          <tr data-ng-show="block.nextblockhash">
-            <td><strong translate>Next Block</strong></td>
-            <td class="text-right"><a href="block/{{block.nextblockhash}}">{{block.height+1}}</a></td>
-          </tr>
-          </tbody>
-        </table>
+    <h2 class="white-bg" translate>Summary</h2>
+    <div class="table-wrapper">
+      <div class="row">
+        <div class="col-md-6">
+          <table class="table white-table" style="table-layout: fixed">
+            <tbody>
+            <tr>
+              <td><strong translate>Number Of Transactions</strong></td>
+              <td class="text-right text-muted">{{block.tx.length}}</td>
+            </tr>
+            <tr>
+              <td><strong translate>Height</strong></td>
+              <td class="text-right text-muted">{{block.height}}
+                <span data-ng-show="block.isMainChain" class="text-success">(Mainchain)</span>
+                <span data-ng-show="!block.isMainChain" class="text-danger"> <span class="glyphicon glyphicon-warning-sign"></span> (Orphaned)</span>
+              </td>
+            </tr>
+            <tr>
+              <td><strong translate>Block Reward</strong></td>
+              <td class="text-right text-muted">{{$root.currency.getConvertion(block.reward) || block.reward + ' ESS'}}</td>
+            </tr> 
+            <tr>
+              <td><strong translate>Timestamp</strong></td>
+              <td class="text-right text-muted">{{block.time * 1000 | date:'medium'}}</td>
+            </tr>
+            <tr data-ng-show="block.poolInfo">
+              <td><strong translate>Mined by</strong></td>
+              <td class="text-right text-muted">
+                <a href="{{block.poolInfo.url}}" target="_blank" title="{{block.poolInfo.poolName}}">{{block.poolInfo.poolName}}</a>
+              </td>
+            </tr>
+            <tr>
+              <td><strong>Merkle Root</strong></td>
+              <td class="text-right text-muted">
+                <div class="ellipsis">
+                  <span class="btn-copy btn-copy--dark" clip-copy="block.merkleroot"></span>
+                  <span>{{block.merkleroot}}</span>
+                </div>
+              </td>
+            </tr>
+            <tr data-ng-show="block.previousblockhash">
+              <td><strong translate>Previous Block</strong></td>
+              <td class="text-right"><a href="block/{{block.previousblockhash}}">{{block.height-1}}</a></td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="col-md-6">
+          <table class="table white-table">
+            <tbody>
+            <tr>
+              <td> <strong translate>Difficulty</strong></td>
+              <td class="text-right text-muted">{{block.difficulty}}</td>
+            </tr>
+            <tr>
+              <td> <strong>Bits</strong></td>
+              <td class="text-right text-muted">{{block.bits}}</td>
+            </tr>
+            <tr>
+              <td> <strong translate>Size (bytes)</strong></td>
+              <td class="text-right text-muted">{{block.size}}</td>
+            </tr>
+            <tr>
+              <td> <strong translate>Version</strong></td>
+              <td class="text-right text-muted">{{block.version}}</td>
+            </tr>
+            <tr>
+              <td> <strong>Nonce</strong></td>
+              <td class="text-right text-muted">{{block.nonce}}</td>
+            </tr>
+            <tr data-ng-show="block.nextblockhash">
+              <td><strong translate>Next Block</strong></td>
+              <td class="text-right"><a href="block/{{block.nextblockhash}}">{{block.height+1}}</a></td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   </div>
   <div data-ng-if="block.hash" data-ng-controller="transactionsController" data-ng-init="load('block')">
-    <h3 translate>Transactions</h3>
+    <h3 class="medium-title" translate>Transactions</h3>
     <div data-ng-include src="'views/transaction/list.html'" when-scrolled="loadMore()"></div>
   </div>
 

@@ -736,6 +736,9 @@ margin-left: 0;
 .btn-copy {
   background: transparent url('../img/icons/copy.svg') center center no-repeat;
 }
+.btn-copy--dark {
+  background: transparent url('../img/icons/copy-dark.svg') center center no-repeat;
+}
 .coinbase-copy .btn-copy {
   background: transparent url('../img/icons/copy-dark.svg') center center no-repeat;
 }
@@ -1193,19 +1196,13 @@ a.v_highlight_more {
   }
   #search { color: #000; }
   .txvalues {
-    display: block;
+    display: inline-block;
     margin: 5px;
     padding: 0.5em 2em;
     font-size: 11px;
   }
   .navbar-default .navbar-nav .open .dropdown-menu>li>a {
     color: #fff;
-  }
-  .txvalues {
-    display: inline;
-    margin: 0;
-    padding: 0;
-    font-weight: bold;
   }
   .txvalues-success {
     background: none;
@@ -1426,3 +1423,19 @@ fieldset[disabled] .btn-info:hover {
 .is:hover .tooltiptext {
   visibility: visible;
 } 
+.txvalues-danger {
+  background: #ff0022;
+  color: #fff;
+}
+.table-wrapper {
+  background-color: #fff;
+  color: #90a1b8;
+}
+.table-wrapper .white-table>tbody>tr>td {
+  font-weight: normal;
+  color: #90a1b8;
+  padding: 9px 20px;
+}
+.table-wrapper .white-table>tbody>tr>td strong {
+  font-weight: 400;
+}

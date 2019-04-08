@@ -993,7 +993,7 @@ a.v_highlight_more {
   border-radius: 3px;
   border: none;
 }
-.btn-more-blocks:hover {
+.btn-more-blocks:hover, .btn-more-blocks:active, .btn-more-blocks:focus {
   border: none;
 }
 .last-block-table {

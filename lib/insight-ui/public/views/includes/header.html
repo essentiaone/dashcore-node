@@ -27,28 +27,6 @@
           <a href="{{item.link}}">{{item.title|translate}}</a>
         </li>
       </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li uib-dropdown data-ng-controller="CurrencyController" data-ng-include="'views/includes/currency.html'"></li>
-            <div class="status" data-ng-controller="StatusController">
-              <div data-ng-init="getSync()" class="pull-left">
-                <span class="t text-danger"  data-ng-show="sync.error" tooltip="{{sync.error}}" tooltip-placement="bottom">
-                    <span  class="glyphicon glyphicon-warning-sign"></span>
-                    ERROR
-                </span>
-                <span class="t" tooltip="{{sync.syncedBlocks}} / {{sync.blockChainHeight}} synced. {{sync.skippedBlocks || 0}} skipped" tooltip-placement="bottom" data-ng-show="sync.status==='syncing'">
-                  <span  class="glyphicon glyphicon-refresh icon-rotate"></span>
-                  {{sync.syncPercentage}}%
-                </span>
-                <span class="glyphicon glyphicon-ok" tooltip="Historic sync finished" tooltip-placement="bottom" data-ng-show="sync.status==='finished'"> </span>
-              </div>
-              &nbsp; &middot;
-              <span data-ng-init="getStatus('Info')">
-                <strong>{{'Conn'|translate}}</strong> {{info.connections}}
-              </span> &middot;
-              <strong>{{'Height'|translate}}</strong> {{totalBlocks || info.blocks}}
-            </div>
-          </li>
-      </ul>
     </div>
     <div id="search-form-mobile" data-ng-include src="'views/includes/search.html'" uib-collapse="!searcIsCollapsed"></div>
     <div class="search-desktop" data-ng-include src="'views/includes/search.html'"></div>

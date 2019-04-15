@@ -17,22 +17,26 @@
           "rpchost": "127.0.0.1",
           "rpcport": 31489,
           "rpcuser": "user",
-          "rpcpassword": 111,
-          "zmqpubrawtx": "tcp://127.0.0.1:28332"
+          "rpcpassword": 111
         }
       ],
        "parameters": {
-              "whitelist": "127.0.0.1",
-              "rpcallowip": "172.0.0.0/8",
-              "addnode": "5.189.128.26:31488",
-              "rpcport": 31489,
-              "rpcuser": "user",
-              "rpcpassword": 111,
-              "addressindex": 1,
-              "txindex": 1,
-              "server": 1,
-              "spentindex": 1
-            }
+          "whitelist": "127.0.0.1",
+          "rpcallowip": "172.0.0.0/8",
+          "addnode": "5.189.128.26:31488",
+          "rpcport": 31489,
+          "rpcuser": "user",
+          "rpcpassword": 111,
+          "addressindex": 1,
+          "txindex": 1,
+          "server": 1,
+          "spentindex": 1,
+          "zmqpubrawblock":"tcp://0.0.0.0:29000",
+          "zmqpubrawtx":"tcp://0.0.0.0:29000",
+          "zmqpubhashtx":"tcp://0.0.0.0:29000",
+          "zmqpubhashblock":"tcp://0.0.0.0:29000"
+          "zmqpubrawtxlock":"tcp://0.0.0.0:29000"
+        }
     },
     "insight-api": {
       "disableRateLimiter": true

@@ -13,7 +13,6 @@
             <th translate>Block#</th>
             <th translate>Timestamp</th>
             <th class="text-right" translate>Transactions</th>
-            <th class="text-right hidden-xs" translate>Mined by</th>
             <th class="text-right" translate>Size(bytes)</th>
           </tr>
         </thead>
@@ -25,16 +24,11 @@
           <td><a href="block/{{b.hash}}">{{b.height}}</a></td>
           <td>{{millisToUTCDate(b.time) | date:'medium'}} UTC</td>
           <td class="text-right">{{b.txlength}}</td>
-          <td class="text-right hidden-xs"><a href="{{b.poolInfo.url}}" title="{{b.poolInfo.poolName}}" target="_blank" data-ng-show="b.poolInfo">{{b.poolInfo.poolName}}</a></td>
           <td class="text-right">{{b.size}}</td>
         </tr>
         </tbody>
       </table>
-      <a href="#" class="btn btn-primary text-center btn-more-blocks">NEXT 50</a>
-      <div data-ng-if="pagination.more">
-        <a class="btn btn-primary" href="blocks-date/{{pagination.current}}" data-ng-show="before">Lastest block from date</a>
-        <a class="btn btn-primary" href="blocks-date/{{pagination.current}}/{{pagination.olderBlocks}}">Older blocks from this date</a>
-      </div>
+      <a href="blocks?prev={{pagination.prev}}" class="btn btn-primary text-center btn-more-blocks">NEXT 50</a>
     </div>
   </div>
   <h2 class="text-center text-muted" data-ng-show="!blocks.length && !loading"

@@ -34,7 +34,7 @@
           "zmqpubrawblock":"tcp://0.0.0.0:29000",
           "zmqpubrawtx":"tcp://0.0.0.0:29000",
           "zmqpubhashtx":"tcp://0.0.0.0:29000",
-          "zmqpubhashblock":"tcp://0.0.0.0:29000"
+          "zmqpubhashblock":"tcp://0.0.0.0:29000",
           "zmqpubrawtxlock":"tcp://0.0.0.0:29000"
         }
     },

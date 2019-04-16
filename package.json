@@ -45,7 +45,8 @@
     "check-package": "npm run check-package:name && npm run check-package:version",
     "check-package:name": "test $(jq -r .name package.json) = $(jq -r .name package-lock.json)",
     "check-package:version": "test $(jq -r .version package.json) = $(jq -r .version package-lock.json)",
-    "dashd_test": "./node_modules/.bin/mocha test/services/dashd.unit.js"
+    "dashd_test": "./node_modules/.bin/mocha test/services/dashd.unit.js",
+    "prod-start": "NODE_ENV=production node_modules/pm2/bin/pm2 start ./bin/essx-node start"
   },
   "tags": [
     "ess",
@@ -67,6 +68,7 @@
     "mkdirp": "0.5.1",
     "nodemon": "1.18.10",
     "path-is-absolute": "^1.0.0",
+    "pm2": "^3.5.0",
     "semver": "^5.6.0",
     "socket.io": "^2.2.0",
     "socket.io-client": "^2.2.0",

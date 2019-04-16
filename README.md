@@ -23,6 +23,10 @@ or
 ````bash
 npm run start  // "start": "./bin/essx-node start"
 ````
+or
+````bash
+npm run prod-start  // for pm2 start
+````
 When running the start command, it will seek for a .ess folder with a ess.conf file.
 If it doesn't exist, it will create it, with basic task to connect to essd.
 

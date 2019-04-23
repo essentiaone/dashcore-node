@@ -15,7 +15,7 @@
       "connect": [
         {
           "rpchost": "127.0.0.1",
-          "rpcport": 31489,
+          "rpcport": 41011,
           "rpcuser": "user",
           "rpcpassword": 111
         }
@@ -23,7 +23,7 @@
        "parameters": {
           "whitelist": "127.0.0.1",
           "rpcallowip": "172.0.0.0/8",
-          "addnode": "127.0.0.1:31488",
+          "addnode": "192.168.89.22",
           "rpcport": 31489,
           "rpcuser": "user",
           "rpcpassword": 111,

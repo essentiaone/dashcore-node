@@ -10,7 +10,10 @@
   "servicesConfig": {
     "essd": {
       "spawn": {
-        "datadir": "/home/user/.ess/"
+        "datadir": "/home/user/.ess/",
+         "agent": "devess/essd:latest",
+         "nodePort": 31488,
+         "zmqPort": 29000
       },
       "connect": [
         {

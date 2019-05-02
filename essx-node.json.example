@@ -18,7 +18,7 @@
       "connect": [
         {
           "rpchost": "127.0.0.1",
-          "rpcport": 41011,
+          "rpcport": 31489,
           "rpcuser": "user",
           "rpcpassword": 111
         }

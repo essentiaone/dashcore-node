@@ -60,7 +60,7 @@
         <thead data-ng-include src="'views/includes/infoStatus.html'"></thead>
         <tbody>
           <tr>
-            <td translate>Last Block Hash (dashd)</td>
+            <td translate>Last Block Hash (essd)</td>
             <td class="text-right ellipsis no-border"><a href="block/{{lastblockhash}}">{{lastblockhash}}</a></td>
           </tr>
           <tr>
@@ -70,7 +70,7 @@
         </tbody>
       </table>
       <div>
-        <h2 translate class="medium-title">Dash node information</h2>
+        <h2 translate class="medium-title">ESS node information</h2>
         <table class="table dash-table" data-ng-controller="StatusController" data-ng-init="getStatus('Info')">
           <thead  data-ng-include src="'views/includes/infoStatus.html'"></thead>
           <tbody>

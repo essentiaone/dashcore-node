@@ -1,55 +1,142 @@
-<section data-ng-controller="SendRawTransactionController">
-  <div class="page-header">
-    <h1>
-      <span translate>Broadcast Raw Transaction</span>
-    </h1>
-  </div>
-  <div class="row">
-    <div class="col-xs-12 col-md-8">
-      <form name="txForm" class="form-horizontal" role="form" novalidate>
-        <div class="form-group"
-             ng-class="{ 'has-error': txForm.rawData.$error.pattern }">
-          <label for="transaction-rawdata" class="col-sm-2 control-label" translate>
+<section class="msg-verify wrap" data-ng-controller="SendRawTransactionController">
+  <div class="cn">
+    <div class="block__bl block__details">
+      <h2 class="title" translate>Broadcast Raw Transaction</h2>
+
+      <div class="block__details__bl">
+        <header class="info">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM12 17C11.45 17 11 16.55 11 16V12C11 11.45 11.45 11 12 11C12.55 11 13 11.45 13 12V16C13 16.55 12.55 17 12 17ZM13 8C13 8.55228 12.5523 9 12 9C11.4477 9 11 8.55228 11 8C11 7.44772 11.4477 7 12 7C12.5523 7 13 7.44772 13 8Z" fill="#829BDF"/>
+          </svg>
+          <span class="info__desc" translate>
+            This form can be used to broadcast a raw transaction in hex format over the Essentia network.
+          </span>
+        </header>
+      </div>
+
+      <form name="txForm" role="form" novalidate>
+        <label
+            class="msg-verify__input-cn"
+            data-ng-class="{'active': transaction.length || txForm.rawData.$error.pattern }"
+        >
+          <span
+              class="msg-verify__title"
+              translate
+          >
             Raw transaction data
-          </label>
-          <div class="col-sm-10">
-            <textarea class="form-control" id="transaction-rawdata" name="rawData"
-                data-ng-model="transaction" data-ng-pattern="/^[0-9A-Fa-f]+$/"
-                rows="10" required></textarea>
-            <span class="help-block" ng-show="txForm.rawData.$error.pattern" translate>
+          </span>
+
+          <textarea
+              class="msg-verify__textarea"
+              id="transaction-rawdata"
+              name="rawData"
+              data-ng-model="transaction"
+              data-ng-pattern="/^[0-9A-Fa-f]+$/"
+              cols="30"
+              rows="10"
+              required
+          ></textarea>
+
+          <span
+              class="msg-verify__error"
+              ng-show="txForm.rawData.$error.pattern"
+              translate
+          >
               Raw transaction data must be a valid hexadecimal string.
-            </span>
-          </div>
-        </div>
-        <div class="form-group">
-          <div class="col-sm-offset-2 col-sm-10">
-            <button class="btn btn-default" translate
-                data-ng-click="send()" data-ng-disabled="!txForm.$valid">
-              Send transaction
-            </button>
-          </div>
-        </div>
+          </span>
+        </label>
+
+        <button
+            type="submit"
+            class="btn btn-blue"
+            data-ng-click="send()"
+            data-ng-disabled="!txForm.$valid"
+            translate
+        >
+          Send transaction
+        </button>
       </form>
-      <div class="row">
-        <div data-ng-hide="status == 'ready'"
-             class="col-sm-offset-2 col-sm-10">
-          <div ng-show="status == 'loading'" translate>
-            Loading...
-          </div>
-          <div ng-show="status == 'sent'" class="alert alert-success" translate>
-            Transaction succesfully broadcast.<br>Transaction id: {{txid}}
-          </div>
-          <div ng-show="status == 'error'" class="alert alert-warning" translate>
-            An error occured:<br>{{error}}
-          </div>
+
+      <div data-ng-hide="status == 'ready'">
+        <div class="spinner margin-top"
+             style="margin-top:40px"
+             data-ng-show="status == 'loading'"
+        >
+          <div class="spin"></div>
+          <div class="spinner__text" translate>Loading...</div>
+        </div>
+
+        <div
+            class="block__details__bl"
+            data-ng-show="status == 'error'"
+        >
+          <header class="not" translate>An error occured:<br>{{error}}</header>
+        </div>
+
+        <div
+            class="block__details__bl"
+            data-ng-show="status == 'sent'"
+        >
+          <header class="success" translate>Transaction succesfully broadcast.<br>Transaction id: {{txid}}</header>
         </div>
       </div>
     </div>
-    <div class="col-xs-12 col-md-4 col-gray">
-      <p translate>
-        This form can be used to broadcast a raw transaction in hex format over
-        the Dash network.
-      </p>
-    </div>
   </div>
 </section>
+
+
+<!--<section data-ng-controller="SendRawTransactionController">-->
+<!--  <div class="page-header">-->
+<!--    <h1>-->
+<!--      <span translate>Broadcast Raw Transaction</span>-->
+<!--    </h1>-->
+<!--  </div>-->
+<!--  <div class="row">-->
+<!--    <div class="col-xs-12 col-md-8">-->
+<!--      <form name="txForm" class="form-horizontal" role="form" novalidate>-->
+<!--        <div class="form-group"-->
+<!--             ng-class="{ 'has-error': txForm.rawData.$error.pattern }">-->
+<!--          <label for="transaction-rawdata" class="col-sm-2 control-label" translate>-->
+<!--            Raw transaction data-->
+<!--          </label>-->
+<!--          <div class="col-sm-10">-->
+<!--            <textarea class="form-control" id="transaction-rawdata" name="rawData"-->
+<!--                data-ng-model="transaction" data-ng-pattern="/^[0-9A-Fa-f]+$/"-->
+<!--                rows="10" required></textarea>-->
+<!--            <span class="help-block" ng-show="txForm.rawData.$error.pattern" translate>-->
+<!--              Raw transaction data must be a valid hexadecimal string.-->
+<!--            </span>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--        <div class="form-group">-->
+<!--          <div class="col-sm-offset-2 col-sm-10">-->
+<!--            <button class="btn btn-default" translate-->
+<!--                data-ng-click="send()" data-ng-disabled="!txForm.$valid">-->
+<!--              Send transaction-->
+<!--            </button>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </form>-->
+<!--      <div class="row">-->
+<!--        <div data-ng-hide="false || status == 'ready'"-->
+<!--             class="col-sm-offset-2 col-sm-10">-->
+<!--          <div ng-show="true || status == 'loading'" translate>-->
+<!--            Loading...-->
+<!--          </div>-->
+<!--          <div ng-show="true || status == 'sent'" class="alert alert-success" translate>-->
+<!--            Transaction succesfully broadcast.<br>Transaction id: {{txid}}-->
+<!--          </div>-->
+<!--          <div ng-show="true || status == 'error'" class="alert alert-warning" translate>-->
+<!--            An error occured:<br>{{error}}-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--    <div class="col-xs-12 col-md-4 col-gray">-->
+<!--      <p translate>-->
+<!--        This form can be used to broadcast a raw transaction in hex format over-->
+<!--        the Dash network.-->
+<!--      </p>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</section>-->

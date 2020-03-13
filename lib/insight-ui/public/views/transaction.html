@@ -1,143 +1,301 @@
 <div data-ng-include src="'views/includes/connection.html'"></div>
-<section data-ng-controller="transactionsController" data-ng-init="findThis()">
-  <div class="secondary_navbar hidden-xs hidden-sm" scroll data-ng-class="{'hidden': !secondaryNavbar}" data-ng-show="tx.txid" data-ng-init="hideSNavbar=0">
-    <div class="container" data-ng-if="!hideSNavbar">
-      <div class="col-md-6 col-lg-7 text-left">
-          <h3 translate>Transaction</h3>
-          <div class="ellipsis"> 
-            <small>{{tx.txid}}</small> 
-            <span class="btn-copy" clip-copy="tx.txid"></span>
-          </div>
-      </div>
-      <div class="col-md-6 col-lg-5 text-right">
-        <span data-ng-show="tx.confirmations >= 0" class="txvalues
-          txvalues-success">{{tx.confirmations}} 
-          <span translate>Confirmations</span>
-          <span data-ng-show="tx.txlock"> InstantSend TxLock</span>
-        </span>
-        <span data-ng-show="tx.confirmations < 0" 
-          class="txvalues txvalues-danger" translate>Unconfirmed Transaction!</span>
-        <span class="txvalues txvalues-primary">{{$root.currency.getConvertion(tx.valueOut) || tx.valueOut + ' ESS' }}</span>
-      </div>
-    </div>
-    <div class="hide_snavbar">
-      <a href="#" data-ng-click="hideSNavbar=!hideSNavbar">
-        <span data-ng-show="hideSNavbar"><span class="text-muted glyphicon glyphicon-chevron-down"></span></span>
-        <span data-ng-show="!hideSNavbar"><span class="text-muted glyphicon glyphicon-chevron-up"></span></span>
-      </a>
-    </div>
-  </div>
-  <div data-ng-if="tx.txid">
-    <h1 class="medium-title"><span translate>Transaction</span> 
-      <small data-ng-show="from_vin || from_vout">
-        <span data-ng-show="from_vin" translate>Input</span> 
-        <span data-ng-show="from_vout" translate>Output</span> 
-        <span>{{v_index}}</span>
-      </small>
-    </h1>
-    <div class="progress progress-striped active" data-ng-if="!tx.txid">
-      <div class="progress-bar progress-bar-info" style="width: 100%">
-        <span translate>Loading Transaction Details</span> <span class="loader-gif"></span>
-      </div>
-    </div>
+
+<div class="search-mini wrap" data-ng-include src="'views/includes/search.html'"></div>
+
+<section class="block wrap" data-ng-controller="transactionsController" data-ng-init="findThis()">
+  <div class="cn">
     <div data-ng-if="tx.txid">
-      <div class="well well-sm ellipsis transaction-hash-field">
-        <strong translate>Transaction</strong> 
-        <span class="txid">{{tx.txid}}</span>
-        <span class="btn-copy" clip-copy="tx.txid"></span>
+      <div class="block__bl">
+        <h2 class="title" translate>Transaction</h2>
+
+        <header class="block__head">
+          <div class="block__head__value">
+            <span translate>Transaction</span>
+            <span>{{tx.txid}}</span>
+          </div>
+
+          <button class="btn-ellipse btn-copy-while" clip-copy="tx.txid"></button>
+        </header>
+
+        <section class="block__sum" data-ng-if="tx.txid">
+          <h2 class="title" translate>Summary</h2>
+          <ul class="block__sum__list">
+            <li class="block__sum__li">
+              <span class="block__sum__title" translate>Size</span>
+              <span class="block__sum__value">{{tx.size}} (bytes)</span>
+            </li>
+
+            <li class="block__sum__li" data-ng-show="tx.fees">
+              <span class="block__sum__title" translate>Fee Rate</span>
+              <span class="block__sum__value">{{$root.currency.getConvertion((tx.fees * 1000) / tx.size) + ' per kB' || ((tx.fees * 1000) / tx.size) + 'ESS per kB'}}</span>
+            </li>
+
+            <li class="block__sum__li">
+              <span class="block__sum__title" translate>Received Time</span>
+              <span class="block__sum__value">
+              <span data-ng-show="tx.time">{{tx.time * 1000|date:'medium'}}</span>
+              <span data-ng-show="!tx.time">N/A</span>
+            </span>
+            </li>
+
+            <li class="block__sum__li">
+              <span class="block__sum__title" translate>Mined Time</span>
+              <span class="block__sum__value" data-ng-show="tx.blocktime">{{tx.blocktime * 1000|date:'medium'}}</span>
+              <span class="block__sum__value" data-ng-show="!tx.blocktime">N/A</span>
+            </li>
+
+            <li class="block__sum__li">
+              <span class="block__sum__title" translate>Included in Block</span>
+              <span class="block__sum__value" data-ng-show="tx.blockhash">
+              <a href="block/{{tx.blockhash}}" class="link-blue">{{tx.blockhash}}</a>
+            </span>
+              <span class="block__sum__value" data-ng-show="!tx.blockhash">Unconfirmed</span>
+            </li>
+
+            <li class="block__sum__li" data-ng-show="tx.locktime">
+              <span class="block__sum__title">LockTime</span>
+              <span class="block__sum__value">{{tx.locktime}}</span>
+            </li>
+
+            <li class="block__sum__li" data-ng-show="tx.version === 3 && tx.type >= 1">
+            <span class="block__sum__title">
+              <a href="https://github.com/dashpay/dips/blob/master/dip-0002-special-transactions.md" class="link-blue">Special Transaction Type</a>
+            </span>
+              <span class="block__sum__value">
+              {{tx.type === 1 ? "Provider Registration Transaction (ProRegTx)	DIP 3" : tx.type === 2 ? "Provider Update Service Transaction (ProUpServTx)	DIP 3" : tx.type === 3 ? "Provider Update Registrar Transaction (ProUpRegTx) DIP 3" : tx.type === 4 ? "Provider Update Revocation Transaction (ProUpRevTx) DIP 3" : tx.type === 5 ? "Coinbase Transaction (CbTx) DIP 4" : tx.type === 6 ? "Quorum Commitment DIP 6" : tx.type === 8 ? "Register Subscription Transaction (SubTxRegister) DIP 5" : tx.type === 9 ? "Topup BU Credit Subscription Transaction (SubTxTopup)	DIP 5" : tx.type === 10 ? "Reset BU Key Subscription Transaction (SubTxResetKey) DIP 5" : tx.type === 11 ? "Close BU Account Subscription Transaction (SubTxCloseAccount) DIP 5" : tx.type}}
+            </span>
+            </li>
+
+            <li class="block__sum__li" data-ng-show="tx.txlock">
+              <span class="block__sum__title">InstantSend</span>
+              <span class="block__sum__value">{{tx.txlock}}</span>
+            </li>
+
+            <li class="block__sum__li" data-ng-show="tx.vin.length === tx.vout.length && tx.vin.length >= 3">
+              <span class="block__sum__title">PrivateSend Mixing Round</span>
+              <span class="block__sum__value">{{tx.vin.length === tx.vout.length && tx.vin.length >= 3}}</span>
+            </li>
+
+            <li class="block__sum__li" data-ng-show="tx.vin.length === 1 && tx.vout.length >= 3 && (tx.vout[0].value === 0.00100001 || tx.vout[0].value === 0.0100001 || tx.vout[0].value === 0.100001 || tx.vout[0].value === 1.00001 || tx.vout[0].value === 10.0001 || tx.vout[1].value === 0.00100001 || tx.vout[1].value === 0.0100001 || tx.vout[1].value === 0.100001 || tx.vout[1].value === 1.00001 || tx.vout[1].value === 10.0001)">
+              <span class="block__sum__title">PrivateSend Start Mixing</span>
+              <span class="block__sum__value">
+              {{tx.vin.length === 1 && tx.vout.length >= 3 && (tx.vout[0].value === 0.00100001 || tx.vout[0].value === 0.0100001 || tx.vout[0].value === 0.100001 || tx.vout[0].value === 1.00001 || tx.vout[0].value === 10.0001 || tx.vout[1].value === 0.00100001 || tx.vout[1].value === 0.0100001 || tx.vout[1].value === 0.100001 || tx.vout[1].value === 1.00001 || tx.vout[1].value === 10.0001)}}
+            </span>
+            </li>
+
+            <li class="block__sum__li" data-ng-show="tx.vin.length >= 3 && tx.vout.length <= 2 && (tx.vin[0].value === 0.00100001 || tx.vin[0].value === 0.0100001 || tx.vin[0].value === 0.100001 || tx.vin[0].value === 1.00001 || tx.vin[0].value === 10.0001)">
+              <span class="block__sum__title">PrivateSend</span>
+              <span class="block__sum__value">
+              {{tx.vin.length >= 3 && tx.vout.length <= 2 && (tx.vin[0].value === 0.00100001 || tx.vin[0].value === 0.0100001 || tx.vin[0].value === 0.100001 || tx.vin[0].value === 1.00001 || tx.vin[0].value === 10.0001)}}
+            </span>
+            </li>
+
+            <li class="block__sum__li" data-ng-show="tx.isCoinBase && tx.vout.length > 2 && tx.vout[0].value >= 1.7">
+              <span class="block__sum__title">Superblock</span>
+              <span class="block__sum__value">{{tx.isCoinBase && tx.vout.length > 2 && tx.vout[0].value >= 1.7}}</span>
+            </li>
+
+            <li class="block__sum__li" data-ng-show="(tx.vout.length >= 1 && tx.vout[0].value === 1000) || (tx.vout.length >= 2 && tx.vout[1].value === 1000)">
+              <span class="block__sum__title">Masternode creation</span>
+              <span class="block__sum__value">{{(tx.vout.length >= 1 && tx.vout[0].value === 1000) || (tx.vout.length >= 2 && tx.vout[1].value === 1000)}}</span>
+            </li>
+
+            <li class="block__sum__li" data-ng-show="tx.vin.length >= 1 && tx.vin[0].value >= 1000">
+              <span class="block__sum__title">Masternode destruction</span>
+              <span class="block__sum__value">{{tx.vin.length >= 1 && tx.vin[0].value >= 1000}}</span>
+            </li>
+
+            <li class="block__sum__li" data-ng-show="tx.op_return_message && tx.op_return_message.length > 0">
+              <span class="block__sum__title">OP_RETURN chat or signature</span>
+              <span class="block__sum__value">{{tx.op_return_message}}</span>
+            </li>
+
+            <li class="block__sum__li" data-ng-show="tx.vin.length === 1 && tx.vout.length === 0 && tx.fees === 0.00000192">
+              <span class="block__sum__title">Stresstest</span>
+              <span class="block__sum__value">{{tx.vin.length === 1 && tx.vout.length === 0 && tx.fees === 0.00000192}}</span>
+            </li>
+
+            <li class="block__sum__li" data-ng-show="tx.knownaddress && tx.knownaddress.length > 0">
+              <span class="block__sum__title">Known Address</span>
+              <span class="block__sum__value">{{tx.knownaddress}}</span>
+            </li>
+
+            <li class="block__sum__li" data-ng-show="tx.isCoinBase">
+              <span class="block__sum__title">Coinbase</span>
+              <span class="block__sum__value align-center">
+                <button class="btn-ellipse mini btn-ellipse-blue btn-copy-black" clip-copy="tx.vin[0].coinbase">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M10.7905 11.6462V4.41H5.22988V11.6462H10.7905ZM10.7905 3.395C11.0661 3.395 11.3059 3.493 11.508 3.69162C11.711 3.89025 11.8125 4.12912 11.8125 4.41V11.6462C11.8125 11.9271 11.711 12.1712 11.508 12.3777C11.4163 12.4762 11.3052 12.5545 11.1817 12.6078C11.0582 12.6611 10.925 12.6883 10.7905 12.6875H5.22988C4.95338 12.6875 4.71362 12.5842 4.51238 12.3777C4.41472 12.2828 4.33732 12.169 4.28484 12.0432C4.23235 11.9175 4.20587 11.7825 4.207 11.6462V4.41C4.207 4.13 4.3085 3.89025 4.5115 3.69162C4.7145 3.493 4.95338 3.39412 5.229 3.39412H10.7905V3.395ZM9.26975 1.3125V2.35375H3.185V9.59H2.1875V2.35375C2.1875 2.07287 2.28462 1.82875 2.47975 1.62225C2.674 1.41575 2.90938 1.3125 3.185 1.3125H9.26975Z" fill="#283950"/>
+                  </svg>
+                </button>
+                <span>{{tx.vin[0].coinbase}}</span>
+            </span>
+            </li>
+          </ul>
+        </section>
       </div>
-      <h2 translate class="white-bg">Summary</h2>
-      <table class="table white-table transaction-table" style="table-layout: fixed">
-        <tbody>
-        <tr>
-          <td translate>Size</td>
-          <td class="text-muted text-right">{{tx.size}} (bytes)</td>
-        </tr>
-        <tr data-ng-show="tx.fees">
-          <td translate>Fee Rate</td>
-          <td class="text-muted text-right">{{$root.currency.getConvertion((tx.fees * 1000) / tx.size) + ' per kB' || ((tx.fees * 1000) / tx.size) + 'ESS per kB'}}</td>
-        </tr>
-        <tr>
-          <td translate>Received Time</td>
-          <td data-ng-show="tx.time" class="text-muted text-right">{{tx.time * 1000|date:'medium'}}</td>
-          <td data-ng-show="!tx.time" class="text-muted text-right">N/A</td>
-        </tr>
-        <tr>
-          <td translate>Mined Time</td>
-          <td data-ng-show="tx.blocktime" class="text-muted text-right">{{tx.blocktime * 1000|date:'medium'}}</td>
-          <td data-ng-show="!tx.blocktime" class="text-muted text-right">N/A</td>
-        </tr>
-        <tr>
-          <td translate>Included in Block</td>
-          <td data-ng-show="tx.blockhash" class="text-muted text-right"> 
-            <div class="ellipsis">
-              <a href="block/{{tx.blockhash}}">{{tx.blockhash}}</a>
-            </div>
-          <td data-ng-show="!tx.blockhash" class="text-muted text-right">Unconfirmed</td>
-        </tr>
-        <tr data-ng-show="tx.locktime">
-          <td>LockTime</td>
-          <td class="text-muted text-right">{{tx.locktime}}</td>
-        </tr>
-        <tr data-ng-show="tx.version === 3 && tx.type >= 1">
-          <td style="background-color: #e0efef"><strong><a href="https://github.com/dashpay/dips/blob/master/dip-0002-special-transactions.md">Special Transaction Type</a></strong></td>
-          <td class="text-muted text-right">{{tx.type === 1 ? "Provider Registration Transaction (ProRegTx)	DIP 3" : tx.type === 2 ? "Provider Update Service Transaction (ProUpServTx)	DIP 3" : tx.type === 3 ? "Provider Update Registrar Transaction (ProUpRegTx) DIP 3" : tx.type === 4 ? "Provider Update Revocation Transaction (ProUpRevTx) DIP 3" : tx.type === 5 ? "Coinbase Transaction (CbTx) DIP 4" : tx.type === 6 ? "Quorum Commitment DIP 6" : tx.type === 8 ? "Register Subscription Transaction (SubTxRegister) DIP 5" : tx.type === 9 ? "Topup BU Credit Subscription Transaction (SubTxTopup)	DIP 5" : tx.type === 10 ? "Reset BU Key Subscription Transaction (SubTxResetKey) DIP 5" : tx.type === 11 ? "Close BU Account Subscription Transaction (SubTxCloseAccount) DIP 5" : tx.type}}</td>
-        </tr>
-        <tr data-ng-show="tx.txlock">
-          <td style="background-color: #e0ffe4">InstantSend</td>
-          <td class="text-muted text-right">{{tx.txlock}}</td>
-        </tr>
-        <tr data-ng-show="tx.vin.length === tx.vout.length && tx.vin.length >= 3">
-          <td>PrivateSend Mixing Round</td>
-          <td class="text-muted text-right">{{tx.vin.length === tx.vout.length && tx.vin.length >= 3}}</td>
-        </tr>
-        <tr data-ng-show="tx.vin.length === 1 && tx.vout.length >= 3 && (tx.vout[0].value === 0.00100001 || tx.vout[0].value === 0.0100001 || tx.vout[0].value === 0.100001 || tx.vout[0].value === 1.00001 || tx.vout[0].value === 10.0001 || tx.vout[1].value === 0.00100001 || tx.vout[1].value === 0.0100001 || tx.vout[1].value === 0.100001 || tx.vout[1].value === 1.00001 || tx.vout[1].value === 10.0001)">
-          <td>PrivateSend Start Mixing</td>
-          <td class="text-muted text-right">{{tx.vin.length === 1 && tx.vout.length >= 3 && (tx.vout[0].value === 0.00100001 || tx.vout[0].value === 0.0100001 || tx.vout[0].value === 0.100001 || tx.vout[0].value === 1.00001 || tx.vout[0].value === 10.0001 || tx.vout[1].value === 0.00100001 || tx.vout[1].value === 0.0100001 || tx.vout[1].value === 0.100001 || tx.vout[1].value === 1.00001 || tx.vout[1].value === 10.0001)}}</td>
-        </tr>
-        <tr data-ng-show="tx.vin.length >= 3 && tx.vout.length <= 2 && (tx.vin[0].value === 0.00100001 || tx.vin[0].value === 0.0100001 || tx.vin[0].value === 0.100001 || tx.vin[0].value === 1.00001 || tx.vin[0].value === 10.0001)">
-          <td>PrivateSend</td>
-          <td class="text-muted text-right">{{tx.vin.length >= 3 && tx.vout.length <= 2 && (tx.vin[0].value === 0.00100001 || tx.vin[0].value === 0.0100001 || tx.vin[0].value === 0.100001 || tx.vin[0].value === 1.00001 || tx.vin[0].value === 10.0001)}}</td>
-        </tr>
-        <tr data-ng-show="tx.isCoinBase && tx.vout.length > 2 && tx.vout[0].value >= 1.7">
-          <td>Superblock</td>
-          <td class="text-muted text-right">{{tx.isCoinBase && tx.vout.length > 2 && tx.vout[0].value >= 1.7}}</td>
-        </tr>
-        <tr data-ng-show="(tx.vout.length >= 1 && tx.vout[0].value === 1000) || (tx.vout.length >= 2 && tx.vout[1].value === 1000)">
-          <td>Masternode creation</td>
-          <td class="text-muted text-right">{{(tx.vout.length >= 1 && tx.vout[0].value === 1000) || (tx.vout.length >= 2 && tx.vout[1].value === 1000)}}</td>
-        </tr>
-        <tr data-ng-show="tx.vin.length >= 1 && tx.vin[0].value >= 1000">
-          <td>Masternode destruction</td>
-          <td class="text-muted text-right">{{tx.vin.length >= 1 && tx.vin[0].value >= 1000}}</td>
-        </tr>
-        <tr data-ng-show="tx.op_return_message && tx.op_return_message.length > 0">
-          <td>OP_RETURN chat or signature</td>
-          <td class="text-muted text-right">{{tx.op_return_message}}</td>
-        </tr>
-        <tr data-ng-show="tx.vin.length === 1 && tx.vout.length === 0 && tx.fees === 0.00000192">
-          <td>Stresstest</td>
-          <td class="text-muted text-right">{{tx.vin.length === 1 && tx.vout.length === 0 && tx.fees === 0.00000192}}</td>
-        </tr>
-        <tr data-ng-show="tx.knownaddress && tx.knownaddress.length > 0">
-          <td>Known Address</td>
-          <td class="text-muted text-right">{{tx.knownaddress}}</td>
-        </tr>
-        <tr data-ng-show="tx.isCoinBase">
-          <td>Coinbase</td>
-          <td class="text-muted text-right">
-            <div class="ellipsis coinbase-copy">
-                <span class="btn-copy ng-isolate-scope" clip-copy="tx.vin[0].coinbase"></span>
-                <span class="ng-binding">{{tx.vin[0].coinbase}}</span>
-            </div>
-          </td>
-        </tr>
-        </tbody>
-      </table>
+
+      <section class="block__bl block__details">
+        <h2 class="title">Details</h2>
+
+        <div class="block__details__bl" data-ng-if="tx.txid">
+          <div data-ng-include src="'views/transaction/tx.html'"></div>
+        </div>
+      </section>
     </div>
-    <h2 translate class="medium-title">Details</h2>
-    <div class="block-tx" data-ng-if="tx.txid">
-      <div data-ng-include src="'views/transaction/tx.html'"></div>
+
+    <div class="spinner"
+         data-ng-if="!tx.txid"
+    >
+      <div class="spin"></div>
+      <div class="spinner__text" translate>Loading Transaction Details</div>
     </div>
   </div>
 </section>
+
+
+<!--<section data-ng-controller="transactionsController" data-ng-init="findThis()">-->
+<!--  <div class="secondary_navbar hidden-xs hidden-sm" scroll data-ng-class="{'hidden': !secondaryNavbar}" data-ng-show="tx.txid" data-ng-init="hideSNavbar=0">-->
+<!--    <div class="container" data-ng-if="!hideSNavbar">-->
+<!--      <div class="col-md-6 col-lg-7 text-left">-->
+<!--          <h3 translate>Transaction</h3>-->
+<!--          <div class="ellipsis">-->
+<!--            <small>{{tx.txid}}</small>-->
+<!--            <span class="btn-copy" clip-copy="tx.txid"></span>-->
+<!--          </div>-->
+<!--      </div>-->
+<!--      <div class="col-md-6 col-lg-5 text-right">-->
+<!--        <span data-ng-show="tx.confirmations >= 0" class="txvalues-->
+<!--          txvalues-success">{{tx.confirmations}}-->
+<!--          <span translate>Confirmations</span>-->
+<!--          <span data-ng-show="tx.txlock"> InstantSend TxLock</span>-->
+<!--        </span>-->
+<!--        <span data-ng-show="tx.confirmations < 0"-->
+<!--          class="txvalues txvalues-danger" translate>Unconfirmed Transaction!</span>-->
+<!--        <span class="txvalues txvalues-primary">{{$root.currency.getConvertion(tx.valueOut) || tx.valueOut + ' ESS' }}</span>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--    <div class="hide_snavbar">-->
+<!--      <a href="#" data-ng-click="hideSNavbar=!hideSNavbar">-->
+<!--        <span data-ng-show="hideSNavbar"><span class="text-muted glyphicon glyphicon-chevron-down"></span></span>-->
+<!--        <span data-ng-show="!hideSNavbar"><span class="text-muted glyphicon glyphicon-chevron-up"></span></span>-->
+<!--      </a>-->
+<!--    </div>-->
+<!--  </div>-->
+
+<!--  <div data-ng-if="tx.txid">-->
+<!--    <h1 class="medium-title"><span translate>Transaction</span>-->
+<!--      <small data-ng-show="from_vin || from_vout">-->
+<!--        <span data-ng-show="from_vin" translate>Input</span>-->
+<!--        <span data-ng-show="from_vout" translate>Output</span>-->
+<!--        <span>{{v_index}}</span>-->
+<!--      </small>-->
+<!--    </h1>-->
+<!--    <div class="progress progress-striped active" data-ng-if="!tx.txid">-->
+<!--      <div class="progress-bar progress-bar-info" style="width: 100%">-->
+<!--        <span translate>Loading Transaction Details</span> <span class="loader-gif"></span>-->
+<!--      </div>-->
+<!--    </div>-->
+
+<!--    <div data-ng-if="tx.txid">-->
+<!--      <div class="well well-sm ellipsis transaction-hash-field">-->
+<!--        <strong translate>Transaction</strong>-->
+<!--        <span class="txid">{{tx.txid}}</span>-->
+<!--        <span class="btn-copy" clip-copy="tx.txid"></span>-->
+<!--      </div>-->
+<!--      <h2 translate class="white-bg">Summary</h2>-->
+<!--      <table class="table white-table transaction-table" style="table-layout: fixed">-->
+<!--        <tbody>-->
+<!--        <tr>-->
+<!--          <td translate>Size</td>-->
+<!--          <td class="text-muted text-right">{{tx.size}} (bytes)</td>-->
+<!--        </tr>-->
+<!--        <tr data-ng-show="tx.fees">-->
+<!--          <td translate>Fee Rate</td>-->
+<!--          <td class="text-muted text-right">{{$root.currency.getConvertion((tx.fees * 1000) / tx.size) + ' per kB' || ((tx.fees * 1000) / tx.size) + 'ESS per kB'}}</td>-->
+<!--        </tr>-->
+<!--        <tr>-->
+<!--          <td translate>Received Time</td>-->
+<!--          <td data-ng-show="tx.time" class="text-muted text-right">{{tx.time * 1000|date:'medium'}}</td>-->
+<!--          <td data-ng-show="!tx.time" class="text-muted text-right">N/A</td>-->
+<!--        </tr>-->
+<!--        <tr>-->
+<!--          <td translate>Mined Time</td>-->
+<!--          <td data-ng-show="tx.blocktime" class="text-muted text-right">{{tx.blocktime * 1000|date:'medium'}}</td>-->
+<!--          <td data-ng-show="!tx.blocktime" class="text-muted text-right">N/A</td>-->
+<!--        </tr>-->
+<!--        <tr>-->
+<!--          <td translate>Included in Block</td>-->
+<!--          <td data-ng-show="tx.blockhash" class="text-muted text-right">-->
+<!--            <div class="ellipsis">-->
+<!--              <a href="block/{{tx.blockhash}}">{{tx.blockhash}}</a>-->
+<!--            </div>-->
+<!--          <td data-ng-show="!tx.blockhash" class="text-muted text-right">Unconfirmed</td>-->
+<!--        </tr>-->
+<!--        <tr data-ng-show="tx.locktime">-->
+<!--          <td>LockTime</td>-->
+<!--          <td class="text-muted text-right">{{tx.locktime}}</td>-->
+<!--        </tr>-->
+<!--        <tr data-ng-show="tx.version === 3 && tx.type >= 1">-->
+<!--          <td style="background-color: #e0efef"><strong><a href="https://github.com/dashpay/dips/blob/master/dip-0002-special-transactions.md">Special Transaction Type</a></strong></td>-->
+<!--          <td class="text-muted text-right">{{tx.type === 1 ? "Provider Registration Transaction (ProRegTx)	DIP 3" : tx.type === 2 ? "Provider Update Service Transaction (ProUpServTx)	DIP 3" : tx.type === 3 ? "Provider Update Registrar Transaction (ProUpRegTx) DIP 3" : tx.type === 4 ? "Provider Update Revocation Transaction (ProUpRevTx) DIP 3" : tx.type === 5 ? "Coinbase Transaction (CbTx) DIP 4" : tx.type === 6 ? "Quorum Commitment DIP 6" : tx.type === 8 ? "Register Subscription Transaction (SubTxRegister) DIP 5" : tx.type === 9 ? "Topup BU Credit Subscription Transaction (SubTxTopup)	DIP 5" : tx.type === 10 ? "Reset BU Key Subscription Transaction (SubTxResetKey) DIP 5" : tx.type === 11 ? "Close BU Account Subscription Transaction (SubTxCloseAccount) DIP 5" : tx.type}}</td>-->
+<!--        </tr>-->
+<!--        <tr data-ng-show="tx.txlock">-->
+<!--          <td style="background-color: #e0ffe4">InstantSend</td>-->
+<!--          <td class="text-muted text-right">{{tx.txlock}}</td>-->
+<!--        </tr>-->
+<!--        <tr data-ng-show="tx.vin.length === tx.vout.length && tx.vin.length >= 3">-->
+<!--          <td>PrivateSend Mixing Round</td>-->
+<!--          <td class="text-muted text-right">{{tx.vin.length === tx.vout.length && tx.vin.length >= 3}}</td>-->
+<!--        </tr>-->
+<!--        <tr data-ng-show="tx.vin.length === 1 && tx.vout.length >= 3 && (tx.vout[0].value === 0.00100001 || tx.vout[0].value === 0.0100001 || tx.vout[0].value === 0.100001 || tx.vout[0].value === 1.00001 || tx.vout[0].value === 10.0001 || tx.vout[1].value === 0.00100001 || tx.vout[1].value === 0.0100001 || tx.vout[1].value === 0.100001 || tx.vout[1].value === 1.00001 || tx.vout[1].value === 10.0001)">-->
+<!--          <td>PrivateSend Start Mixing</td>-->
+<!--          <td class="text-muted text-right">{{tx.vin.length === 1 && tx.vout.length >= 3 && (tx.vout[0].value === 0.00100001 || tx.vout[0].value === 0.0100001 || tx.vout[0].value === 0.100001 || tx.vout[0].value === 1.00001 || tx.vout[0].value === 10.0001 || tx.vout[1].value === 0.00100001 || tx.vout[1].value === 0.0100001 || tx.vout[1].value === 0.100001 || tx.vout[1].value === 1.00001 || tx.vout[1].value === 10.0001)}}</td>-->
+<!--        </tr>-->
+<!--        <tr data-ng-show="tx.vin.length >= 3 && tx.vout.length <= 2 && (tx.vin[0].value === 0.00100001 || tx.vin[0].value === 0.0100001 || tx.vin[0].value === 0.100001 || tx.vin[0].value === 1.00001 || tx.vin[0].value === 10.0001)">-->
+<!--          <td>PrivateSend</td>-->
+<!--          <td class="text-muted text-right">{{tx.vin.length >= 3 && tx.vout.length <= 2 && (tx.vin[0].value === 0.00100001 || tx.vin[0].value === 0.0100001 || tx.vin[0].value === 0.100001 || tx.vin[0].value === 1.00001 || tx.vin[0].value === 10.0001)}}</td>-->
+<!--        </tr>-->
+<!--        <tr data-ng-show="tx.isCoinBase && tx.vout.length > 2 && tx.vout[0].value >= 1.7">-->
+<!--          <td>Superblock</td>-->
+<!--          <td class="text-muted text-right">{{tx.isCoinBase && tx.vout.length > 2 && tx.vout[0].value >= 1.7}}</td>-->
+<!--        </tr>-->
+<!--        <tr data-ng-show="(tx.vout.length >= 1 && tx.vout[0].value === 1000) || (tx.vout.length >= 2 && tx.vout[1].value === 1000)">-->
+<!--          <td>Masternode creation</td>-->
+<!--          <td class="text-muted text-right">{{(tx.vout.length >= 1 && tx.vout[0].value === 1000) || (tx.vout.length >= 2 && tx.vout[1].value === 1000)}}</td>-->
+<!--        </tr>-->
+<!--        <tr data-ng-show="tx.vin.length >= 1 && tx.vin[0].value >= 1000">-->
+<!--          <td>Masternode destruction</td>-->
+<!--          <td class="text-muted text-right">{{tx.vin.length >= 1 && tx.vin[0].value >= 1000}}</td>-->
+<!--        </tr>-->
+<!--        <tr data-ng-show="tx.op_return_message && tx.op_return_message.length > 0">-->
+<!--          <td>OP_RETURN chat or signature</td>-->
+<!--          <td class="text-muted text-right">{{tx.op_return_message}}</td>-->
+<!--        </tr>-->
+<!--        <tr data-ng-show="tx.vin.length === 1 && tx.vout.length === 0 && tx.fees === 0.00000192">-->
+<!--          <td>Stresstest</td>-->
+<!--          <td class="text-muted text-right">{{tx.vin.length === 1 && tx.vout.length === 0 && tx.fees === 0.00000192}}</td>-->
+<!--        </tr>-->
+<!--        <tr data-ng-show="tx.knownaddress && tx.knownaddress.length > 0">-->
+<!--          <td>Known Address</td>-->
+<!--          <td class="text-muted text-right">{{tx.knownaddress}}</td>-->
+<!--        </tr>-->
+<!--        <tr data-ng-show="tx.isCoinBase">-->
+<!--          <td>Coinbase</td>-->
+<!--          <td class="text-muted text-right">-->
+<!--            <div class="ellipsis coinbase-copy">-->
+<!--                <span class="btn-copy ng-isolate-scope" clip-copy="tx.vin[0].coinbase"></span>-->
+<!--                <span class="ng-binding">{{tx.vin[0].coinbase}}</span>-->
+<!--            </div>-->
+<!--          </td>-->
+<!--        </tr>-->
+<!--        </tbody>-->
+<!--      </table>-->
+<!--    </div>-->
+
+<!--    <h2 translate class="medium-title">Details</h2>-->
+<!--    <div class="block-tx" data-ng-if="tx.txid">-->
+<!--      <div data-ng-include src="'views/transaction/tx.html'"></div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</section>-->

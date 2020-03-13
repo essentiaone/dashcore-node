@@ -1,4 +1,9 @@
-<span class="text-warning" data-ng-show="!loaded && !error" translate>Loading...</span>
+<!--<span class="text-warning" data-ng-show="!loaded && !error" translate>Loading...</span>-->
 <span class="text-danger" data-ng-show="error">{{error}}</span>
 
-
+<div class="spinner"
+     data-ng-show="!loaded && !error"
+>
+  <div class="spin"></div>
+  <div class="spinner__text" translate>Loading...</div>
+</div>

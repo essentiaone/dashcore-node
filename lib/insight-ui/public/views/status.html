@@ -1,116 +1,240 @@
 <div data-ng-include src="'views/includes/connection.html'"></div>
-<section>
 
-  <div id="status" class="row flex-center-row">
-    <div class="page-container">
-      <div class="page-header">
-        <h1 translate class="medium-title">Application Status</h1>
-      </div>
-      <table class="table white-table status-table" data-ng-controller="StatusController" data-ng-init="getSync()">
-        <thead>
-          <tr>
-            <th translate>Sync Status</th>
-            <th translate></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td translate>Sync Progress</td>
-            <td>
-              <div class="progress">
-                <uib-progressbar class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="40"
-                  aria-valuemin="0" aria-valuemax="100" style="width: {{ sync.syncPercentage}}%">
-                  <span data-ng-show="sync.syncPercentage>0">{{sync.syncPercentage}}%
-                    <span translate>Complete</span>
-                  </span>
-                </uib-progressbar>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td translate>Current Sync Status</td>
-            <td class="text-right">
-              <span data-ng-show="!sync.error">{{sync.status}}</span>
-              <span class="text-danger" data-ng-show="sync.error">
-                <span class="glyphicon glyphicon-warning-sign"></span>
-                {{sync.error}}
+<section class="status wrap content">
+  <div class="cn">
+    <div class="status__block">
+      <h2 translate>Application Status</h2>
+
+      <section class="block__sum" data-ng-controller="StatusController" data-ng-init="getSync()">
+        <h2 class="title" translate>Sync Status</h2>
+
+        <ul class="block__sum__list">
+          <li class="block__sum__li">
+            <span class="block__sum__title" translate>Sync Progress</span>
+            <span class="block__sum__value" data-ng-show="sync.syncPercentage>0">{{sync.syncPercentage}}% <span translate>Complete</span></span>
+          </li>
+
+          <li class="block__sum__li">
+            <span class="block__sum__title" translate>Current Sync Status</span>
+            <span class="block__sum__value">
+                <span data-ng-show="!sync.error">{{sync.status}}</span>
+                <span data-ng-show="sync.error">{{sync.error}}</span>
               </span>
-            </td>
-          </tr>
-          <tr>
-            <td translate>Start Date</td>
-            <td class="text-right"><time title="{{sync.startTs | date:'medium'}}">Oct 28, 2019 10:14:15 AM</time></td>
-          </tr>
-          <tr data-ng-show="sync.endTs">
-            <td translate>Finish Date</td>
-            <td class="text-right"><time title="{{sync.startTs | date:'medium'}}">{{humanSince(sync.endTs)}}</time></td>
-          </tr>
-          <tr>
-            <td translate>Initial Block Chain Height</td>
-            <td class="text-right">{{sync.blockChainHeight}}</td>
-          </tr>
-          <tr>
-            <td translate>Sync Type</td>
-            <td class="text-right">{{sync.type}}</td>
-          </tr>
-        </tbody>
-      </table>
+          </li>
 
-      <h2 translate class="medium-title white-bg">Last Block</h2>
-      <table class="table white-table last-block-table" style="table-layout: fixed"
-        data-ng-controller="StatusController" data-ng-init="getStatus('LastBlockHash')">
-        <thead data-ng-include src="'views/includes/infoStatus.html'"></thead>
-        <tbody>
-          <tr>
-            <td translate>Last Block Hash (essd)</td>
-            <td class="text-right ellipsis no-border"><a href="block/{{lastblockhash}}">{{lastblockhash}}</a></td>
-          </tr>
-          <tr>
-            <td translate>Current Blockchain Tip (insight)</td>
-            <td class="text-right ellipsis"><a href="block/{{syncTipHash}}">{{syncTipHash}}</a></td>
-          </tr>
-        </tbody>
-      </table>
-      <div>
-        <h2 translate class="medium-title">ESS node information</h2>
-        <table class="table dash-table" data-ng-controller="StatusController" data-ng-init="getStatus('Info')">
-          <thead data-ng-include src="'views/includes/infoStatus.html'"></thead>
-          <tbody>
-            <tr>
-              <td translate class="no-border">Version</td>
-              <td class="text-right no-border">{{info.version}}</td>
-            </tr>
-            <tr>
-              <td translate>Protocol version</td>
-              <td class="text-right">{{info.protocolversion}}</td>
-            </tr>
-            <tr>
-              <td translate>Blocks</td>
-              <td class="text-right"><a href="block-index/{{info.blocks}}">{{info.blocks}}</a></td>
-            </tr>
-            <tr>
-              <td translate>Time Offset</td>
-              <td class="text-right">{{info.timeoffset}}</td>
-            </tr>
-            <tr>
-              <td translate>Connections to other nodes</td>
-              <td class="text-right">{{info.connections}}</td>
-            </tr>
-            <tr>
-              <td translate>Mining Difficulty</td>
-              <td class="text-right">{{info.difficulty}}</td>
-            </tr>
-            <tr>
-              <td translate>Network</td>
-              <td class="text-right">{{info.network}}</td>
-            </tr>
-            <tr>
-              <td translate>Info Errors</td>
-              <td class="text-right status-errors">{{info.infoErrors}}</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+          <li class="block__sum__li">
+            <span class="block__sum__title" translate>Start Date</span>
+            <time  class="block__sum__value" title="{{sync.startTs | date:'medium'}}">
+              Oct 28, 2019 10:14:15 AM
+            </time>
+          </li>
+
+          <li class="block__sum__li" data-ng-show="sync.endTs">
+            <span class="block__sum__title" translate>Finish Date</span>
+            <time  class="block__sum__value" title="{{sync.startTs | date:'medium'}}">
+              {{humanSince(sync.endTs)}}
+            </time>
+          </li>
+
+
+          <li class="block__sum__li">
+            <span class="block__sum__title" translate>Initial Block Chain Height</span>
+            <span class="block__sum__value">{{sync.blockChainHeight}}</span>
+          </li>
+
+          <li class="block__sum__li">
+            <span class="block__sum__title" translate>Sync Type</span>
+            <span class="block__sum__value">{{sync.type}}</span>
+          </li>
+        </ul>
+        <br>
+        <br>
+
+        <h2 class="title" translate>Last Block</h2>
+
+        <ul class="block__sum__list"
+            data-ng-controller="StatusController" data-ng-init="getStatus('LastBlockHash')"
+        >
+          <li class="block__sum__li">
+            <span class="block__sum__title" translate>Last Block Hash (essd)</span>
+            <span class="block__sum__value">
+                <a href="block/{{lastblockhash}}" class="link-blue">{{ lastblockhash }}</a>
+              </span>
+          </li>
+
+          <li class="block__sum__li">
+            <span class="block__sum__title" translate>Current Blockchain Tip (insight)</span>
+            <span class="block__sum__value">
+                <a href="block/{{syncTipHash}}" class="link-blue">{{syncTipHash}}</a>
+              </span>
+          </li>
+        </ul>
+      </section>
+    </div>
+
+    <div class="status__block">
+      <h2 translate>ESS node information</h2>
+
+      <section class="block__sum">
+        <ul class="block__sum__list"  data-ng-controller="StatusController" data-ng-init="getStatus('Info')">
+          <li class="block__sum__li">
+            <span class="block__sum__title" translate>Version</span>
+            <span class="block__sum__value">{{info.version}}</span>
+          </li>
+
+          <li class="block__sum__li">
+            <span class="block__sum__title" translate>Protocol version</span>
+            <span class="block__sum__value">{{info.protocolversion}}</span>
+          </li>
+
+          <li class="block__sum__li">
+            <span class="block__sum__title" translate>Blocks</span>
+            <span class="block__sum__value">
+                <a href="block-index/{{info.blocks}}" class="link-blue">{{info.blocks}}</a>
+              </span>
+          </li>
+
+          <li class="block__sum__li">
+            <span class="block__sum__title" translate>Time Offset</span>
+            <span class="block__sum__value">{{info.timeoffset}}</span>
+          </li>
+
+          <li class="block__sum__li">
+            <span class="block__sum__title" translate>Connections to other nodes</span>
+            <span class="block__sum__value">{{info.connections}}</span>
+          </li>
+
+          <li class="block__sum__li">
+            <span class="block__sum__title" translate>Mining Difficulty</span>
+            <span class="block__sum__value">{{info.difficulty}}</span>
+          </li>
+
+          <li class="block__sum__li">
+            <span class="block__sum__title" translate>Network</span>
+            <span class="block__sum__value">{{info.network}}</span>
+          </li>
+
+          <li class="block__sum__li">
+            <span class="block__sum__title" translate>Info Errors</span>
+            <span class="block__sum__value">{{info.infoErrors}}</span>
+          </li>
+        </ul>
+      </section>
     </div>
   </div>
 </section>
+
+<!--<section>-->
+<!--  <div id="status" class="row flex-center-row">-->
+<!--    <div class="page-container">-->
+<!--      <div class="page-header">-->
+<!--        <h1 translate class="medium-title">Application Status</h1>-->
+<!--      </div>-->
+<!--      <table class="table white-table status-table" data-ng-controller="StatusController" data-ng-init="getSync()">-->
+<!--        <thead>-->
+<!--          <tr>-->
+<!--            <th translate>Sync Status</th>-->
+<!--            <th translate></th>-->
+<!--          </tr>-->
+<!--        </thead>-->
+<!--        <tbody>-->
+<!--          <tr>-->
+<!--            <td translate>Sync Progress</td>-->
+<!--            <td>-->
+<!--              <div class="progress">-->
+<!--                <uib-progressbar class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="40"-->
+<!--                  aria-valuemin="0" aria-valuemax="100" style="width: {{ sync.syncPercentage}}%">-->
+<!--                  <span data-ng-show="sync.syncPercentage>0">{{sync.syncPercentage}}%-->
+<!--                    <span translate>Complete</span>-->
+<!--                  </span>-->
+<!--                </uib-progressbar>-->
+<!--              </div>-->
+<!--            </td>-->
+<!--          </tr>-->
+<!--          <tr>-->
+<!--            <td translate>Current Sync Status</td>-->
+<!--            <td class="text-right">-->
+<!--              <span data-ng-show="!sync.error">{{sync.status}}</span>-->
+<!--              <span class="text-danger" data-ng-show="sync.error">-->
+<!--                <span class="glyphicon glyphicon-warning-sign"></span>-->
+<!--                {{sync.error}}-->
+<!--              </span>-->
+<!--            </td>-->
+<!--          </tr>-->
+<!--          <tr>-->
+<!--            <td translate>Start Date</td>-->
+<!--            <td class="text-right"><time title="{{sync.startTs | date:'medium'}}">Oct 28, 2019 10:14:15 AM</time></td>-->
+<!--          </tr>-->
+<!--          <tr data-ng-show="sync.endTs">-->
+<!--            <td translate>Finish Date</td>-->
+<!--            <td class="text-right"><time title="{{sync.startTs | date:'medium'}}">{{humanSince(sync.endTs)}}</time></td>-->
+<!--          </tr>-->
+<!--          <tr>-->
+<!--            <td translate>Initial Block Chain Height</td>-->
+<!--            <td class="text-right">{{sync.blockChainHeight}}</td>-->
+<!--          </tr>-->
+<!--          <tr>-->
+<!--            <td translate>Sync Type</td>-->
+<!--            <td class="text-right">{{sync.type}}</td>-->
+<!--          </tr>-->
+<!--        </tbody>-->
+<!--      </table>-->
+
+<!--      <h2 translate class="medium-title white-bg">Last Block</h2>-->
+<!--      <table class="table white-table last-block-table" style="table-layout: fixed"-->
+<!--        data-ng-controller="StatusController" data-ng-init="getStatus('LastBlockHash')">-->
+<!--        <thead data-ng-include src="'views/includes/infoStatus.html'"></thead>-->
+<!--        <tbody>-->
+<!--          <tr>-->
+<!--            <td translate>Last Block Hash (essd)</td>-->
+<!--            <td class="text-right ellipsis no-border"><a href="block/{{lastblockhash}}">{{lastblockhash}}</a></td>-->
+<!--          </tr>-->
+<!--          <tr>-->
+<!--            <td translate>Current Blockchain Tip (insight)</td>-->
+<!--            <td class="text-right ellipsis"><a href="block/{{syncTipHash}}">{{syncTipHash}}</a></td>-->
+<!--          </tr>-->
+<!--        </tbody>-->
+<!--      </table>-->
+<!--      <div>-->
+<!--        <h2 translate class="medium-title">ESS node information</h2>-->
+<!--        <table class="table dash-table" data-ng-controller="StatusController" data-ng-init="getStatus('Info')">-->
+<!--          <thead data-ng-include src="'views/includes/infoStatus.html'"></thead>-->
+<!--          <tbody>-->
+<!--            <tr>-->
+<!--              <td translate class="no-border">Version</td>-->
+<!--              <td class="text-right no-border">{{info.version}}</td>-->
+<!--            </tr>-->
+<!--            <tr>-->
+<!--              <td translate>Protocol version</td>-->
+<!--              <td class="text-right">{{info.protocolversion}}</td>-->
+<!--            </tr>-->
+<!--            <tr>-->
+<!--              <td translate>Blocks</td>-->
+<!--              <td class="text-right"><a href="block-index/{{info.blocks}}">{{info.blocks}}</a></td>-->
+<!--            </tr>-->
+<!--            <tr>-->
+<!--              <td translate>Time Offset</td>-->
+<!--              <td class="text-right">{{info.timeoffset}}</td>-->
+<!--            </tr>-->
+<!--            <tr>-->
+<!--              <td translate>Connections to other nodes</td>-->
+<!--              <td class="text-right">{{info.connections}}</td>-->
+<!--            </tr>-->
+<!--            <tr>-->
+<!--              <td translate>Mining Difficulty</td>-->
+<!--              <td class="text-right">{{info.difficulty}}</td>-->
+<!--            </tr>-->
+<!--            <tr>-->
+<!--              <td translate>Network</td>-->
+<!--              <td class="text-right">{{info.network}}</td>-->
+<!--            </tr>-->
+<!--            <tr>-->
+<!--              <td translate>Info Errors</td>-->
+<!--              <td class="text-right status-errors">{{info.infoErrors}}</td>-->
+<!--            </tr>-->
+<!--          </tbody>-->
+<!--        </table>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</section>-->

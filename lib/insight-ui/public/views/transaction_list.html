@@ -1,0 +1,90 @@
+<div data-ng-include src="'views/includes/connection.html'"></div>
+
+<div class="search-mini search-mini-right wrap" data-ng-include src="'views/includes/search.html'"></div>
+
+<div>
+  <section class="table wrap">
+    <div class="cn">
+      <h2 class="title" translate>Transactions</h2>
+      <p class="desc">Total <b>357,821,500</b> transactions found (Showing the last 10,000 records)</p>
+
+      <h2 class="desc" data-ng-show="false" translate>No transactions yet.</h2>
+
+      <div class="table__wrap-cn">
+        <ul class="table__list">
+          <li class="table__li-head">
+            <ul class="table__li-head__list transaction">
+              <li class="table__head__li">TxHash</li>
+              <li class="table__head__li" translate>Block</li>
+              <li class="table__head__li">Age</li>
+              <li class="table__head__li">From</li>
+              <li class="table__head__li">To</li>
+              <li class="table__head__li">Value</li>
+              <li class="table__head__li">TxFee</li>
+            </ul>
+          </li>
+
+          <li class="table__li">
+            <header class="table__head">
+              <ul class="table__head__list">
+                <li class="table__head__li">TxHash</li>
+                <li class="table__head__li" translate>Block</li>
+                <li class="table__head__li">Age</li>
+                <li class="table__head__li">From</li>
+                <li class="table__head__li">To</li>
+                <li class="table__head__li">Value</li>
+                <li class="table__head__li">TxFee</li>
+              </ul>
+            </header>
+            <div class="table__content">
+              <ul class="table__content__list transaction">
+                <li class="table__content__li">
+                  <a href="transactions_id.html" class="link-blue">0x3cbce0ehsy9js7s783291hsdasdo3432rfdssfsdf</a>
+                </li>
+                <li class="table__content__li">
+                  <a href="#" class="link-blue">112396</a>
+                </li>
+                <li class="table__content__li">
+                  a few seconds ago
+                </li>
+                <li class="table__content__li">
+                  <a href="#" class="link-blue">0x5074f34s8suw8snxjak971dfsd5sad222asd55454as3d5sad</a>
+                </li>
+                <li class="table__content__li">
+                  <a href="#" class="link-blue">0x231212w8snxjak971dfsd5sad222asd55454as3d5sad</a>
+                </li>
+                <li class="table__content__li">
+                  10.00001052 ESS
+                </li>
+                <li class="table__content__li">
+                  0.00000525 ESS
+                </li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+
+        <div class="pagination">
+          <div class="pagination__list">
+            <a class="pagination__btn" href="blocks"><<</a>
+            <a class="pagination__btn" href="blocks?prev={{pagination.next}}"><</a>
+            <!--            <button type="button" class="pagination__btn active">1</button>-->
+            <!--            <button type="button" class="pagination__btn">2</button>-->
+            <!--            <button type="button" class="pagination__btn">3</button>-->
+            <!--            <button type="button" class="pagination__btn">4</button>-->
+            <!--            <button type="button" class="pagination__btn">...</button>-->
+            <a class="pagination__btn" href="blocks?prev={{pagination.prev}}">></a>
+            <a class="pagination__btn" href="blocks?prev=0">>></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="spinner" data-ng-show="loading">
+    <div class="spin"></div>
+    <div class="spinner__text">Loading transactions ...</div>
+  </div>
+</div>
+
+

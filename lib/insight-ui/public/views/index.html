@@ -122,10 +122,15 @@
       </li>
       <li class="about__li">
         <p class="about__li__title">Info errors</p>
-        <p class="about__li__value">{{info.infoErrors}}</p>
+        <p class="about__li__value">{{info.infoErrors || 0}}</p>
       </li>
     </ul>
 
-    <a href="#" class="link-blue-while">View detailed Masternode information</a>
+    <div class="about__nav">
+      <a href="/tx/send" class="link-blue-while">Broadcast Raw Transaction</a>
+      <a href="/masternodes" class="link-blue-while">View detailed Masternode information</a>
+      <a href="/messages/verify" class="link-blue-while">Verify Message</a>
+    </div>
+
   </div>
 </section>

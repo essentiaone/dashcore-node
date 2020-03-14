@@ -92,8 +92,14 @@
             <li>
               <a class="pagination__btn" data-ng-class="{disabled: currentPage == 1}" href="blocks?prev={{pagination.next}}"><</a>
             </li>
+            <li>
+              <div class="pagination__btn" data-ng-show="currentPage > innerPageRange + 1">...</div>
+            </li>
             <li data-ng-repeat="page in pages">
               <a class="pagination__btn" data-ng-class="{active: currentPage == page.page}" href="blocks?prev={{page.to}}">{{page.page}}</a>
+            </li>
+            <li>
+              <div class="pagination__btn" data-ng-show="currentPage < totalPages - innerPageRange">...</div>
             </li>
             <li>
               <a class="pagination__btn" data-ng-class="{disabled: currentPage == totalPages}" href="blocks?prev={{pagination.prev}}">></a>
@@ -101,15 +107,6 @@
             <li>
               <a class="pagination__btn" data-ng-class="{disabled: currentPage == totalPages}" href="blocks?prev={{length}}">>></a>
             </li>
-<!--            <a class="pagination__btn" href="blocks"><<</a>-->
-<!--            <a class="pagination__btn" href="blocks?prev={{pagination.next}}"><</a>-->
-<!--&lt;!&ndash;            <button type="button" class="pagination__btn active">1</button>&ndash;&gt;-->
-<!--&lt;!&ndash;            <button type="button" class="pagination__btn">2</button>&ndash;&gt;-->
-<!--&lt;!&ndash;            <button type="button" class="pagination__btn">3</button>&ndash;&gt;-->
-<!--&lt;!&ndash;            <button type="button" class="pagination__btn">4</button>&ndash;&gt;-->
-<!--&lt;!&ndash;            <button type="button" class="pagination__btn">...</button>&ndash;&gt;-->
-<!--            <a class="pagination__btn" href="blocks?prev={{pagination.prev}}">></a>-->
-<!--            <a class="pagination__btn" href="blocks?prev=0">>></a>-->
           </ul>
         </div>
       </div>

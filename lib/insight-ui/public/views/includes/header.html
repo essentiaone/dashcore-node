@@ -29,8 +29,8 @@
 
       <nav>
         <ul class="menu origin">
-          <li data-ng-repeat="item in menu" ui-route="{{item.link}}" data-ng-class="{active: $uiRoute}" class="menu__li">
-            <a href="{{item.link}}" class="menu__li__link">{{item.title|translate}}</a>
+          <li data-ng-repeat="item in menu" class="menu__li">
+            <a href="{{item.link}}" class="menu__li__link" ui-route="{{item.link}}" data-ng-class="{'active': currentPages === item.link || $uiRoute }">{{item.title|translate}}</a>
           </li>
         </ul>
       </nav>
@@ -60,8 +60,8 @@
   <nav class="mob-menu" data-ng-class="{ 'active': !isCollapsed }">
 
     <ul class="mob-menu__nav">
-      <li data-ng-repeat="item in menu" ui-route="{{item.link}}" data-ng-class="{active: $uiRoute}">
-        <a href="{{item.link}}" class="mob-menu__nav__link">{{item.title|translate}}</a>
+      <li data-ng-repeat="item in menu">
+        <a href="{{item.link}}" class="mob-menu__nav__link" ui-route="{{item.link}}" data-ng-class="{'active': currentPages === item.link || $uiRoute }">{{item.title|translate}}</a>
       </li>
     </ul>
   </nav>

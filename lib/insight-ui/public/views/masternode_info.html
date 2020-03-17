@@ -43,7 +43,7 @@
         </li>
       </ul>
 
-      <div class="table__wrap-cn">
+      <div class="table__wrap-cn" data-ng-show="nodes.length">
         <ul class="table__list">
           <li class="table__li-head">
             <ul class="table__li-head__list masternode">
@@ -135,7 +135,7 @@
       </header>
     </div>
 
-    <div class="spinner" data-ng-show="loading">
+    <div class="spinner" style="margin-top:40px" data-ng-show="loading">
       <div class="spin"></div>
       <div class="spinner__text" translate>Loading masternodes ...</div>
     </div>

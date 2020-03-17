@@ -120,17 +120,15 @@
         <p class="about__li__title">Mining difficulty</p>
         <p class="about__li__value">{{info.difficulty.toFixed(2)}}</p>
       </li>
-      <li class="about__li">
-        <p class="about__li__title">Info errors</p>
-        <p class="about__li__value">{{info.infoErrors || 0}}</p>
+      <li class="about__li" data-ng-init="getMasternodes()">
+        <p class="about__li__title">Masternodes</p>
+        <p class="about__li__value under"><a href="masternodes">{{nodesCount || 0}}</a></p>
       </li>
     </ul>
 
-    <div class="about__nav">
-      <a href="/tx/send" class="link-blue-while">Broadcast Raw Transaction</a>
-      <a href="/masternodes" class="link-blue-while">View detailed Masternode information</a>
-      <a href="/messages/verify" class="link-blue-while">Verify Message</a>
-    </div>
-
+    <a href="/tx/send" class="link-blue-while">Broadcast Raw Transaction</a>
   </div>
+
+  <div data-ng-include src="'views/transaction_list.html'"></div>
 </section>
+

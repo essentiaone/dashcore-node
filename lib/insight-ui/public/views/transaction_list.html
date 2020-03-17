@@ -1,9 +1,9 @@
-<section class="table wrap" data-ng-controller="TransactionsSocketController" data-ng-init="init()">
+<section class="table mini-wrap" data-ng-controller="TransactionsSocketController" data-ng-init="init()">
   <div class="cn">
     <h2 class="title" translate>Transactions</h2>
     <p class="desc">Latest {{ txs.length }} transactions</p>
 
-    <div class="table__wrap-cn" data-ng-if="txs.length">
+    <div class="table__wrap-cn">
       <ul class="table__list">
         <li class="table__li-head">
           <ul class="table__li-head__list transaction">
@@ -17,6 +17,13 @@
           </ul>
         </li>
 
+        <li class="table__li" data-ng-show="!txs.length">
+          <div class="table__content">
+            <div class="table__content__list transaction">
+              Waiting for transactions...
+            </div>
+          </div>
+        </li>
         <li class="table__li" data-ng-repeat='tx in txs'>
           <header class="table__head">
             <ul class="table__head__list">

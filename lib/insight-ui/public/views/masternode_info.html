@@ -1,0 +1,144 @@
+<div data-ng-include src="'views/includes/connection.html'"></div>
+
+<div data-ng-controller="MasternodesController">
+  <div class="search-mini search-mini-right wrap">
+    <div class="cn">
+      <form
+          class="search"
+          role="search" data-ng-submit="search()"
+      >
+        <label class="search__input-cn">
+          <input
+              class="search__input"
+              type="text"
+              data-ng-model="q"
+              placeholder="{{'Tx Hash, Address'|translate}}"
+              data-ng-submit="search()"
+              ng-change="search()"
+              data-ng-
+              focus="true"
+          >
+        </label>
+        <button class="btn-tr search__btn" type="submit">
+          <svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M17.0574 15.0583C16.8073 14.8076 16.4677 14.6666 16.1135 14.6666H15.6134L15.24 14.3066C16.84 12.44 17.6667 9.89331 17.2134 7.18665C16.5867 3.47998 13.4934 0.51998 9.76003 0.0666463C4.12002 -0.626687 -0.613308 4.11998 0.0666917 9.75998C0.520025 13.4933 3.48003 16.5866 7.18669 17.2133C9.89336 17.6666 12.44 16.84 14.3067 15.24L14.6667 15.6133V16.1134C14.6667 16.4676 14.8076 16.8072 15.0583 17.0574L20.3467 22.3333C20.8934 22.88 21.7734 22.88 22.32 22.3333L22.3334 22.32C22.88 21.7733 22.88 20.8933 22.3334 20.3466L17.0574 15.0583ZM8.66669 14.6666C5.34669 14.6666 2.66669 11.9866 2.66669 8.66665C2.66669 5.34665 5.34669 2.66665 8.66669 2.66665C11.9867 2.66665 14.6667 5.34665 14.6667 8.66665C14.6667 11.9866 11.9867 14.6666 8.66669 14.6666Z" fill="#225CFF"/>
+          </svg>
+        </button>
+        <div class="search__input search__error txt-error" data-ng-show="searchRes.length === 0" translate>No matching records found!</div>
+      </form>
+    </div>
+  </div>
+
+  <section class="table wrap" data-ng-init="list()">
+    <div class="cn">
+      <h2 class="title" translate>Masternode Info</h2>
+      <p class="desc">There are currently {{ nodes.length }} total Masternodes</p>
+
+      <h2 class="desc" data-ng-show="!nodes.length && !loading" translate>No Masternodes yet.</h2>
+
+      <ul class="master">
+        <li class="master__block" data-ng-repeat='tier in tiers'>
+          <p class="master__title">{{ tier.key }}</p>
+          <p class="master__count">{{ tier.count }}</p>
+        </li>
+      </ul>
+
+      <div class="table__wrap-cn" data-ng-show="nodes.length">
+        <ul class="table__list">
+          <li class="table__li-head">
+            <ul class="table__li-head__list masternode">
+              <li class="table__head__li" translate>Tier</li>
+              <li class="table__head__li" translate>Status</li>
+              <li class="table__head__li" translate>Active time</li>
+              <li class="table__head__li" translate>Last seen</li>
+              <li class="table__head__li" translate>Transaction hash</li>
+              <li class="table__head__li" translate>Address</li>
+              <li class="table__head__li" translate>Last paid</li>
+            </ul>
+          </li>
+
+          <li class="table__li" data-ng-repeat='node in nodesList track by $index'>
+            <header class="table__head masternode">
+              <ul class="table__head__list">
+                <li class="table__head__li" translate>Tier</li>
+                <li class="table__head__li" translate>Status</li>
+                <li class="table__head__li" translate>Active time</li>
+                <li class="table__head__li" translate>Last seen</li>
+                <li class="table__head__li" translate>Transaction hash</li>
+                <li class="table__head__li" translate>Address</li>
+                <li class="table__head__li" translate>Last paid</li>
+              </ul>
+            </header>
+            <div class="table__content">
+              <ul class="table__content__list masternode">
+                <li class="table__content__li">
+                  {{ node.tier }}
+                </li>
+                <li class="table__content__li">
+                  {{ node.status }}
+                </li>
+                <li class="table__content__li">
+
+                  {{ differenceTime(node.activetime) }}
+                </li>
+                <li class="table__content__li">
+                  {{millisToUTCDate(node.lastseen ) | date:'medium'}} UTC
+                </li>
+                <li class="table__content__li">
+                  <a href="tx/{{node.txhash}}" class="link-blue">{{ node.txhash }}</a>
+                </li>
+                <li class="table__content__li">
+                  <a href="address/{{node.addr}}" class="link-blue">{{ node.addr }}</a>
+                </li>
+                <li class="table__content__li">
+                  {{millisToUTCDate(node.lastpaid ) | date:'medium'}} UTC
+                </li>
+              </ul>
+            </div>
+          </li>
+
+        </ul>
+        <div class="pagination" data-ng-if="pages.length > 1">
+          <ul class="pagination__list">
+            <li>
+              <button type="button" class="pagination__btn" data-ng-class="{disabled: currentPage == 1}" data-ng-click="setCurrentPage(1)"><<</button>
+            </li>
+            <li>
+              <button type="button" class="pagination__btn" data-ng-class="{disabled: currentPage == 1}" data-ng-click="setCurrentPage(currentPage-1)"><</button>
+            </li>
+            <li>
+              <div class="pagination__btn" data-ng-show="currentPage > innerPageRange + 1">...</div>
+            </li>
+            <li data-ng-repeat="page in pages">
+              <button type="button" class="pagination__btn" data-ng-class="{active: currentPage == page.page}" data-ng-click="setCurrentPage(page.page)">{{page.page}}</button>
+            </li>
+            <li>
+              <div class="pagination__btn" data-ng-show="currentPage < totalPages - innerPageRange">...</div>
+            </li>
+            <li>
+              <button type="button" class="pagination__btn" data-ng-class="{disabled: currentPage == totalPages}" data-ng-click="setCurrentPage(currentPage+1)">></button>
+            </li>
+            <li>
+              <button type="button" class="pagination__btn" data-ng-class="{disabled: currentPage == totalPages}" data-ng-click="setCurrentPage(pages.length)">>></button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div
+        class="block__details__bl"
+        data-ng-if="error && error.length"
+    >
+      <header class="not">
+        <span><span translate>Error message:</span> {{error}}</span>
+      </header>
+    </div>
+
+    <div class="spinner" style="margin-top:40px" data-ng-show="loading">
+      <div class="spin"></div>
+      <div class="spinner__text" translate>Loading masternodes ...</div>
+    </div>
+  </section>
+</div>
+

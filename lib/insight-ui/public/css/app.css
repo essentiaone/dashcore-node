@@ -2806,7 +2806,7 @@ iframe {
 }
 
 .mn__rewards {
-    margin-top: 40px;
+    margin-top: 35px;
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-gap: 16px;
@@ -2815,7 +2815,7 @@ iframe {
 
 @media screen and (min-width:768px) {
     .mn__rewards {
-        margin-top: 60px;
+        margin-top: 35px;
         grid-template-columns: 1fr 1fr 1fr 1fr;
         grid-gap: 30px
     }

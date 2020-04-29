@@ -32,16 +32,71 @@
   <section class="table wrap" data-ng-init="list()">
     <div class="cn">
       <h2 class="title" translate>Masternode Info</h2>
-      <p class="desc">There are currently {{ nodes.length }} total Masternodes</p>
+      <p class="desc">There are currently
+        <span data-ng-repeat='tier in tiers'>
+          <span>{{ tier.count }}</span>
+          <span>{{ tier.key }}</span>
+        </span> masternodes
+      </p>
 
       <h2 class="desc" data-ng-show="!nodes.length && !loading" translate>No Masternodes yet.</h2>
 
-      <ul class="master">
-        <li class="master__block" data-ng-repeat='tier in tiers'>
-          <p class="master__title">{{ tier.key }}</p>
-          <p class="master__count">{{ tier.count }}</p>
+<!--      <ul class="master">-->
+<!--        <li class="master__block" data-ng-repeat='tier in tiers'>-->
+<!--          <p class="master__title">{{ tier.key }}</p>-->
+<!--          <p class="master__count">{{ tier.count }}</p>-->
+<!--        </li>-->
+<!--      </ul>-->
+
+      <ul class="mn__rewards">
+        <li class="mn__rewards__li">
+          <p class="mn__rewards__li__title daily">Daily income</p>
+          <p class="mn__rewards__li__value">$123</p>
+          <p class="mn__rewards__li__ess__value">0.123 ESS</p>
+        </li>
+        <li class="mn__rewards__li">
+          <p class="mn__rewards__li__title weekly">Weekly income</p>
+          <p class="mn__rewards__li__value">$123</p>
+          <p class="mn__rewards__li__ess__value">ESS</p>
+        </li>
+        <li class="mn__rewards__li">
+          <p class="mn__rewards__li__title monthly">Monthly income</p>
+          <p>$42</p>
+          <p class="mn__rewards__li__ess__value">0.123 ESS</p>
+        </li>
+        <li class="mn__rewards__li">
+          <p class="mn__rewards__li__title yearly">Yearly income</p>
+          <p>$325325</p>
+          <p class="mn__rewards__li__ess__value">0.123 ESS</p>
         </li>
       </ul>
+
+      <section class="mn_stats">
+        <h2 class="title" translate>Ess Masternode Stats</h2>
+        <ul class="mn_stats__list">
+          <li class="mn_stats__li">
+            <span class="mn_stats__title" translate>ROI (annual)</span>
+            <span class="mn_stats__value">ROI (annual)</span>
+          </li>
+
+          <li class="mn_stats__li">
+            <span class="mn_stats__title" translate>Paid rewards for masternodes</span>
+            <span class="mn_stats__value">Paid rewards for masternodes</span>
+          </li>
+          <li class="mn_stats__li">
+            <span class="mn_stats__title" translate>AVG masternode reward frequency</span>
+            <span class="mn_stats__value">AVG masternode reward frequency</span>
+          </li>
+          <li class="mn_stats__li">
+            <span class="mn_stats__title" translate>Required coins for masternode</span>
+            <span class="mn_stats__value">100000 ESS</span>
+          </li>
+          <li class="mn_stats__li">
+            <span class="mn_stats__title" translate>Masternode worth</span>
+            <span class="mn_stats__value">Masternode worth</span>
+          </li>
+        </ul>
+      </section>
 
       <div class="table__wrap-cn" data-ng-show="nodes.length">
         <ul class="table__list">

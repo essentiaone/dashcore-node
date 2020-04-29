@@ -32,16 +32,63 @@
   <section class="table wrap" data-ng-init="list()">
     <div class="cn">
       <h2 class="title" translate>Masternode Info</h2>
-      <p class="desc">There are currently {{ nodes.length }} total Masternodes</p>
+      <p class="desc" data-ng-show="nodes.length">There are currently
+        <span data-ng-repeat='tier in tiers'>
+          <span>{{ tier.count }}</span>
+          <span>{{ tier.key }}</span>
+        </span> Masternodes
+      </p>
+      <p class="desc" data-ng-show="!nodes.length && !loading" translate>No Masternodes yet.</p>
 
-      <h2 class="desc" data-ng-show="!nodes.length && !loading" translate>No Masternodes yet.</h2>
-
-      <ul class="master">
-        <li class="master__block" data-ng-repeat='tier in tiers'>
-          <p class="master__title">{{ tier.key }}</p>
-          <p class="master__count">{{ tier.count }}</p>
+      <ul class="mn__rewards">
+        <li class="mn__rewards__li">
+          <p class="mn__rewards__li__title daily">Daily income</p>
+          <p class="mn__rewards__li__value">${{ (getDailyIncome(blockchainInfo.blocks, tiers) * coinData.current_price).toFixed(2) }}</p>
+          <p class="mn__rewards__li__ess__value">{{ getDailyIncome(blockchainInfo.blocks, tiers).toFixed(2) }} ESS</p>
+        </li>
+        <li class="mn__rewards__li">
+          <p class="mn__rewards__li__title weekly">Weekly income</p>
+          <p class="mn__rewards__li__value">${{ (getDailyIncome(blockchainInfo.blocks, tiers) * coinData.current_price * 7).toFixed(2) }}</p>
+          <p class="mn__rewards__li__ess__value">{{ getDailyIncome(blockchainInfo.blocks, tiers * 7).toFixed(2) }} ESS</p>
+        </li>
+        <li class="mn__rewards__li">
+          <p class="mn__rewards__li__title monthly">Monthly income</p>
+          <p class="mn__rewards__li__value">${{ (getDailyIncome(blockchainInfo.blocks, tiers) * coinData.current_price * 30).toFixed(2) }}</p>
+          <p class="mn__rewards__li__ess__value">{{ getDailyIncome(blockchainInfo.blocks, tiers * 30).toFixed(2) }} ESS</p>
+        </li>
+        <li class="mn__rewards__li">
+          <p class="mn__rewards__li__title yearly">Yearly income</p>
+          <p class="mn__rewards__li__value">${{ (getDailyIncome(blockchainInfo.blocks, tiers) * coinData.current_price * 365).toFixed(2) }}</p>
+          <p class="mn__rewards__li__ess__value">{{ getDailyIncome(blockchainInfo.blocks, tiers * 365).toFixed(2) }} ESS</p>
         </li>
       </ul>
+
+      <section class="mn_stats">
+        <h2 class="title" translate>Ess Masternode Stats</h2>
+        <ul class="mn_stats__list">
+          <li class="mn_stats__li">
+            <span class="mn_stats__title" translate>ROI (annual)</span>
+            <span class="mn_stats__value">{{((getDailyIncome(blockchainInfo.blocks, tiers) * coinData.current_price * 365) / getMnWorth(coinData.current_price) * 100).toFixed(2) }}%</span>
+          </li>
+
+          <li class="mn_stats__li">
+            <span class="mn_stats__title" translate>Paid rewards for masternodes</span>
+            <span class="mn_stats__value">{{ getPaidRewards(blockchainInfo.blocks).toFixed(2) }} ESS</span>
+          </li>
+          <li class="mn_stats__li">
+            <span class="mn_stats__title" translate>AVG masternode reward frequency</span>
+            <span class="mn_stats__value">{{ getRewardFrequency(tiers).toFixed(0) }} min</span>
+          </li>
+          <li class="mn_stats__li">
+            <span class="mn_stats__title" translate>Required coins for masternode</span>
+            <span class="mn_stats__value">100000 ESS</span>
+          </li>
+          <li class="mn_stats__li">
+            <span class="mn_stats__title" translate>Masternode worth</span>
+            <span class="mn_stats__value">${{ getMnWorth(coinData.current_price).toFixed(2) }}</span>
+          </li>
+        </ul>
+      </section>
 
       <div class="table__wrap-cn" data-ng-show="nodes.length">
         <ul class="table__list">
@@ -82,7 +129,7 @@
                   {{ differenceTime(node.activetime) }}
                 </li>
                 <li class="table__content__li">
-                  {{millisToUTCDate(node.lastseen ) | date:'medium'}} UTC
+                  {{millisToUTCDate(node.lastseen ) | date:'medium'}}
                 </li>
                 <li class="table__content__li">
                   <a href="tx/{{node.txhash}}" class="link-blue">{{ node.txhash }}</a>
@@ -91,7 +138,7 @@
                   <a href="address/{{node.addr}}" class="link-blue">{{ node.addr }}</a>
                 </li>
                 <li class="table__content__li">
-                  {{millisToUTCDate(node.lastpaid ) | date:'medium'}} UTC
+                  {{millisToUTCDate(node.lastpaid ) | date:'medium'}}
                 </li>
               </ul>
             </div>

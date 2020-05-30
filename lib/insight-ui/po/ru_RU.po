@@ -146,6 +146,30 @@ msgstr "Хеш транзакции, адрес или блок"
 msgid "Size"
 msgstr "Размер"
 
+#: public/views/transaction_sendraw.html
+msgid "This form can be used to broadcast a raw transaction in hex format over the Essentia network."
+msgstr "Форма может использоваться для трансляции необработанной транзакции в шестнадцатеричном формате по сети Essentia."
+
+#: public/views/transaction_sendraw.html
+msgid "Raw transaction data"
+msgstr "Raw транзакция"
+
+#: public/views/transaction_sendraw.html
+msgid "Raw transaction data must be a valid hexadecimal string."
+msgstr "Raw транзакция должна быть в валидном шестнадцатиричном формате."
+
+#: public/views/transaction_sendraw.html
+msgid "Send transaction"
+msgstr "Отправить транзакцию"
+
+#: public/views/transaction_sendraw.html
+msgid "An error occured:<br>{{error}}"
+msgstr "Произошла ошибка:<br>{{error}}"
+
+#: public/views/transaction_sendraw.html
+msgid "Transaction succesfully broadcast.<br>Transaction id: {{txid}}"
+msgstr "Транзакция успшно отправлена.<br>Идентификатор транзакции: {{txid}}"
+
 #: public/views/block_list.html
 msgid "Total <b>{{ getTotalCount }}</b> blocks found"
 msgstr "Найдено <b>{{ getTotalCount }}</b> блоков"
@@ -231,7 +255,7 @@ msgstr "Последний блок"
 msgid "Last Block Hash (essd)"
 msgstr "Хеш последнего блока (essd)"
 
-#: public/views/includes/infoStatus.html
+#: public/views/includes/infoStatus.html public/views/transaction_sendraw.html
 msgid "Loading..."
 msgstr "Загрузка..."
 

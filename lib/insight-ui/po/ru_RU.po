@@ -182,10 +182,6 @@ msgstr "(выводятся последние {{length}} записей)"
 msgid "Loading blocks..."
 msgstr "Загрузка блоков..."
 
-#: public/views/transaction/tx.html
-msgid "(Input unconfirmed)"
-msgstr "(Вход не подтвержден)"
-
 #: public/views/404.html
 msgid "404 Page not found :("
 msgstr "404 Страница не найдена :("
@@ -372,9 +368,7 @@ msgid "Loading Block Information"
 msgstr "Загрузка информации о блоке"
 
 
-#: public/views/block.html
-msgid "Size (bytes)"
-msgstr "Размер (байтов)"
+
 
 #: public/views/block.html public/views/transaction.html
 msgid "Summary"
@@ -400,9 +394,7 @@ msgstr "Не возможно подключится к серверу. Попы
 msgid "Can't connect to internet. Please, check your connection."
 msgstr "Невозможо полключится к сети. Пожалуйста проверьте подключение."
 
-#: public/views/transaction.html public/views/transaction/tx.html
-msgid "Confirmations"
-msgstr "Подтверждения"
+
 
 #: public/views/includes/header.html
 msgid "Conn"
@@ -410,21 +402,15 @@ msgstr "Подключение"
 
 #: public/views/transaction.html
 msgid "Details"
-msgstr "Детали"
+msgstr "Подробности"
 
 
-
-#: public/views/transaction/tx.html
-msgid "Double spent attempt detected. From tx:"
-msgstr "Произошла попытка двойной траты от транзакции:"
 
 #: public/views/includes/connection.html
 msgid "Error!"
 msgstr "Ошибка!"
 
-#: public/views/transaction/tx.html
-msgid "Fee"
-msgstr "Комиссия"
+
 
 #: public/views/address.html
 msgid "Final Balance"
@@ -434,13 +420,7 @@ msgstr "Solde final"
 msgid "Go to home"
 msgstr "На главную"
 
-#: public/views/transaction.html public/views/transaction/tx.html
-msgid "Included in Block"
-msgstr "Включено в Блок"
 
-#: public/views/transaction/tx.html
-msgid "Incoherence in levelDB detected:"
-msgstr ""
 
 #: public/views/transaction.html
 msgid "Input"
@@ -468,9 +448,7 @@ msgstr "Время майнинга"
 
 
 
-#: public/views/transaction/tx.html
-msgid "No Inputs (Newly Generated Coins)"
-msgstr "Нет Входов (Сгенерированы новые коины"
+
 
 #: public/views/block_list.html
 msgid "No blocks yet."
@@ -490,7 +468,7 @@ msgstr "Выход"
 
 #: public/views/transaction.html
 msgid "Received Time"
-msgstr "Получено"
+msgstr "Время получения"
 
 #: public/views/redirect.html
 msgid "Redirecting..."
@@ -499,6 +477,14 @@ msgstr "Переадресация..."
 #: public/views/includes/header.html
 msgid "Search for block, transaction or address"
 msgstr "Поиск блока, транзакции или адреса"
+
+#: public/views/transaction/tx.html
+msgid "(Input unconfirmed)"
+msgstr "(Вход не подтвержден)"
+
+#: public/views/transaction/tx.html
+msgid "Special Transaction Type<"
+msgstr "Специальный тип транзакции"
 
 #: public/views/transaction/tx.html
 msgid "Show all"
@@ -516,8 +502,49 @@ msgstr "Скрыть"
 msgid "Show more"
 msgstr "Больше"
 
+#: public/views/transaction/tx.html
+msgid "Type"
+msgstr "Тип"
 
+#: public/views/transaction.html public/views/transaction/tx.html
+msgid "Unconfirmed Transaction!"
+msgstr "Транзакция не подтверждена!"
 
+#: public/views/transaction/tx.html
+msgid "first seen at"
+msgstr "первое появление"
+
+#: public/views/transaction/tx.html
+msgid "mined"
+msgstr "время майнинга"
+
+#: public/views/transaction/tx.html
+msgid "No Inputs (Newly Generated Coins)"
+msgstr "Нет данных (Новые сгенерированы коины)"
+
+#: public/views/transaction.html public/views/transaction/tx.html
+msgid "Confirmations"
+msgstr "Подтверждения"
+
+#: public/views/transaction.html public/views/transaction/tx.html
+msgid "Included in Block"
+msgstr "Включено в блок"
+
+#: public/views/transaction/tx.html
+msgid "Incoherence in levelDB detected:"
+msgstr ""
+
+#: public/views/transaction/tx.html
+msgid "Fee"
+msgstr "Комиссия"
+
+#: public/views/transaction/tx.html
+msgid "Double spent attempt detected. From tx:"
+msgstr "Произошла попытка двойной траты от транзакции:"
+
+#: public/views/block.html public/views/transaction/tx.html
+msgid "Size (bytes)"
+msgstr "Размер (байтов)"
 
 #: public/views/dummy-translations.html
 msgid "Status"
@@ -537,8 +564,6 @@ msgstr "Résume <small>confirmé</small>"
 msgid "There are no transactions involving this address."
 msgstr "По данному адресу транзакций не найдено"
 
-
-
 #: public/views/block_list.html
 msgid "Today"
 msgstr "Сегодня"
@@ -557,17 +582,13 @@ msgid "Transaction"
 msgstr "Транзакция"
 
 
-#: public/views/transaction/tx.html
-msgid "Type"
-msgstr "Тип"
+
 
 #: public/views/address.html
 msgid "Unconfirmed"
 msgstr "Нет подтверждений"
 
-#: public/views/transaction.html public/views/transaction/tx.html
-msgid "Unconfirmed Transaction!"
-msgstr "Транзакция не подтверждена!"
+
 
 #: public/views/address.html
 msgid "Unconfirmed Txs Balance"
@@ -581,14 +602,8 @@ msgstr "Не подтвержденный баланс"
 msgid "by date."
 msgstr "по дате."
 
-#: public/views/transaction/tx.html
-msgid "first seen at"
-msgstr ""
 
-#: public/views/transaction/tx.html
-msgid "mined"
-msgstr "получено"
 
 #: public/views/block_list.html
 msgid "mined on:"
-msgstr "получено на:"
+msgstr "время майнинга"

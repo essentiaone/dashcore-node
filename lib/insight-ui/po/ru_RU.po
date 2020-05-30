@@ -102,7 +102,7 @@ msgstr "Блоки"
 msgid "Connection to other nodes"
 msgstr "Подключений к другим нодам"
 
-#: public/views/index.html
+#: public/views/index.html public/views/status.html
 msgid "Mining difficulty"
 msgstr "Сложность майнинга"
 
@@ -260,10 +260,6 @@ msgid "Loading..."
 msgstr "Загрузка..."
 
 #: public/views/status.html
-msgid "Mining Difficulty"
-msgstr "Сложность майнинга"
-
-#: public/views/status.html
 msgid "Protocol version"
 msgstr "Версия протокола"
 
@@ -332,12 +328,62 @@ msgid "ESS node information"
 msgstr "Информация о Ess ноде"
 
 #: public/views/block.html
+msgid "Block #{{block.height}}"
+msgstr "Блок #{{block.height}}"
+
+#: public/views/block.html
 msgid "Block"
 msgstr "Блок"
 
 #: public/views/block.html
 msgid "Block Reward"
-msgstr "Блок Награда"
+msgstr "Награда за блок"
+
+#: public/views/block.html
+msgid "Previous Block"
+msgstr "Предыдущий блок"
+
+#: public/views/block.html
+msgid "Number Of Transactions"
+msgstr "Количество транзакций"
+
+#: public/views/block.html
+msgid "Next Block"
+msgstr "Следующий блок"
+
+#: public/views/block.html
+msgid "Bits"
+msgstr "Биты"
+
+#: public/views/block.html
+msgid "Nonce"
+msgstr "Нонс"
+
+#: public/views/block.html
+msgid "Difficulty"
+msgstr "Сложность"
+
+#: public/views/block.html
+msgid "BlockHash"
+msgstr "Хеш блока"
+
+#: public/views/block.html
+msgid "Loading Block Information"
+msgstr "Загрузка информации о блоке"
+
+
+#: public/views/block.html
+msgid "Size (bytes)"
+msgstr "Размер (байтов)"
+
+#: public/views/block.html public/views/transaction.html
+msgid "Summary"
+msgstr "Краткие сведения"
+
+#: public/views/block.html
+msgid "Timestamp"
+msgstr "Время"
+
 
 #: public/views/includes/connection.html
 msgid "Can't connect to Essentia to get live updates from the p2p network. "
@@ -366,9 +412,7 @@ msgstr "Подключение"
 msgid "Details"
 msgstr "Детали"
 
-#: public/views/block.html
-msgid "Difficulty"
-msgstr "Сложность"
+
 
 #: public/views/transaction/tx.html
 msgid "Double spent attempt detected. From tx:"
@@ -406,10 +450,6 @@ msgstr "Вход"
 msgid "Loading Address Information"
 msgstr "Загрузка данных о адресе"
 
-#: public/views/block.html
-msgid "Loading Block Information"
-msgstr "Загрузка информации о блоке"
-
 #: public/views/block_list.html
 msgid "Loading Selected Date..."
 msgstr "Загрузка выбраной даты..."
@@ -426,9 +466,7 @@ msgstr "Загрузка транзакций..."
 msgid "Mined Time"
 msgstr "Время майнинга"
 
-#: public/views/block.html
-msgid "Next Block"
-msgstr "Следующий блок"
+
 
 #: public/views/transaction/tx.html
 msgid "No Inputs (Newly Generated Coins)"
@@ -442,17 +480,13 @@ msgstr "Пока нет блоков"
 msgid "No. Transactions"
 msgstr "Транзакции отсутствуют"
 
-#: public/views/block.html
-msgid "Number Of Transactions"
-msgstr "Количество транзакций"
+
 
 #: public/views/transaction.html
 msgid "Output"
 msgstr "Выход"
 
-#: public/views/block.html
-msgid "Previous Block"
-msgstr "Предыдущий блок"
+
 
 #: public/views/transaction.html
 msgid "Received Time"
@@ -484,11 +518,6 @@ msgstr "Больше"
 
 
 
-#: public/views/block.html
-msgid "Size (bytes)"
-msgstr "Размер (байтов)"
-
-
 
 #: public/views/dummy-translations.html
 msgid "Status"
@@ -498,9 +527,7 @@ msgstr "Статус"
 msgid "Masternodes"
 msgstr "Мастерноды"
 
-#: public/views/block.html public/views/transaction.html
-msgid "Summary"
-msgstr ""
+
 
 #: public/views/address.html
 msgid "Summary <small>confirmed</small>"
@@ -511,10 +538,6 @@ msgid "There are no transactions involving this address."
 msgstr "По данному адресу транзакций не найдено"
 
 
-
-#: public/views/block.html
-msgid "Timestamp"
-msgstr "Время"
 
 #: public/views/block_list.html
 msgid "Today"

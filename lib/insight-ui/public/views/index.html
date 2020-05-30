@@ -103,32 +103,32 @@
 
       <ul class="about__list" data-ng-controller="StatusController" data-ng-init="getStatus('Info')">
         <li class="about__li">
-          <p class="about__li__title">Version</p>
+          <p class="about__li__title" translate>Version</p>
           <p class="about__li__value">{{info.version}}</p>
         </li>
         <li class="about__li">
-          <p class="about__li__title">Protocol version</p>
+          <p class="about__li__title" translate>Protocol version</p>
           <p class="about__li__value">{{info.protocolversion}}</p>
         </li>
         <li class="about__li">
-          <p class="about__li__title">Blocks</p>
+          <p class="about__li__title" translate>Blocks</p>
           <p class="about__li__value under"><a href="block-index/{{info.blocks}}">{{info.blocks}}</a></p>
         </li>
         <li class="about__li">
-          <p class="about__li__title">Connection to other nodes</p>
+          <p class="about__li__title" translate>Connection to other nodes</p>
           <p class="about__li__value">{{info.connections}}</p>
         </li>
         <li class="about__li">
-          <p class="about__li__title">Mining difficulty</p>
+          <p class="about__li__title" translate>Mining difficulty</p>
           <p class="about__li__value">{{info.difficulty.toFixed(2)}}</p>
         </li>
         <li class="about__li" data-ng-init="getMasternodes()">
-          <p class="about__li__title">Masternodes</p>
+          <p class="about__li__title" translate>Masternodes</p>
           <p class="about__li__value under"><a href="masternodes">{{nodesCount || 0}}</a></p>
         </li>
       </ul>
 
-      <a href="/tx/send" class="link-blue-while">Broadcast Raw Transaction</a>
+      <a href="/tx/send" class="link-blue-while" translate>Broadcast Raw Transaction</a>
     </div>
 
     <section class="table mini-wrap">
@@ -148,7 +148,7 @@
 
             <li class="table__li" data-ng-show="!blocks.length" translate>
               <div class="table__content">
-                <div class="table__content__list blocks">
+                <div class="table__content__list blocks" translate>
                   Waiting for blocks...
                 </div>
               </div>
@@ -188,20 +188,20 @@
     <section class="table mini-wrap">
       <div class="cn">
         <h2 class="title" translate>Transactions</h2>
-        <p class="desc">Latest {{ txs.length }} transactions</p>
+        <p class="desc" translate>Latest {{ txs.length }} transactions</p>
 
         <div class="table__wrap-cn">
           <ul class="table__list">
             <li class="table__li-head">
               <ul class="table__li-head__list transaction">
-                <li class="table__head__li">TxHash</li>
-                <li class="table__head__li">Value</li>
+                <li class="table__head__li" translate>TxHash</li>
+                <li class="table__head__li" translate>Value</li>
               </ul>
             </li>
 
             <li class="table__li" data-ng-show="!txs.length">
               <div class="table__content">
-                <div class="table__content__list transaction">
+                <div class="table__content__list transaction" translate>
                   Waiting for transactions...
                 </div>
               </div>
@@ -209,8 +209,8 @@
             <li class="table__li" data-ng-repeat='tx in txs'>
               <header class="table__head">
                 <ul class="table__head__list">
-                  <li class="table__head__li">TxHash</li>
-                  <li class="table__head__li">Value</li>
+                  <li class="table__head__li" translate>TxHash</li>
+                  <li class="table__head__li" translate>Value</li>
                 </ul>
               </header>
               <div class="table__content">

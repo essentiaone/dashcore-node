@@ -32,32 +32,32 @@
   <section class="table wrap" data-ng-init="list()">
     <div class="cn">
       <h2 class="title" translate>Masternode Info</h2>
-      <p class="desc" data-ng-show="nodes.length">There are currently
+      <p class="desc" data-ng-show="nodes.length"><span translate>There are currently</span>
         <span data-ng-repeat='tier in tiers'>
           <span>{{ tier.count }}</span>
           <span>{{ tier.key }}</span>
-        </span> Masternodes
+        </span> <span translate>Masternodes</span>
       </p>
       <p class="desc" data-ng-show="!nodes.length && !loading" translate>No Masternodes yet.</p>
 
       <ul class="mn__rewards">
         <li class="mn__rewards__li">
-          <p class="mn__rewards__li__title daily">Daily income</p>
+          <p class="mn__rewards__li__title daily" translate>Daily income</p>
           <p class="mn__rewards__li__value">${{ (getDailyIncome(blockchainInfo.blocks, tiers) * coinData.current_price).toFixed(2) }}</p>
           <p class="mn__rewards__li__ess__value">{{ getDailyIncome(blockchainInfo.blocks, tiers).toFixed(2) }} ESS</p>
         </li>
         <li class="mn__rewards__li">
-          <p class="mn__rewards__li__title weekly">Weekly income</p>
+          <p class="mn__rewards__li__title weekly" translate>Weekly income</p>
           <p class="mn__rewards__li__value">${{ (getDailyIncome(blockchainInfo.blocks, tiers) * coinData.current_price * 7).toFixed(2) }}</p>
           <p class="mn__rewards__li__ess__value">{{ (getDailyIncome(blockchainInfo.blocks, tiers) * 7).toFixed(2) }} ESS</p>
         </li>
         <li class="mn__rewards__li">
-          <p class="mn__rewards__li__title monthly">Monthly income</p>
+          <p class="mn__rewards__li__title monthly" translate>Monthly income</p>
           <p class="mn__rewards__li__value">${{ (getDailyIncome(blockchainInfo.blocks, tiers) * coinData.current_price * 30).toFixed(2) }}</p>
           <p class="mn__rewards__li__ess__value">{{ (getDailyIncome(blockchainInfo.blocks, tiers) * 30).toFixed(2) }} ESS</p>
         </li>
         <li class="mn__rewards__li">
-          <p class="mn__rewards__li__title yearly">Yearly income</p>
+          <p class="mn__rewards__li__title yearly" translate>Yearly income</p>
           <p class="mn__rewards__li__value">${{ (getDailyIncome(blockchainInfo.blocks, tiers) * coinData.current_price * 365).toFixed(2) }}</p>
           <p class="mn__rewards__li__ess__value">{{ (getDailyIncome(blockchainInfo.blocks, tiers) * 365).toFixed(2) }} ESS</p>
         </li>

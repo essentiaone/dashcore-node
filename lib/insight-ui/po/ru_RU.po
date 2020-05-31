@@ -130,7 +130,7 @@ msgstr "Хеш транзакции"
 msgid "Value"
 msgstr "Сумма"
 
-#: public/views/includes/header.html public/views/includes/search.html
+#: public/views/includes/header.html public/views/includes/search.html public/views/masternodes_info.html
 msgid "No matching records found!"
 msgstr "Результаты не найдены!"
 
@@ -557,6 +557,98 @@ msgstr "&nbsp;Перейти на:&nbsp;"
 #: public/views/transaction/views/coin.html
 msgid "Rank:&nbsp;"
 msgstr "Рейтинг:&nbsp;"
+
+#: public/views/transaction/masternode_info.html
+msgid "Masternode Info"
+msgstr "Информация о мастернодах"
+
+#: public/views/transaction/masternode_info.html
+msgid "Masternode Info"
+msgstr "Информация о мастернодах"
+
+#: public/views/transaction/masternode_info.html
+msgid "There are currently"
+msgstr "В сети активно"
+
+#: public/views/transaction/masternode_info.html
+msgid "Masternodes"
+msgstr "мастерноды"
+
+#: public/views/transaction/masternode_info.html
+msgid "Masternodes"
+msgstr "мастерноды"
+
+#: public/views/transaction/masternode_info.html
+msgid "No Masternodes yet."
+msgstr "Мастернод не найдено."
+
+#: public/views/transaction/masternode_info.html
+msgid "Daily income"
+msgstr "Ежедневный доход"
+
+#: public/views/transaction/masternode_info.html
+msgid "Weekly income"
+msgstr "Еженедельный доход"
+
+#: public/views/transaction/masternode_info.html
+msgid "Monthly income"
+msgstr "Ежемесячный доход"
+
+#: public/views/transaction/masternode_info.html
+msgid "Yearly income"
+msgstr "Ежегодный доход"
+
+#: public/views/transaction/masternode_info.html
+msgid "Ess Masternode Stats"
+msgstr "Основные показатели"
+
+#: public/views/transaction/masternode_info.html
+msgid "ROI (annual)"
+msgstr "ROI (годовй)"
+
+#: public/views/transaction/masternode_info.html
+msgid "Paid rewards for masternodes"
+msgstr "Выплачено вознаграждений за мастерноды"
+
+#: public/views/transaction/masternode_info.html
+msgid "AVG masternode reward frequency"
+msgstr "Средня частота выплат вознаграждений"
+
+#: public/views/transaction/masternode_info.html
+msgid "Required coins for masternode"
+msgstr "Необходимое количество коинов"
+
+#: public/views/transaction/masternode_info.html
+msgid "Masternode worth"
+msgstr "Стоимость мастерноды"
+
+#: public/views/transaction/masternode_info.html
+msgid "Tier"
+msgstr "Тип"
+
+#: public/views/transaction/masternode_info.html
+msgid "Status"
+msgstr "Статус"
+
+#: public/views/transaction/masternode_info.html
+msgid "Active time"
+msgstr "Активное время"
+
+#: public/views/transaction/masternode_info.html
+msgid "Last seen"
+msgstr "Последняя активность"
+
+#: public/views/transaction/masternode_info.html
+msgid "Transaction hash"
+msgstr "Хеш транзакции"
+
+#: public/views/transaction/masternode_info.html
+msgid "Address"
+msgstr "Адрес"
+
+#: public/views/transaction/masternode_info.html
+msgid "Last paid"
+msgstr "Последняя оплата"
 
 #: public/views/block.html public/views/transaction/tx.html
 msgid "Size (bytes)"

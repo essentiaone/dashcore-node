@@ -569,19 +569,19 @@ msgstr "Комиссия"
 msgid "Double spent attempt detected. From tx:"
 msgstr "Произошла попытка двойной траты от транзакции:"
 
-#: public/views/transaction/views/coin.html
+#: public/views/transaction/views/includes/coin.html
 msgid "Curent price ESS:"
 msgstr "Текущая цена ESS:"
 
-#: public/views/transaction/views/coin.html
+#: public/views/transaction/views/includes/coin.html
 msgid "Market cap ESS:"
 msgstr "Капитализация ESS:"
 
-#: public/views/transaction/views/coin.html
-msgid "&nbsp;Go to&nbsp;"
-msgstr "&nbsp;Перейти на:&nbsp;"
+#: public/views/transaction/views/includes/coin.html
+msgid "Go to"
+msgstr "Перейти на"
 
-#: public/views/transaction/views/coin.html
+#: public/views/transaction/views/includes/coin.html
 msgid "Rank:&nbsp;"
 msgstr "Рейтинг:&nbsp;"
 

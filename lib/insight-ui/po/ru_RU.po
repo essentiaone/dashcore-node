@@ -370,7 +370,7 @@ msgstr "Загрузка информации о блоке"
 
 
 
-#: public/views/block.html public/views/transaction.html
+#: public/views/block.html public/views/transaction.html public/views/address.html
 msgid "Summary"
 msgstr "Краткие сведения"
 
@@ -412,9 +412,7 @@ msgstr "Ошибка!"
 
 
 
-#: public/views/address.html
-msgid "Final Balance"
-msgstr "Solde final"
+
 
 #: public/views/404.html
 msgid "Go to home"
@@ -426,9 +424,7 @@ msgstr "На главную"
 msgid "Input"
 msgstr "Вход"
 
-#: public/views/address.html
-msgid "Loading Address Information"
-msgstr "Загрузка данных о адресе"
+
 
 #: public/views/block_list.html
 msgid "Loading Selected Date..."
@@ -456,8 +452,39 @@ msgstr "Пока нет блоков"
 
 #: public/views/address.html
 msgid "No. Transactions"
-msgstr "Транзакции отсутствуют"
+msgstr "Количество транзакций"
 
+#: public/views/address.html
+msgid "Unconfirmed Txs Balance"
+msgstr "Не подтвержденный баланс"
+
+#: public/views/address.html
+msgid "Summary <small>confirmed</small>"
+msgstr "Résume <small>confirmé</small>"
+
+#: public/views/transaction/list.html
+msgid "There are no transactions involving this address."
+msgstr "По данному адресу транзакций не найдено"
+
+#: public/views/address.html
+msgid "Total Received"
+msgstr "Получено"
+
+#: public/views/address.html
+msgid "Total Sent"
+msgstr "Отправлено"
+
+#: public/views/address.html
+msgid "Unconfirmed"
+msgstr "Нет подтверждений"
+
+#: public/views/address.html
+msgid "Loading Address Information"
+msgstr "Загрузка данных о адресе"
+
+#: public/views/address.html
+msgid "Final Balance"
+msgstr "Общий баланс"
 
 
 #: public/views/transaction.html
@@ -642,7 +669,7 @@ msgstr "Последняя активность"
 msgid "Transaction hash"
 msgstr "Хеш транзакции"
 
-#: public/views/transaction/masternode_info.html
+#: public/views/transaction/masternode_info.html public/views/address.html
 msgid "Address"
 msgstr "Адрес"
 
@@ -662,28 +689,9 @@ msgstr "Статус"
 msgid "Masternodes"
 msgstr "Мастерноды"
 
-
-
-#: public/views/address.html
-msgid "Summary <small>confirmed</small>"
-msgstr "Résume <small>confirmé</small>"
-
-#: public/views/transaction/list.html
-msgid "There are no transactions involving this address."
-msgstr "По данному адресу транзакций не найдено"
-
 #: public/views/block_list.html
 msgid "Today"
 msgstr "Сегодня"
-
-
-#: public/views/address.html
-msgid "Total Received"
-msgstr "Получено"
-
-#: public/views/address.html
-msgid "Total Sent"
-msgstr "Отправлено"
 
 #: public/views/transaction.html
 msgid "Transaction"
@@ -692,15 +700,7 @@ msgstr "Транзакция"
 
 
 
-#: public/views/address.html
-msgid "Unconfirmed"
-msgstr "Нет подтверждений"
 
-
-
-#: public/views/address.html
-msgid "Unconfirmed Txs Balance"
-msgstr "Не подтвержденный баланс"
 
 
 

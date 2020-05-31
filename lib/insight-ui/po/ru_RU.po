@@ -532,7 +532,7 @@ msgstr "Включено в блок"
 
 #: public/views/transaction/tx.html
 msgid "Incoherence in levelDB detected:"
-msgstr ""
+msgstr "Incoherence in levelDB detected:"
 
 #: public/views/transaction/tx.html
 msgid "Fee"
@@ -541,6 +541,22 @@ msgstr "Комиссия"
 #: public/views/transaction/tx.html
 msgid "Double spent attempt detected. From tx:"
 msgstr "Произошла попытка двойной траты от транзакции:"
+
+#: public/views/transaction/views/coin.html
+msgid "Curent price ESS:"
+msgstr "Текущая цена ESS:"
+
+#: public/views/transaction/views/coin.html
+msgid "Market cap ESS:"
+msgstr "Капитализация ESS:"
+
+#: public/views/transaction/views/coin.html
+msgid "&nbsp;Go to&nbsp;"
+msgstr "&nbsp;Перейти на:&nbsp;"
+
+#: public/views/transaction/views/coin.html
+msgid "Rank:&nbsp;"
+msgstr "Рейтинг:&nbsp;"
 
 #: public/views/block.html public/views/transaction/tx.html
 msgid "Size (bytes)"

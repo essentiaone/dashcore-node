@@ -9,8 +9,8 @@
     </div>
     <div class="coin__data__show" data-ng-if="isCoinDataShow">
       <div class="coin__data__header">
-        <p style="flex-grow: 1">Curent price ESS:</p>
-        <p>Rank:&nbsp;</p>
+        <p style="flex-grow: 1" translate>Curent price ESS:</p>
+        <p translate>Rank:&nbsp;</p>
         <div class="coin__data__rank">
           {{ coinData.market_cap_rank }}
         </div>
@@ -22,7 +22,7 @@
         <span data-ng-if="coinData.price_change_percentage_24h" style="color:#bf1510">({{coinData.price_change_percentage_24h}})</span>
       </div>
       <div class="coin__data__market__cap">
-        <span class="">Market cap ESS:</span>
+        <span class="" translate>Market cap ESS:</span>
         <span class="amount">${{coinData.market_cap}}</span>
         <span class="white">USD</span>
       </div>
@@ -32,7 +32,7 @@
             <path d="M15.6468 10.757C15.3569 10.9536 14.9797 10.9782 14.6649 10.8215C14.3034 10.6188 14.107 10.1457 14.107 9.50375V7.52867C14.107 6.57952 13.7268 5.90683 13.0878 5.72253C12.0125 5.41229 11.2083 6.7116 10.8997 7.2L8.99533 10.2379V6.53038C8.97351 5.67645 8.69299 5.16348 8.15688 5.0099C7.80468 4.90853 7.27481 4.94846 6.76052 5.72253L2.50286 12.4587C1.93558 11.3928 1.63948 10.2041 1.64571 9C1.64571 4.93925 4.93714 1.6372 8.99533 1.6372C13.0535 1.6372 16.3543 4.93925 16.3543 9V9.0215C16.3543 9.0215 16.3543 9.03686 16.3543 9.043C16.3948 9.82628 16.1361 10.4529 15.6468 10.757ZM18 9V8.96007C17.9657 4.01468 13.9387 0 8.99533 0C4.05195 0 0 4.03618 0 9C0 13.9638 4.03325 18 8.99533 18C11.2706 18 13.4587 17.1399 15.1106 15.598C15.4442 15.2877 15.4629 14.7717 15.1543 14.4399C14.8551 14.1143 14.347 14.0898 14.0135 14.3846L14.0104 14.3877C11.0961 17.1123 6.49247 16.9925 3.72779 14.1205C3.65922 14.0498 3.59377 13.9792 3.52831 13.9055L7.35896 7.83276V10.6341C7.35896 11.9795 7.88883 12.4157 8.33143 12.5447C8.77403 12.6737 9.45662 12.5846 10.1673 11.4451L12.2868 8.06621C12.3522 7.9587 12.4145 7.86348 12.4738 7.78362V9.50068C12.4738 10.7601 12.9849 11.7645 13.8857 12.2621C14.7179 12.7044 15.7278 12.6645 16.5226 12.1577C17.5106 11.5249 18.0499 10.3792 17.9938 9H18Z" fill="white"/>
           </svg>
         </a>
-        <span style="flex-grow: 1;" class="white">&nbsp;Go to <a target="_blank" href="https://coinmarketcap.com/currencies/essentia/">CoinMarketCap</a></span>
+        <span style="flex-grow: 1;" class="white">&nbsp;<span translate>Go to</span>&nbsp;<a target="_blank" href="https://coinmarketcap.com/currencies/essentia/">CoinMarketCap</a></span>
         <span  data-ng-click="hideModal()" style="cursor: pointer">
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path fill-rule="evenodd" clip-rule="evenodd" d="M5.58529 6.99978L0.635642 2.05013C0.246733 1.66122 0.246733 1.02483 0.635642 0.63592C1.02455 0.247011 1.66095 0.247011 2.04986 0.63592L6.9995 5.58557L11.9491 0.635934C12.338 0.247025 12.9744 0.247025 13.3634 0.635934C13.7523 1.02484 13.7523 1.66124 13.3634 2.05015L8.41372 6.99978L13.3636 11.9496C13.7525 12.3385 13.7525 12.9749 13.3636 13.3638C12.9747 13.7528 12.3383 13.7528 11.9494 13.3638L6.9995 8.414L2.04965 13.3639C1.66074 13.7528 1.02434 13.7528 0.635432 13.3639C0.246523 12.9749 0.246523 12.3385 0.635432 11.9496L5.58529 6.99978Z" fill="white"/>

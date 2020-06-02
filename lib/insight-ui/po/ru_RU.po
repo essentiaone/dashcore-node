@@ -1,0 +1,717 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Insight\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: ru_RU\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.0.1\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: public/views/index.html
+msgid ""
+"<strong>insight</strong>  is an <a href=\"http://live.insight.is/\" target=\"_blank"
+"\">open-source Dash blockchain explorer</a> with complete REST and websocket APIs "
+"that can be used for writing web wallets and other apps  that need more advanced "
+"blockchain queries than provided by dashd RPC.  Check out the <a href=\"https://"
+"github.com/dashpay/insight-ui-dash\" target=\"_blank\">source code</a>."
+msgstr ""
+"<strong>insight</strong> есть <a href=\"http://live.insight.is/\" target=\"_blank"
+"\">исходный код Essentia блокчейн експлорер</a> с полный REST и вебсокет APIs "
+"которые могут быть использованы для написания веб-кошельков и других приложений, которые требуют более продвинутых"
+"блокчейн запросов чем предусмотрено Essentia RPC.  Проверьте <a href=\"https://"
+"github.com/dashpay/insight-ui-dash\" target=\"_blank\">исходный код</a>."
+
+#: public/views/index.html
+msgid ""
+"<strong>insight</strong> is still in development, so be sure to report any bugs and "
+"provide feedback for improvement at our <a href=\"https://github.com/dashpay/insight/"
+"issues\" target=\"_blank\">github issue tracker</a>."
+msgstr ""
+"<strong>insight</strong> все еще в разработке, поэтому обязательно сообщайте о любых ошибках и "
+"оставить отзыв для улучшения на нашем <a href=\"https://github.com/dashpay/"
+"insight-ui-dash/issues\" target=\"_blank\">Github трекер</a>."
+
+#: public/views/index.html
+msgid "About"
+msgstr "Описание"
+
+#: public/views/index.html
+msgid "Age"
+msgstr "Возраст"
+
+#: public/views/index.html
+msgid "Latest Blocks"
+msgstr "Последние блоки"
+
+#: public/views/index.html
+msgid "Latest Transactions"
+msgstr "Последние транзакции"
+
+#: public/views/index.html
+msgid "Powered by"
+msgstr ""
+
+#: public/views/index.html
+msgid "See all blocks"
+msgstr "Посмотреть все блоки"
+
+#: public/views/index.html
+msgid "Value Out"
+msgstr ""
+
+#: public/views/block_list.html public/views/index.html
+msgid "Waiting for blocks..."
+msgstr "Ожидание блоков..."
+
+#: public/views/index.html
+msgid "Waiting for transactions..."
+msgstr "Ожидание транзакций..."
+
+#: public/views/block.html public/views/block_list.html public/views/index.html
+#: public/views/status.html public/views/includes/header.html
+msgid "Height"
+msgstr "Высота"
+
+#: public/views/block.html public/views/block_list.html public/views/index.html
+msgid "Mined by"
+msgstr "Майнер"
+
+#: public/views/address.html public/views/block.html public/views/block_list.html
+#: public/views/index.html public/views/status.html
+msgid "Transactions"
+msgstr "Транзакции"
+
+#: public/views/index.html
+msgid "Version"
+msgstr "Версия"
+
+#: public/views/index.html
+msgid "Protocol version"
+msgstr "Версия протокола"
+
+#: public/views/index.html
+msgid "Blocks"
+msgstr "Блоки"
+
+#: public/views/index.html
+msgid "Connection to other nodes"
+msgstr "Подключений к другим нодам"
+
+#: public/views/index.html public/views/status.html
+msgid "Mining difficulty"
+msgstr "Сложность майнинга"
+
+#: public/views/index.html
+msgid "Masternodes"
+msgstr "Мастерноды"
+
+#: public/views/index.html
+msgid "Broadcast Raw Transaction"
+msgstr "Отправить Raw транзакцию"
+
+#: public/views/index.html
+msgid "Waiting for blocks..."
+msgstr "Ожидание блоков..."
+
+#: public/views/index.html
+msgid "Latest {{ txs.length }} transactions"
+msgstr "Последних {{ txs.length }} транзакций"
+
+#: public/views/index.html
+msgid "TxHash"
+msgstr "Хеш транзакции"
+
+#: public/views/index.html
+msgid "Value"
+msgstr "Сумма"
+
+#: public/views/includes/header.html public/views/includes/search.html public/views/masternodes_info.html
+msgid "No matching records found!"
+msgstr "Результаты не найдены!"
+
+#: public/views/includes/header.html
+msgid "Change theme"
+msgstr "Изменить тему"
+
+#: public/views/includes/search.html
+msgid "Tx Hash, Address, or Block"
+msgstr "Хеш транзакции, адрес или блок"
+
+#: public/views/block_list.html public/views/index.html public/views/transaction.html
+msgid "Size"
+msgstr "Размер"
+
+#: public/views/transaction_sendraw.html
+msgid "This form can be used to broadcast a raw transaction in hex format over the Essentia network."
+msgstr "Форма может использоваться для трансляции необработанной транзакции в шестнадцатеричном формате по сети Essentia."
+
+#: public/views/transaction_sendraw.html
+msgid "Raw transaction data"
+msgstr "Raw транзакция"
+
+#: public/views/transaction_sendraw.html
+msgid "Raw transaction data must be a valid hexadecimal string."
+msgstr "Raw транзакция должна быть в валидном шестнадцатиричном формате."
+
+#: public/views/transaction_sendraw.html
+msgid "Send transaction"
+msgstr "Отправить транзакцию"
+
+#: public/views/transaction_sendraw.html
+msgid "An error occured:<br>{{error}}"
+msgstr "Произошла ошибка:<br>{{error}}"
+
+#: public/views/transaction_sendraw.html
+msgid "Transaction succesfully broadcast.<br>Transaction id: {{txid}}"
+msgstr "Транзакция успшно отправлена.<br>Идентификатор транзакции: {{txid}}"
+
+#: public/views/block_list.html
+msgid "Total <b>{{ getTotalCount }}</b> blocks found"
+msgstr "Найдено <b>{{ getTotalCount }}</b> блоков"
+
+#: public/views/block_list.html
+msgid "(Showing the last {{length}} records)"
+msgstr "(выводятся последние {{length}} записей)"
+
+#: public/views/block_list.html
+msgid "Loading blocks..."
+msgstr "Загрузка блоков..."
+
+#: public/views/404.html
+msgid "404 Page not found :("
+msgstr "404 Страница не найдена :("
+
+#: public/views/address.html
+msgid "Address"
+msgstr "Адрес"
+
+#: public/views/status.html
+msgid "Application Status"
+msgstr "Статус приложения"
+
+#: public/views/status.html
+msgid "Current Sync Status"
+msgstr "Статус текущего подключения"
+
+#: public/views/status.html
+msgid "Best Block"
+msgstr "Лучший Блок"
+
+#: public/views/status.html
+msgid "Dash node information"
+msgstr "Essentia информация об узле"
+
+#: public/views/block_list.html public/views/dummy-translations.html
+#: public/views/status.html
+msgid "Blocks"
+msgstr "Блоки"
+
+#: public/views/status.html
+msgid "Bytes Serialized"
+msgstr "Байты Сериализовано"
+
+#: public/views/status.html
+msgid "Complete"
+msgstr "Завершено"
+
+#: public/views/status.html
+msgid "Connections to other nodes"
+msgstr "Подключения к другим нодам"
+
+#: public/views/status.html
+msgid "Current Blockchain Tip (insight)"
+msgstr "Текцщий Blockchain Tip (insight)"
+
+#: public/views/status.html
+msgid "Finish Date"
+msgstr "Дата Окончания"
+
+#: public/views/status.html
+msgid "Hash Serialized"
+msgstr "Хеш Сериализирован"
+
+#: public/views/status.html
+msgid "Info Errors"
+msgstr "Ошибки"
+
+#: public/views/status.html
+msgid "Initial Block Chain Height"
+msgstr "Высота блокчейна"
+
+#: public/views/status.html
+msgid "Last Block"
+msgstr "Последний блок"
+
+#: public/views/status.html
+msgid "Last Block Hash (essd)"
+msgstr "Хеш последнего блока (essd)"
+
+#: public/views/includes/infoStatus.html public/views/transaction_sendraw.html
+msgid "Loading..."
+msgstr "Загрузка..."
+
+#: public/views/status.html
+msgid "Protocol version"
+msgstr "Версия протокола"
+
+#: public/views/status.html
+msgid "Proxy setting"
+msgstr "Настройка прокси"
+
+#: public/views/status.html
+msgid "Show Transaction Output data"
+msgstr "Показать данные о выходах транзакции"
+
+#: public/views/status.html
+msgid "Skipped Blocks (previously synced)"
+msgstr "Пропущено блоков (ранее синхронизированных)"
+
+#: public/views/status.html
+msgid "Start Date"
+msgstr "Время запуска"
+
+#: public/views/status.html
+msgid "Sync Progress"
+msgstr "Синхронизация"
+
+#: public/views/status.html
+msgid "Sync Status"
+msgstr "Статус синхронизации"
+
+#: public/views/status.html
+msgid "Sync Type"
+msgstr "Тип синхронизации"
+
+#: public/views/status.html
+msgid "Synced Blocks"
+msgstr "Синхронизировано блоков"
+
+#: public/views/status.html
+msgid "Testnet"
+msgstr "Тестнет"
+
+#: public/views/status.html
+msgid "Total Amount"
+msgstr "Всего"
+
+#: public/views/status.html
+msgid "Time Offset"
+msgstr "Смещение времени"
+
+#: public/views/status.html
+msgid "Transaction Output Set Information"
+msgstr ""
+
+#: public/views/status.html
+msgid "Transaction Outputs"
+msgstr "Выходы транзакции"
+
+#: public/views/block.html public/views/status.html
+msgid "Version"
+msgstr "Версия"
+
+#: public/views/block.html public/views/status.html
+msgid "Network"
+msgstr "Сеть"
+
+#: public/views/block.html public/views/status.html
+msgid "ESS node information"
+msgstr "Информация о Ess ноде"
+
+#: public/views/block.html
+msgid "Block #{{block.height}}"
+msgstr "Блок #{{block.height}}"
+
+#: public/views/block.html
+msgid "Block"
+msgstr "Блок"
+
+#: public/views/block.html
+msgid "Block Reward"
+msgstr "Награда за блок"
+
+#: public/views/block.html
+msgid "Previous Block"
+msgstr "Предыдущий блок"
+
+#: public/views/block.html
+msgid "Number Of Transactions"
+msgstr "Количество транзакций"
+
+#: public/views/block.html
+msgid "Next Block"
+msgstr "Следующий блок"
+
+#: public/views/block.html
+msgid "Bits"
+msgstr "Биты"
+
+#: public/views/block.html
+msgid "Nonce"
+msgstr "Нонс"
+
+#: public/views/block.html
+msgid "Difficulty"
+msgstr "Сложность"
+
+#: public/views/block.html
+msgid "BlockHash"
+msgstr "Хеш блока"
+
+#: public/views/block.html
+msgid "Loading Block Information"
+msgstr "Загрузка информации о блоке"
+
+
+
+
+#: public/views/block.html public/views/transaction.html public/views/address.html
+msgid "Summary"
+msgstr "Краткие сведения"
+
+#: public/views/block.html
+msgid "Timestamp"
+msgstr "Время"
+
+
+#: public/views/includes/connection.html
+msgid "Can't connect to Essentia to get live updates from the p2p network. "
+"(Tried connecting to Essentia at {{host}}:{{port}} and failed.)"
+msgstr ""
+"Не удается подключиться к ноде для полученич обновления из сети p2p "
+"(Попытка подключения к ноде на {{host}}:{{port}} недоступно.)"
+
+#: public/views/includes/connection.html
+msgid "Can't connect to insight server. Attempting to reconnect..."
+msgstr "Не возможно подключится к серверу. Попытка подключения..."
+
+#: public/views/includes/connection.html
+msgid "Can't connect to internet. Please, check your connection."
+msgstr "Невозможо полключится к сети. Пожалуйста проверьте подключение."
+
+
+
+#: public/views/includes/header.html
+msgid "Conn"
+msgstr "Подключение"
+
+#: public/views/transaction.html
+msgid "Details"
+msgstr "Подробности"
+
+
+
+#: public/views/includes/connection.html
+msgid "Error!"
+msgstr "Ошибка!"
+
+
+
+
+
+#: public/views/404.html
+msgid "Go to home"
+msgstr "На главную"
+
+
+
+#: public/views/transaction.html
+msgid "Input"
+msgstr "Вход"
+
+
+
+#: public/views/block_list.html
+msgid "Loading Selected Date..."
+msgstr "Загрузка выбраной даты..."
+
+#: public/views/transaction.html
+msgid "Loading Transaction Details"
+msgstr "Загрузка информации о транзакции"
+
+#: public/views/transaction/list.html
+msgid "Loading Transactions..."
+msgstr "Загрузка транзакций..."
+
+#: public/views/transaction.html
+msgid "Mined Time"
+msgstr "Время майнинга"
+
+
+
+
+
+#: public/views/block_list.html
+msgid "No blocks yet."
+msgstr "Пока нет блоков"
+
+#: public/views/address.html
+msgid "No. Transactions"
+msgstr "Количество транзакций"
+
+#: public/views/address.html
+msgid "Unconfirmed Txs Balance"
+msgstr "Не подтвержденный баланс"
+
+#: public/views/address.html
+msgid "Summary <small>confirmed</small>"
+msgstr "Résume <small>confirmé</small>"
+
+#: public/views/transaction/list.html
+msgid "There are no transactions involving this address."
+msgstr "По данному адресу транзакций не найдено"
+
+#: public/views/address.html
+msgid "Total Received"
+msgstr "Получено"
+
+#: public/views/address.html
+msgid "Total Sent"
+msgstr "Отправлено"
+
+#: public/views/address.html
+msgid "Unconfirmed"
+msgstr "Нет подтверждений"
+
+#: public/views/address.html
+msgid "Loading Address Information"
+msgstr "Загрузка данных о адресе"
+
+#: public/views/address.html
+msgid "Final Balance"
+msgstr "Общий баланс"
+
+
+#: public/views/transaction.html
+msgid "Output"
+msgstr "Выход"
+
+
+
+#: public/views/transaction.html
+msgid "Received Time"
+msgstr "Время получения"
+
+#: public/views/redirect.html
+msgid "Redirecting..."
+msgstr "Переадресация..."
+
+#: public/views/includes/header.html
+msgid "Search for block, transaction or address"
+msgstr "Поиск блока, транзакции или адреса"
+
+#: public/views/transaction/tx.html
+msgid "(Input unconfirmed)"
+msgstr "(Вход не подтвержден)"
+
+#: public/views/transaction/tx.html
+msgid "Special Transaction Type<"
+msgstr "Специальный тип транзакции"
+
+#: public/views/transaction/tx.html
+msgid "Show all"
+msgstr "Показать все"
+
+#: public/views/transaction/tx.html
+msgid "Show input"
+msgstr "Показать вход"
+
+#: public/views/transaction/tx.html
+msgid "Show less"
+msgstr "Скрыть"
+
+#: public/views/transaction/tx.html
+msgid "Show more"
+msgstr "Больше"
+
+#: public/views/transaction/tx.html
+msgid "Type"
+msgstr "Тип"
+
+#: public/views/transaction.html public/views/transaction/tx.html
+msgid "Unconfirmed Transaction!"
+msgstr "Транзакция не подтверждена!"
+
+#: public/views/transaction/tx.html
+msgid "first seen at"
+msgstr "первое появление"
+
+#: public/views/transaction/tx.html
+msgid "mined"
+msgstr "время майнинга"
+
+#: public/views/transaction/tx.html
+msgid "No Inputs (Newly Generated Coins)"
+msgstr "Нет данных (Новые сгенерированы коины)"
+
+#: public/views/transaction.html public/views/transaction/tx.html
+msgid "Confirmations"
+msgstr "Подтверждения"
+
+#: public/views/transaction.html public/views/transaction/tx.html
+msgid "Included in Block"
+msgstr "Включено в блок"
+
+#: public/views/transaction/tx.html
+msgid "Incoherence in levelDB detected:"
+msgstr "Incoherence in levelDB detected:"
+
+#: public/views/transaction/tx.html
+msgid "Fee"
+msgstr "Комиссия"
+
+#: public/views/transaction/tx.html
+msgid "Double spent attempt detected. From tx:"
+msgstr "Произошла попытка двойной траты от транзакции:"
+
+#: public/views/transaction/views/includes/coin.html
+msgid "Curent price ESS:"
+msgstr "Текущая цена ESS:"
+
+#: public/views/transaction/views/includes/coin.html
+msgid "Market cap ESS:"
+msgstr "Капитализация ESS:"
+
+#: public/views/transaction/views/includes/coin.html
+msgid "Go to"
+msgstr "Перейти на"
+
+#: public/views/transaction/views/includes/coin.html
+msgid "Rank:&nbsp;"
+msgstr "Рейтинг:&nbsp;"
+
+#: public/views/transaction/masternode_info.html
+msgid "Masternode Info"
+msgstr "Информация о мастернодах"
+
+#: public/views/transaction/masternode_info.html
+msgid "Masternode Info"
+msgstr "Информация о мастернодах"
+
+#: public/views/transaction/masternode_info.html
+msgid "There are currently"
+msgstr "В сети активно"
+
+#: public/views/transaction/masternode_info.html
+msgid "Masternodes"
+msgstr "мастерноды"
+
+#: public/views/transaction/masternode_info.html
+msgid "Masternodes"
+msgstr "мастерноды"
+
+#: public/views/transaction/masternode_info.html
+msgid "No Masternodes yet."
+msgstr "Мастернод не найдено."
+
+#: public/views/transaction/masternode_info.html
+msgid "Daily income"
+msgstr "Ежедневный доход"
+
+#: public/views/transaction/masternode_info.html
+msgid "Weekly income"
+msgstr "Еженедельный доход"
+
+#: public/views/transaction/masternode_info.html
+msgid "Monthly income"
+msgstr "Ежемесячный доход"
+
+#: public/views/transaction/masternode_info.html
+msgid "Yearly income"
+msgstr "Ежегодный доход"
+
+#: public/views/transaction/masternode_info.html
+msgid "Ess Masternode Stats"
+msgstr "Основные показатели"
+
+#: public/views/transaction/masternode_info.html
+msgid "ROI (annual)"
+msgstr "ROI (годовй)"
+
+#: public/views/transaction/masternode_info.html
+msgid "Paid rewards for masternodes"
+msgstr "Выплачено вознаграждений за мастерноды"
+
+#: public/views/transaction/masternode_info.html
+msgid "AVG masternode reward frequency"
+msgstr "Средня частота выплат вознаграждений"
+
+#: public/views/transaction/masternode_info.html
+msgid "Required coins for masternode"
+msgstr "Необходимое количество коинов"
+
+#: public/views/transaction/masternode_info.html
+msgid "Masternode worth"
+msgstr "Стоимость мастерноды"
+
+#: public/views/transaction/masternode_info.html
+msgid "Tier"
+msgstr "Тип"
+
+#: public/views/transaction/masternode_info.html
+msgid "Status"
+msgstr "Статус"
+
+#: public/views/transaction/masternode_info.html
+msgid "Active time"
+msgstr "Активное время"
+
+#: public/views/transaction/masternode_info.html
+msgid "Last seen"
+msgstr "Последняя активность"
+
+#: public/views/transaction/masternode_info.html
+msgid "Transaction hash"
+msgstr "Хеш транзакции"
+
+#: public/views/transaction/masternode_info.html public/views/address.html
+msgid "Address"
+msgstr "Адрес"
+
+#: public/views/transaction/masternode_info.html
+msgid "Last paid"
+msgstr "Последняя оплата"
+
+#: public/views/block.html public/views/transaction/tx.html
+msgid "Size (bytes)"
+msgstr "Размер (байтов)"
+
+#: public/views/dummy-translations.html
+msgid "Status"
+msgstr "Статус"
+
+#: public/views/dummy-translations.html
+msgid "Masternodes"
+msgstr "Мастерноды"
+
+#: public/views/block_list.html
+msgid "Today"
+msgstr "Сегодня"
+
+#: public/views/transaction.html
+msgid "Transaction"
+msgstr "Транзакция"
+
+
+
+
+
+
+
+
+
+
+#: public/views/block_list.html
+msgid "by date."
+msgstr "по дате."
+
+
+
+#: public/views/block_list.html
+msgid "mined on:"
+msgstr "время майнинга"

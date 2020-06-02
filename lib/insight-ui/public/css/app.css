@@ -3120,6 +3120,27 @@ span.languages  a, span.languages a span{
     }
 }
 
+@media screen and (max-width:767px) {
+    .table__li {
+        font-weight: 500;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        overflow: hidden;
+    }
+    .table__li-head__f {
+        -webkit-box-shadow: 0 8px 20px rgba(0, 0, 0, .08);
+        border-radius: 4px;
+        background: none;
+        box-shadow: none;
+    }
+    .table__form__li.margin {
+        margin-bottom: 10px;
+    }
+
+}
+
+
 .table__form__li select {
     background: #F4F9FF;
     border: 1px solid #7A9DFF;

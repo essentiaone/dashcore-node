@@ -15,8 +15,7 @@
               placeholder="{{'Tx Hash, Address'|translate}}"
               data-ng-submit="search()"
               ng-change="search()"
-              data-ng-
-              focus="true"
+              data-ng- focus="true"
           >
         </label>
         <button class="btn-tr search__btn" type="submit">
@@ -101,6 +100,73 @@
               <li class="table__head__li" translate>Transaction hash</li>
               <li class="table__head__li" translate>Address</li>
               <li class="table__head__li" translate>Last paid</li>
+            </ul>
+          </li>
+
+          <li class="table__li-head">
+            <ul class="table__li-head__forms masternode">
+              <li class="table__form__li">
+                <form>
+                  <label for="select__mn__tier"></label>
+                  <select
+                          id="select__mn__tier"
+                          data-ng-model="tierFilter"
+                          data-ng-submit="applyFilter()"
+                          ng-change="applyFilter()"
+                  >
+                    <option value="All">All</option>
+                    <option value="Mercury">Mercury</option>
+                    <option value="Mars">Mars</option>
+                  </select>
+                </form>
+              </li>
+              <li class="table__form__li">
+                <label for="select__mn__status"></label>
+                <select
+                        id="select__mn__status"
+                        data-ng-model="statusFilter"
+                        data-ng-submit="applyFilter()"
+                        ng-change="applyFilter()"
+                >
+                  <option value="All">All</option>
+                  <option value="Enabled">Enabled</option>
+                  <option value="Expired">Expired</option>
+                </select>
+              </li>
+              <li class="table__form__li"></li>
+              <li class="table__form__li"></li>
+              <li class="table__form__li">
+                <form class="search">
+                  <label class="search__input-cn">
+                    <input
+                            class="filter__input"
+                            type="text"
+                            data-ng-model="transactionHashFilter"
+                            placeholder="{{'Transaction filter'|translate}}"
+                            data-ng-submit="applyFilter()"
+                            ng-change="applyFilter()"
+                    >
+                  </label>
+                </form>
+              </li>
+              <li class="table__form__li">
+                <form
+                        class="search"
+                        role="search" data-ng-submit="applyFilter()"
+                >
+                  <label class="search__input-cn">
+                    <input
+                            class="filter__input"
+                            type="text"
+                            data-ng-model="addressFilter"
+                            placeholder="{{'Address filter'|translate}}"
+                            data-ng-submit="applyFilter()"
+                            ng-change="applyFilter()"
+                    >
+                  </label>
+                </form>
+              </li>
+              <li class="table__form__li"></li>
             </ul>
           </li>
 

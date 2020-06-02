@@ -2573,11 +2573,11 @@ iframe {
 }
 
 
-span.languages  a.selected {
+span.languages  a.selected{
     color: #283950;
 }
 
-span.languages  a, span.languages  a.selected  span{
+span.languages  a, span.languages a span{
     color: #9AAEC8;
 }
 
@@ -3097,4 +3097,80 @@ span.languages  a, span.languages  a.selected  span{
 .coin__data__goto a{
     color: #FFFFFF;
     font-weight: bold;
+}
+
+@media screen and (min-width: 992px) {
+    .table__li-head__forms {
+        grid-gap: 40px;
+    }
+}
+
+@media screen and (min-width:768px) {
+    .table__li-head__forms.masternode {
+        padding: 20px;
+        display: grid;
+        grid-gap: 10px;
+        border-radius: 4px 4px 0 0;
+        color: #fff;
+        background: #FFFFFF;
+        font-weight: 500
+    }
+    .table__li-head__forms.masternode{
+        grid-template-columns: .6fr .6fr .7fr 1.5fr .55fr .55fr 1.5fr;
+    }
+}
+
+.table__form__li select {
+    background: #F4F9FF;
+    border: 1px solid #7A9DFF;
+    box-sizing: border-box;
+    border-radius: 8px;
+    padding: 6px 10px;
+    font-size: 14px;
+    line-height: 16px;
+    color: #283950;
+    text-transform: uppercase;
+}
+
+.table__form__li{
+    display: flex;
+    align-items: center;
+}
+
+.filter__input {
+    box-sizing: border-box;
+    border-radius: 8px;
+    padding: 6px 10px;
+    font-size: 14px;
+    line-height: 16px;
+    color: #283950;
+    background: #FFFFFF;
+    border: 1px solid #7A9DFF;
+    -webkit-box-shadow: 0 10px 30px rgba(27, 56, 137, .2);
+    box-shadow: 0 10px 30px rgba(27, 56, 137, .2);
+    width: 100%
+}
+
+.filter__input::-webkit-input-placeholder {
+    color: #9aaec8
+}
+
+.filter__input::-moz-placeholder {
+    color: #9aaec8
+}
+
+.filter__input:-ms-input-placeholder {
+    color: #9aaec8
+}
+
+.filter__input::-ms-input-placeholder {
+    color: #9aaec8
+}
+
+.filter__input::placeholder {
+    color: #9aaec8
+}
+
+.filter__input {
+    display: block
 }

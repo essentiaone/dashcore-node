@@ -36,7 +36,7 @@
       </nav>
 
       <div class="header__nav__btn-toggle">
-        <span class="btn__title">Change theme</span>
+        <span class="btn__title" translate>Change theme</span>
         <div class="btn-toggle">
           <input type="checkbox" class="btn-toggle__checkbox" ng-click="handleToggleThema()">
           <div class="knobs"></div>
@@ -66,38 +66,3 @@
     </ul>
   </nav>
 </header>
-
-<!--<div class="container">-->
-<!--  <div data-ng-controller="HeaderController" class="header-controller">-->
-<!--    <div class="navbar-header">-->
-<!--      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" data-ng-click="isCollapsed = !isCollapsed">-->
-<!--        <span class="sr-only">Toggle navigation</span>-->
-<!--        <span class="icon-bar"></span>-->
-<!--        <span class="icon-bar"></span>-->
-<!--        <span class="icon-bar"></span>-->
-<!--      </button>-->
-<!--      <button class="navbar-search" data-toggle="dropdown" data-ng-click="searcIsCollapsed = !searcIsCollapsed"></button>-->
-<!--      <div>-->
-<!--        <a class="insight navbar-brand" href="." style="margin-top: 5px;">-->
-<!--          <img src="./img/block_logo.png" style="width: 135px; height: auto;" alt="Essentia logo">-->
-<!--        </a>-->
-<!--      </div>-->
-<!--    </div>-->
-
-<!--    <ul class="nav navbar-nav hidden-xs">-->
-<!--        <li data-ng-repeat="item in menu" ui-route="{{item.link}}" data-ng-class="{active: $uiRoute}">-->
-<!--          <a href="{{item.link}}">{{item.title|translate}}</a>-->
-<!--        </li>-->
-<!--      </ul>-->
-
-<!--    <div class="navbar-collapse" uib-collapse="isCollapsed">-->
-<!--      <ul class="nav navbar-nav" data-ng-click="isCollapsed = !isCollapsed">-->
-<!--        <li data-ng-repeat="item in menu" ui-route="{{item.link}}" data-ng-class="{active: $uiRoute}">-->
-<!--          <a href="{{item.link}}">{{item.title|translate}}</a>-->
-<!--        </li>-->
-<!--      </ul>-->
-<!--    </div>-->
-<!--    <div id="search-form-mobile" data-ng-include src="'views/includes/search.html'" uib-collapse="!searcIsCollapsed"></div>-->
-<!--    <div class="search-desktop" data-ng-include src="'views/includes/search.html'"></div>-->
-<!--  </div>-->
-<!--</div>-->

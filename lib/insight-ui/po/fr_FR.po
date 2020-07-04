@@ -339,6 +339,10 @@ msgstr "Date de début"
 msgid "Status"
 msgstr "Status"
 
+#: public/views/dummy-translations.html
+msgid "Masternodes"
+msgstr "MasternodFranch"
+
 #: public/views/block.html public/views/transaction.html
 msgid "Summary"
 msgstr "Résumé"

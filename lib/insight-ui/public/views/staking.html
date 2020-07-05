@@ -5,10 +5,9 @@
     <div class="staking__header">
       <h2 translate>Get passive income with Essentia</h2>
     </div>
-    <div class="staking__form">
+    <div class="staking__form" data-ng-init="loadStats()">
       <form
               class="search"
-              data-ng-controller="StakingController"
       >
         <label class="staking__input-cn">
           <span>Type count of MARS masternodes</span>
@@ -35,7 +34,7 @@
         </label>
 
         <label class="staking__input-cn">
-          <span>Type in the amount of staked coins</span>
+          <span>Type amount of staked coins</span>
           <input
                   class="number__input"
                   type="number"
@@ -47,7 +46,7 @@
         </label>
 
         <label class="staking__input-cn">
-          <span>Equipment cost</span>
+          <span>Equipment monthly cost</span>
           <input
                   class="number__input"
                   type="number"
@@ -63,27 +62,27 @@
       <ul class="st__rewards">
         <li class="st__rewards__li">
           <p class="st__rewards__li__title daily" translate>Daily income</p>
-          <p class="st__rewards__li__roi">roi</p>
-          <p class="st__rewards__li__value">ess</p>
-          <p class="st__rewards__li__ess__value">$</p>
+          <p class="st__rewards__li__roi">{{ dailyRoi.toFixed(2) }}%</p>
+          <p class="st__rewards__li__value">{{ dailyReward.toFixed(2) }} ESS</p>
+          <p class="st__rewards__li__ess__value">${{ dailyFiatReward.toFixed(2) }}</p>
         </li>
         <li class="st__rewards__li">
           <p class="st__rewards__li__title weekly" translate>Weekly income</p>
-          <p class="st__rewards__li__roi">roi</p>
-          <p class="st__rewards__li__value">ess</p>
-          <p class="st__rewards__li__ess__value">$</p>
+          <p class="st__rewards__li__roi">{{ (dailyRoi * 7).toFixed(2) }}%</p>
+          <p class="st__rewards__li__value">{{ (dailyReward * 7).toFixed(2) }} ESS</p>
+          <p class="st__rewards__li__ess__value">${{ (dailyFiatReward * 7).toFixed(2) }}</p>
         </li>
         <li class="st__rewards__li">
           <p class="st__rewards__li__title monthly" translate>Monthly income</p>
-          <p class="st__rewards__li__roi">roi</p>
-          <p class="st__rewards__li__value">ess</p>
-          <p class="st__rewards__li__ess__value">$</p>
+          <p class="st__rewards__li__roi">{{ (dailyRoi * 30).toFixed(2) }}%</p>
+          <p class="st__rewards__li__value">{{ (dailyReward * 30).toFixed(2) }} ESS</p>
+          <p class="st__rewards__li__ess__value">${{ (dailyFiatReward * 30).toFixed(2) }}</p>
         </li>
         <li class="st__rewards__li">
           <p class="st__rewards__li__title yearly" translate>Yearly income</p>
-          <p class="st__rewards__li__roi">roi</p>
-          <p class="st__rewards__li__value">ess</p>
-          <p class="st__rewards__li__ess__value">$</p>
+          <p class="st__rewards__li__roi">{{ (dailyRoi * 365).toFixed(2) }}%</p>
+          <p class="st__rewards__li__value">{{ (dailyReward * 365).toFixed(2) }} ESS</p>
+          <p class="st__rewards__li__ess__value">${{ (dailyFiatReward * 365).toFixed(2) }}</p>
         </li>
       </ul>
     </div>

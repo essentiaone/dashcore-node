@@ -1,0 +1,90 @@
+<div data-ng-include src="'views/includes/connection.html'"></div>
+
+<section class="about wrap content" data-ng-controller="StakingController">
+  <div class="staking__cn">
+    <div class="staking__header">
+      <h2 translate>Get passive income with Essentia</h2>
+    </div>
+    <div class="staking__form" data-ng-init="loadStats()">
+      <form
+              class="search"
+      >
+        <label class="staking__input-cn">
+          <span>Type count of MARS masternodes</span>
+          <input
+                  class="number__input"
+                  type="number"
+                  data-ng-model="marsCount"
+                  placeholder="Count of MARS nodes"
+                  ng-change="calculateRewards()"
+                  focus="true"
+          >
+        </label>
+
+        <label class="staking__input-cn">
+          <span>Type count of MERCURY masternodes</span>
+          <input
+                  class="number__input"
+                  type="number"
+                  data-ng-model="mercuryCount"
+                  placeholder="Count of MERCURY nodes"
+                  ng-change="calculateRewards()"
+                  focus="true"
+          >
+        </label>
+
+        <label class="staking__input-cn">
+          <span>Type amount of staked coins</span>
+          <input
+                  class="number__input"
+                  type="number"
+                  data-ng-model="stakedCoins"
+                  placeholder="Amounth of staked coins"
+                  ng-change="calculateRewards()"
+                  focus="true"
+          >
+        </label>
+
+        <label class="staking__input-cn">
+          <span>Equipment monthly cost</span>
+          <input
+                  class="number__input"
+                  type="number"
+                  data-ng-model="equipmentCost"
+                  placeholder="$"
+                  ng-change="calculateRewards()"
+                  focus="true"
+          >
+        </label>
+
+      </form>
+
+      <ul class="st__rewards">
+        <li class="st__rewards__li">
+          <p class="st__rewards__li__title daily" translate>Daily income</p>
+          <p class="st__rewards__li__roi">{{ dailyRoi.toFixed(2) }}%</p>
+          <p class="st__rewards__li__value">{{ dailyReward.toFixed(2) }} ESS</p>
+          <p class="st__rewards__li__ess__value">${{ dailyFiatReward.toFixed(2) }}</p>
+        </li>
+        <li class="st__rewards__li">
+          <p class="st__rewards__li__title weekly" translate>Weekly income</p>
+          <p class="st__rewards__li__roi">{{ (dailyRoi * 7).toFixed(2) }}%</p>
+          <p class="st__rewards__li__value">{{ (dailyReward * 7).toFixed(2) }} ESS</p>
+          <p class="st__rewards__li__ess__value">${{ (dailyFiatReward * 7).toFixed(2) }}</p>
+        </li>
+        <li class="st__rewards__li">
+          <p class="st__rewards__li__title monthly" translate>Monthly income</p>
+          <p class="st__rewards__li__roi">{{ (dailyRoi * 30).toFixed(2) }}%</p>
+          <p class="st__rewards__li__value">{{ (dailyReward * 30).toFixed(2) }} ESS</p>
+          <p class="st__rewards__li__ess__value">${{ (dailyFiatReward * 30).toFixed(2) }}</p>
+        </li>
+        <li class="st__rewards__li">
+          <p class="st__rewards__li__title yearly" translate>Yearly income</p>
+          <p class="st__rewards__li__roi">{{ (dailyRoi * 365).toFixed(2) }}%</p>
+          <p class="st__rewards__li__value">{{ (dailyReward * 365).toFixed(2) }} ESS</p>
+          <p class="st__rewards__li__ess__value">${{ (dailyFiatReward * 365).toFixed(2) }}</p>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>

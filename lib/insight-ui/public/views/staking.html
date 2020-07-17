@@ -1,90 +1,503 @@
 <div data-ng-include src="'views/includes/connection.html'"></div>
 
-<section class="about wrap content" data-ng-controller="StakingController">
-  <div class="staking__cn">
-    <div class="staking__header">
-      <h2 translate>Get passive income with Essentia</h2>
+<section class="rewards wrap content" data-ng-controller="StakingController">
+
+    <div class="rewards__header">
+      <h2 translate>Calculate your rewards</h2>
     </div>
-    <div class="staking__form" data-ng-init="loadStats()">
-      <form
-              class="search"
-      >
-        <label class="staking__input-cn">
-          <span>Type count of MARS masternodes</span>
-          <input
-                  class="number__input"
-                  type="number"
-                  data-ng-model="marsCount"
-                  placeholder="Count of MARS nodes"
-                  ng-change="calculateRewards()"
-                  focus="true"
-          >
-        </label>
 
-        <label class="staking__input-cn">
-          <span>Type count of MERCURY masternodes</span>
-          <input
-                  class="number__input"
-                  type="number"
-                  data-ng-model="mercuryCount"
-                  placeholder="Count of MERCURY nodes"
-                  ng-change="calculateRewards()"
-                  focus="true"
-          >
-        </label>
 
-        <label class="staking__input-cn">
-          <span>Type amount of staked coins</span>
-          <input
-                  class="number__input"
-                  type="number"
-                  data-ng-model="stakedCoins"
-                  placeholder="Amounth of staked coins"
-                  ng-change="calculateRewards()"
-                  focus="true"
-          >
-        </label>
+    <div class="cn rewards__cn" data-ng-init="loadStats()">
+      <div class="rewards__block">
 
-        <label class="staking__input-cn">
-          <span>Equipment monthly cost</span>
-          <input
-                  class="number__input"
-                  type="number"
-                  data-ng-model="equipmentCost"
-                  placeholder="$"
-                  ng-change="calculateRewards()"
-                  focus="true"
-          >
-        </label>
+        <section class="rewards__mn">
 
-      </form>
+          <div class="rewards__mn__top">
+            <div class="rewards__mn__mercury" data-ng-class="isMercuryActive ? 'active' : ''" data-ng-click="changeTierToMercury()">
+              MERCURY
+            </div>
+            <div class="rewards__mn__mars" data-ng-class="isMarsActive ? 'active' : ''" data-ng-click="changeTierToMars()">
+              MARS
+            </div>
+          </div>
+          <div class="rewards__mn__content">
+            <p>Enter the amount of  {{isMarsActive ? 'MARS' : 'MERCURY'}} nodes</p>
+            <div class="rewards__mn__form">
+                <div class="rewards__input__range">
+                    <input aria-label=""  type="range" min="0" max="10" data-ng-model="mnCount" data-ng-change="calculateMnRewards()">
+                    <div class='ruler'>
+                        <div class='cm'>
+                            <div class='mm'></div>
+                            <div class='mm'></div>
+                            <div class='mm'></div>
+                            <div class='mm'></div>
+                        </div>
+                        <div class='cm'>
+                            <div class='mm'></div>
+                            <div class='mm'></div>
+                            <div class='mm'></div>
+                            <div class='mm'></div>
+                        </div>
+                        <div class='cm'>
+                            <div class='mm'></div>
+                            <div class='mm'></div>
+                            <div class='mm'></div>
+                            <div class='mm'></div>
+                        </div>
+                        <div class='cm'>
+                            <div class='mm'></div>
+                            <div class='mm'></div>
+                            <div class='mm'></div>
+                            <div class='mm'></div>
+                        </div>
+                        <div class='cm'>
+                            <div class='mm'></div>
+                            <div class='mm'></div>
+                            <div class='mm'></div>
+                            <div class='mm'></div>
+                        </div>
+                        <div class='cm'>
+                            <div class='mm'></div>
+                            <div class='mm'></div>
+                            <div class='mm'></div>
+                            <div class='mm'></div>
+                        </div>
+                        <div class='cm'>
+                            <div class='mm'></div>
+                            <div class='mm'></div>
+                            <div class='mm'></div>
+                            <div class='mm'></div>
+                        </div>
+                        <div class='cm'>
+                            <div class='mm'></div>
+                            <div class='mm'></div>
+                            <div class='mm'></div>
+                            <div class='mm'></div>
+                        </div>
+                        <div class='cm'>
+                            <div class='mm'></div>
+                            <div class='mm'></div>
+                            <div class='mm'></div>
+                            <div class='mm'></div>
+                        </div>
+                        <div class='cm'>
+                            <div class='mm'></div>
+                            <div class='mm'></div>
+                            <div class='mm'></div>
+                            <div class='mm'></div>
+                        </div>
+                        <div class='cm'></div>
+                    </div>
+                </div>
 
-      <ul class="st__rewards">
-        <li class="st__rewards__li">
-          <p class="st__rewards__li__title daily" translate>Daily income</p>
-          <p class="st__rewards__li__roi">{{ dailyRoi.toFixed(2) }}%</p>
-          <p class="st__rewards__li__value">{{ dailyReward.toFixed(2) }} ESS</p>
-          <p class="st__rewards__li__ess__value">${{ dailyFiatReward.toFixed(2) }}</p>
-        </li>
-        <li class="st__rewards__li">
-          <p class="st__rewards__li__title weekly" translate>Weekly income</p>
-          <p class="st__rewards__li__roi">{{ (dailyRoi * 7).toFixed(2) }}%</p>
-          <p class="st__rewards__li__value">{{ (dailyReward * 7).toFixed(2) }} ESS</p>
-          <p class="st__rewards__li__ess__value">${{ (dailyFiatReward * 7).toFixed(2) }}</p>
-        </li>
-        <li class="st__rewards__li">
-          <p class="st__rewards__li__title monthly" translate>Monthly income</p>
-          <p class="st__rewards__li__roi">{{ (dailyRoi * 30).toFixed(2) }}%</p>
-          <p class="st__rewards__li__value">{{ (dailyReward * 30).toFixed(2) }} ESS</p>
-          <p class="st__rewards__li__ess__value">${{ (dailyFiatReward * 30).toFixed(2) }}</p>
-        </li>
-        <li class="st__rewards__li">
-          <p class="st__rewards__li__title yearly" translate>Yearly income</p>
-          <p class="st__rewards__li__roi">{{ (dailyRoi * 365).toFixed(2) }}%</p>
-          <p class="st__rewards__li__value">{{ (dailyReward * 365).toFixed(2) }} ESS</p>
-          <p class="st__rewards__li__ess__value">${{ (dailyFiatReward * 365).toFixed(2) }}</p>
-        </li>
-      </ul>
+                <span class="margin-span"></span>
+                <div>
+                    <input aria-label="" class="rewards__input__mn__counter" type="number" min="0" max="10" data-ng-model="mnCount">
+                    <div class="margin-div"></div>
+                </div>
+            </div>
+              <p class="rewards__p">Enter the monthly cost of equipment</p>
+              <div class="rewards__mn__form">
+                  <div class="rewards__input__range">
+                      <input aria-label=""  type="range" min="0" max="10" data-ng-model="equipmentCost" data-ng-change="calculateMnRewards()">
+                      <div class='ruler equipment'>
+                          <div class='cm'>
+                              <div class='mm'></div>
+                              <div class='mm'></div>
+                              <div class='mm'></div>
+                              <div class='mm'></div>
+                          </div>
+                          <div class='cm'>
+                              <div class='mm'></div>
+                              <div class='mm'></div>
+                              <div class='mm'></div>
+                              <div class='mm'></div>
+                          </div>
+                          <div class='cm'>
+                              <div class='mm'></div>
+                              <div class='mm'></div>
+                              <div class='mm'></div>
+                              <div class='mm'></div>
+                          </div>
+                          <div class='cm'>
+                              <div class='mm'></div>
+                              <div class='mm'></div>
+                              <div class='mm'></div>
+                              <div class='mm'></div>
+                          </div>
+                          <div class='cm'>
+                              <div class='mm'></div>
+                              <div class='mm'></div>
+                              <div class='mm'></div>
+                              <div class='mm'></div>
+                          </div>
+                          <div class='cm'>
+                              <div class='mm'></div>
+                              <div class='mm'></div>
+                              <div class='mm'></div>
+                              <div class='mm'></div>
+                          </div>
+                          <div class='cm'>
+                              <div class='mm'></div>
+                              <div class='mm'></div>
+                              <div class='mm'></div>
+                              <div class='mm'></div>
+                          </div>
+                          <div class='cm'>
+                              <div class='mm'></div>
+                              <div class='mm'></div>
+                              <div class='mm'></div>
+                              <div class='mm'></div>
+                          </div>
+                          <div class='cm'>
+                              <div class='mm'></div>
+                              <div class='mm'></div>
+                              <div class='mm'></div>
+                              <div class='mm'></div>
+                          </div>
+                          <div class='cm'>
+                              <div class='mm'></div>
+                              <div class='mm'></div>
+                              <div class='mm'></div>
+                              <div class='mm'></div>
+                          </div>
+                          <div class='cm'></div>
+                      </div>
+                  </div>
+
+                  <span class="margin-span"></span>
+                  <div>
+                      <input aria-label=""  class="rewards__input__mn__counter" type="text" ng-value="equipmentRangeCost.toString() + ' $'" placeholder="1000$">
+                      <div class="margin-div"></div>
+                  </div>
+              </div>
+              <p class="rewards__p">Enter your {{isMarsActive ? 'MARS' : 'MERCURY'}} node running time</p>
+              <div class="rewards__mn__form">
+                  <div class="rewards__input__range">
+                      <input aria-label=""  type="range" min="0" max="10" data-ng-model="mnTime" data-ng-change="calculateMnRewards()">
+                      <div class='ruler staking__ruler'>
+                          <div class='cm'>
+                              <div class='mm'></div>
+                              <div class='mm'></div>
+                              <div class='mm'></div>
+                              <div class='mm'></div>
+                          </div>
+                          <div class='cm'>
+                              <div class='mm'></div>
+                              <div class='mm'></div>
+                              <div class='mm'></div>
+                              <div class='mm'></div>
+                          </div>
+                          <div class='cm'>
+                              <div class='mm'></div>
+                              <div class='mm'></div>
+                              <div class='mm'></div>
+                              <div class='mm'></div>
+                          </div>
+                          <div class='cm'>
+                              <div class='mm'></div>
+                              <div class='mm'></div>
+                              <div class='mm'></div>
+                              <div class='mm'></div>
+                          </div>
+                          <div class='cm'>
+                              <div class='mm'></div>
+                              <div class='mm'></div>
+                              <div class='mm'></div>
+                              <div class='mm'></div>
+                          </div>
+                          <div class='cm'>
+                              <div class='mm'></div>
+                              <div class='mm'></div>
+                              <div class='mm'></div>
+                              <div class='mm'></div>
+                          </div>
+                          <div class='cm'>
+                              <div class='mm'></div>
+                              <div class='mm'></div>
+                              <div class='mm'></div>
+                              <div class='mm'></div>
+                          </div>
+                          <div class='cm'>
+                              <div class='mm'></div>
+                              <div class='mm'></div>
+                              <div class='mm'></div>
+                              <div class='mm'></div>
+                          </div>
+                          <div class='cm'>
+                              <div class='mm'></div>
+                              <div class='mm'></div>
+                              <div class='mm'></div>
+                              <div class='mm'></div>
+                          </div>
+                          <div class='cm'>
+                              <div class='mm'></div>
+                              <div class='mm'></div>
+                              <div class='mm'></div>
+                              <div class='mm'></div>
+                          </div>
+                          <div class='cm'></div>
+                      </div>
+                  </div>
+
+                  <span class="margin-span"></span>
+                  <div>
+                      <input aria-label="" class="rewards__input__mn__counter" type="text" ng-value="mnTimeRange.toString() + ' d'">
+                      <div class="margin-div"></div>
+                  </div>
+              </div>
+
+              <div class="rewards__mn__period__rewards">
+                  Specified time period reward: <span>{{mnRangedReward.toFixed(2)}} ESS</span>
+              </div>
+
+              <div class="rewards__mn__stats">
+                  <p>Rewards</p>
+                  <ul class="rewards__mn__periodical__list">
+                    <li class="rewards__mn__periodical__li">
+                      <p class="mn__rewards__li__title daily" translate>Daily</p>
+                      <p class="mn__rewards__li__roi">{{ dailyMnRoi.toFixed(2) }}%</p>
+                      <p class="mn__rewards__li__value">{{ mnDailyRewardESS.toFixed(2) }} <span>ESS</span></p>
+                    </li>
+                    <li class="rewards__mn__periodical__li">
+                      <p class="mn__rewards__li__title weekly" translate>Weekly</p>
+                      <p class="mn__rewards__li__roi">{{ (dailyMnRoi * 7).toFixed(2) }}%</p>
+                      <p class="mn__rewards__li__value">{{ (mnDailyRewardESS * 7).toFixed(2) }} <span>ESS</span></p>
+                    </li>
+                    <li class="rewards__mn__periodical__li">
+                      <p class="mn__rewards__li__title monthly" translate>Monthly</p>
+                      <p class="mn__rewards__li__roi">{{ (dailyMnRoi * 30).toFixed(2) }}%</p>
+                      <p class="mn__rewards__li__value">{{ (mnDailyRewardESS * 30).toFixed(2) }} <span>ESS</span></p>
+                    </li>
+                    <li class="rewards__mn__periodical__li">
+                      <p class="mn__rewards__li__title yearly" translate>Yearly</p>
+                      <p class="mn__rewards__li__roi">{{ (dailyMnRoi * 365).toFixed(2) }}%</p>
+                      <p class="mn__rewards__li__value">{{ (mnDailyRewardESS * 365).toFixed(2) }} <span>ESS</span></p>
+                    </li>
+                  </ul>
+                  <div class="rewards__mn__frequency">
+                      <p class="mn__rewards__estimated__frequency">Reward frequency: <span>{{mnRewardFrequency}}</span></p>
+                  </div>
+              </div>
+          </div>
+
+        </section>
+      </div>
+
+      <div class="rewards__block">
+
+          <section class="rewards__st">
+              <div class="rewards__st__top">
+                  Staking
+              </div>
+              <div class="rewards__st__content">
+                  <p>Enter the amount of  staked coins</p>
+                  <div class="">
+                    <input
+                            class="number__input staking__input"
+                            min="10000"
+                            type="number"
+                            data-ng-model="stakedCoins"
+                            placeholder="Minimum 10,000 of staked coins"
+                            ng-change="calculateStRewards()"
+                            focus="true"
+                            >
+                  </div>
+                  <p class="staking__rewards__p">Enter your staking time</p>
+                  <div class="rewards__mn__form">
+                      <div class="rewards__input__range">
+                          <input aria-label=""  type="range" min="0" max="10" data-ng-model="stakingTime" data-ng-change="calculateStRewards()">
+                          <div class='ruler staking__ruler'>
+                              <div class='cm'>
+                                  <div class='mm'></div>
+                                  <div class='mm'></div>
+                                  <div class='mm'></div>
+                                  <div class='mm'></div>
+                              </div>
+                              <div class='cm'>
+                                  <div class='mm'></div>
+                                  <div class='mm'></div>
+                                  <div class='mm'></div>
+                                  <div class='mm'></div>
+                              </div>
+                              <div class='cm'>
+                                  <div class='mm'></div>
+                                  <div class='mm'></div>
+                                  <div class='mm'></div>
+                                  <div class='mm'></div>
+                              </div>
+                              <div class='cm'>
+                                  <div class='mm'></div>
+                                  <div class='mm'></div>
+                                  <div class='mm'></div>
+                                  <div class='mm'></div>
+                              </div>
+                              <div class='cm'>
+                                  <div class='mm'></div>
+                                  <div class='mm'></div>
+                                  <div class='mm'></div>
+                                  <div class='mm'></div>
+                              </div>
+                              <div class='cm'>
+                                  <div class='mm'></div>
+                                  <div class='mm'></div>
+                                  <div class='mm'></div>
+                                  <div class='mm'></div>
+                              </div>
+                              <div class='cm'>
+                                  <div class='mm'></div>
+                                  <div class='mm'></div>
+                                  <div class='mm'></div>
+                                  <div class='mm'></div>
+                              </div>
+                              <div class='cm'>
+                                  <div class='mm'></div>
+                                  <div class='mm'></div>
+                                  <div class='mm'></div>
+                                  <div class='mm'></div>
+                              </div>
+                              <div class='cm'>
+                                  <div class='mm'></div>
+                                  <div class='mm'></div>
+                                  <div class='mm'></div>
+                                  <div class='mm'></div>
+                              </div>
+                              <div class='cm'>
+                                  <div class='mm'></div>
+                                  <div class='mm'></div>
+                                  <div class='mm'></div>
+                                  <div class='mm'></div>
+                              </div>
+                              <div class='cm'></div>
+                          </div>
+                      </div>
+
+                      <span class="margin-span"></span>
+                      <div>
+                          <input aria-label="" class="rewards__input__mn__counter" type="text" ng-value="stakingTimeRange.toString() + ' d'">
+                          <div class="margin-div"></div>
+                      </div>
+                  </div>
+
+                  <div class="rewards__mn__period__rewards staking__period">
+                      Specified time period reward: <span>{{totalStakingReward.toFixed(2)}} ESS</span>
+                  </div>
+
+                  <div class="rewards__mn__stats">
+                      <p>Rewards</p>
+                      <ul class="rewards__mn__periodical__list">
+                          <li class="rewards__mn__periodical__li">
+                              <p class="mn__rewards__li__title daily" translate>Daily</p>
+                              <p class="mn__rewards__li__roi">{{ dailyStRoi.toFixed(2) }}%</p>
+                              <p class="mn__rewards__li__value">{{ dailyStReward.toFixed(2) }} <span>ESS</span></p>
+                          </li>
+                          <li class="rewards__mn__periodical__li">
+                              <p class="mn__rewards__li__title weekly" translate>Weekly</p>
+                              <p class="mn__rewards__li__roi">{{ (dailyStRoi * 7).toFixed(2) }}%</p>
+                              <p class="mn__rewards__li__value">{{ (dailyStReward * 7).toFixed(2) }} <span>ESS</span></p>
+                          </li>
+                          <li class="rewards__mn__periodical__li">
+                              <p class="mn__rewards__li__title monthly" translate>Monthly</p>
+                              <p class="mn__rewards__li__roi">{{ (dailyStRoi * 30).toFixed(2) }}%</p>
+                              <p class="mn__rewards__li__value">{{ (dailyStReward * 30).toFixed(2) }} <span>ESS</span></p>
+                          </li>
+                          <li class="rewards__mn__periodical__li">
+                              <p class="mn__rewards__li__title yearly" translate>Yearly</p>
+                              <p class="mn__rewards__li__roi">{{ (dailyStRoi * 365).toFixed(2) }}%</p>
+                              <p class="mn__rewards__li__value">{{ (dailyStReward * 365).toFixed(2) }} <span>ESS</span></p>
+                          </li>
+                      </ul>
+                      <div class="rewards__mn__frequency">
+                          <p class="mn__rewards__estimated__frequency">Reward frequency: <span>{{stRewardFrequency}}</span></p>
+                      </div>
+                  </div>
+              </div>
+
+          </section>
+      </div>
     </div>
+
+
+<!--    <div class="staking__form" data-ng-init="loadStats()">-->
+<!--      <form-->
+<!--              class="search"-->
+<!--      >-->
+<!--        <label class="staking__input-cn">-->
+<!--          <span>Type count of MARS masternodes</span>-->
+<!--          <input-->
+<!--                  class="number__input"-->
+<!--                  type="number"-->
+<!--                  data-ng-model="marsCount"-->
+<!--                  placeholder="Count of MARS nodes"-->
+<!--                  ng-change="calculateRewards()"-->
+<!--                  focus="true"-->
+<!--          >-->
+<!--        </label>-->
+
+<!--        <label class="staking__input-cn">-->
+<!--          <span>Type count of MERCURY masternodes</span>-->
+<!--          <input-->
+<!--                  class="number__input"-->
+<!--                  type="number"-->
+<!--                  data-ng-model="mercuryCount"-->
+<!--                  placeholder="Count of MERCURY nodes"-->
+<!--                  ng-change="calculateRewards()"-->
+<!--                  focus="true"-->
+<!--          >-->
+<!--        </label>-->
+
+<!--        <label class="staking__input-cn">-->
+<!--          <span>Type amount of staked coins</span>-->
+<!--          <input-->
+<!--                  class="number__input"-->
+<!--                  type="number"-->
+<!--                  data-ng-model="stakedCoins"-->
+<!--                  placeholder="Amounth of staked coins"-->
+<!--                  ng-change="calculateRewards()"-->
+<!--                  focus="true"-->
+<!--          >-->
+<!--        </label>-->
+
+<!--        <label class="staking__input-cn">-->
+<!--          <span>Equipment monthly cost</span>-->
+<!--          <input-->
+<!--                  class="number__input"-->
+<!--                  type="number"-->
+<!--                  data-ng-model="equipmentCost"-->
+<!--                  placeholder="$"-->
+<!--                  ng-change="calculateRewards()"-->
+<!--                  focus="true"-->
+<!--          >-->
+<!--        </label>-->
+
+<!--      </form>-->
+
+<!--      <ul class="st__rewards">-->
+<!--        <li class="st__rewards__li">-->
+<!--          <p class="st__rewards__li__title daily" translate>Daily income</p>-->
+<!--          <p class="st__rewards__li__roi">{{ dailyRoi.toFixed(2) }}%</p>-->
+<!--          <p class="st__rewards__li__value">{{ dailyReward.toFixed(2) }} ESS</p>-->
+<!--          <p class="st__rewards__li__ess__value">${{ dailyFiatReward.toFixed(2) }}</p>-->
+<!--        </li>-->
+<!--        <li class="st__rewards__li">-->
+<!--          <p class="st__rewards__li__title weekly" translate>Weekly income</p>-->
+<!--          <p class="st__rewards__li__roi">{{ (dailyRoi * 7).toFixed(2) }}%</p>-->
+<!--          <p class="st__rewards__li__value">{{ (dailyReward * 7).toFixed(2) }} ESS</p>-->
+<!--          <p class="st__rewards__li__ess__value">${{ (dailyFiatReward * 7).toFixed(2) }}</p>-->
+<!--        </li>-->
+<!--        <li class="st__rewards__li">-->
+<!--          <p class="st__rewards__li__title monthly" translate>Monthly income</p>-->
+<!--          <p class="st__rewards__li__roi">{{ (dailyRoi * 30).toFixed(2) }}%</p>-->
+<!--          <p class="st__rewards__li__value">{{ (dailyReward * 30).toFixed(2) }} ESS</p>-->
+<!--          <p class="st__rewards__li__ess__value">${{ (dailyFiatReward * 30).toFixed(2) }}</p>-->
+<!--        </li>-->
+<!--        <li class="st__rewards__li">-->
+<!--          <p class="st__rewards__li__title yearly" translate>Yearly income</p>-->
+<!--          <p class="st__rewards__li__roi">{{ (dailyRoi * 365).toFixed(2) }}%</p>-->
+<!--          <p class="st__rewards__li__value">{{ (dailyReward * 365).toFixed(2) }} ESS</p>-->
+<!--          <p class="st__rewards__li__ess__value">${{ (dailyFiatReward * 365).toFixed(2) }}</p>-->
+<!--        </li>-->
+<!--      </ul>-->
+<!--    </div>-->
   </div>
 </section>

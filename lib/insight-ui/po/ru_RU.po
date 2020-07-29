@@ -646,7 +646,7 @@ msgid "Required coins for masternode"
 msgstr "Необходимое количество коинов"
 
 #: public/views/transaction/masternode_info.html
-msgid "Masternode worth"
+msgid "Required sum for masternode"
 msgstr "Стоимость мастерноды"
 
 #: public/views/transaction/masternode_info.html

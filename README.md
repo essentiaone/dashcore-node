@@ -45,14 +45,14 @@ npm run watch
 ## Prerequisites
 - Docker
 - Node.js v8+
-- ~20GB of disk storage
+- ~30GB of disk storage
 - ~1GB of RAM
 
 ## License
 
 Code released under [the MIT license](https://github.com/essentiaone/essx-node/blob/master/LICENSE).
 
-Copyright 2019 Essentia.
+Copyright 2021 Essentia.
 
 Copyright 2016-2018 Dash Core Group, Inc.
 

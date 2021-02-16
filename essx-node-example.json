@@ -1,0 +1,47 @@
+{
+  "network": "livenet",
+  "port": 3001,
+  "services": [
+    "@dashevo/insight-api",
+    "@dashevo/insight-ui",
+    "essd",
+    "web"
+  ],
+  "servicesConfig": {
+    "essd": {
+      "spawn": {
+        "datadir": "/home/paul/Projects/ess/essx-node/data",
+        "agent": "devess/essd:latest",
+        "nodePort": 41312,
+        "zmqPort": 29000
+      },
+      "connect": [
+        {
+          "rpchost": "127.0.0.1",
+          "rpcport": 41313,
+          "rpcuser": "user",
+          "rpcpassword": 111
+        }
+      ],
+      "parameters": {
+        "whitelist": "127.0.0.1",
+        "rpcallowip": "172.0.0.0/8",
+        "rpcport": 41313,
+        "rpcuser": "user",
+        "rpcpassword": 111,
+        "addressindex": 1,
+        "txindex": 1,
+        "server": 1,
+        "spentindex": 1,
+        "zmqpubrawblock":"tcp://0.0.0.0:29000",
+        "zmqpubrawtx":"tcp://0.0.0.0:29000",
+        "zmqpubhashtx":"tcp://0.0.0.0:29000",
+        "zmqpubhashblock":"tcp://0.0.0.0:29000",
+        "zmqpubrawtxlock":"tcp://0.0.0.0:29000"
+      }
+    },
+    "insight-api": {
+      "disableRateLimiter": true
+    }
+  }
+}

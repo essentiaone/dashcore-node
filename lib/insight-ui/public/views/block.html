@@ -49,8 +49,13 @@
               </li>
 
               <li class="block__sum__li">
-                <span class="block__sum__title" translate>Block Reward</span>
-                <span class="block__sum__value">{{$root.currency.getConvertion(block.reward) || block.reward + ' ESS'}}</span>
+                <span class="block__sum__title" translate>Staker reward</span>
+                <span class="block__sum__value">{{getMasternodeRewardByHeight(block.height, 'staker')}}</span>
+              </li>
+
+              <li class="block__sum__li">
+                <span class="block__sum__title" translate>Masternode reward</span>
+                <span class="block__sum__value">{{getMasternodeRewardByHeight(block.height, 'masternode')}}</span>
               </li>
 
               <li class="block__sum__li">
@@ -76,7 +81,9 @@
                   <span>{{block.merkleroot}}</span>
                 </span>
               </li>
+            </ul>
 
+            <ul class="block__sum__list">
               <li class="block__sum__li" data-ng-show="block.previousblockhash">
                 <span class="block__sum__title" translate>Previous Block</span>
 
@@ -84,9 +91,7 @@
                   <a href="block/{{block.previousblockhash}}" class="link-blue">{{block.height-1}}</a>
                 </span>
               </li>
-            </ul>
 
-            <ul class="block__sum__list">
               <li class="block__sum__li">
                 <span class="block__sum__title" translate>Difficulty</span>
 

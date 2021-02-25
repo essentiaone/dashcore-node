@@ -1886,7 +1886,6 @@ iframe {
 
 @media screen and (min-width:768px) {
     .block__details__it .include {
-        position: absolute;
         left: 20px;
         right: 20px
     }

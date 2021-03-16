@@ -178,7 +178,7 @@
                                 fill="#CAD8EA"></path>
                       </svg>
                   </div>
-                  <span class="ng-binding" style="color: #829BDF;font-size: 14px;font-weight: 500;line-height: 19px;">You need <strong>100,000 ESS</strong> to set up a one Essentia Masternode.</span>
+                  <span class="ng-binding" style="color: #829BDF;font-size: 14px;font-weight: 500;line-height: 19px;">You need <strong>{{isMarsActive ? '300,000 ESSX' : '100,000 ESSX'}}</strong> to set up a one Essentia Masternode.</span>
               </div>
               <p class="rewards__p">Enter your {{isMarsActive ? 'MARS' : 'MERCURY'}} node running time</p>
               <div class="rewards__mn__form">
@@ -257,7 +257,7 @@
               </div>
 
               <div class="rewards__mn__period__rewards">
-                  Specified time period reward: <span>{{mnRangedReward.toFixed(2)}} ESS</span>
+                  Specified time period reward: <span>{{mnRangedReward.toFixed(2)}} ESSX</span>
               </div>
 
               <div class="rewards__mn__stats">
@@ -266,22 +266,22 @@
                     <li class="rewards__mn__periodical__li">
                       <p class="mn__rewards__li__title daily" translate>Daily</p>
                       <p class="mn__rewards__li__roi">{{ dailyMnRoi.toFixed(2) }}%</p>
-                      <p class="mn__rewards__li__value">{{ mnDailyRewardESS.toFixed(2) }} <span>ESS</span></p>
+                      <p class="mn__rewards__li__value">{{ mnDailyRewardESS.toFixed(2) }} <span>ESSX</span></p>
                     </li>
                     <li class="rewards__mn__periodical__li">
                       <p class="mn__rewards__li__title weekly" translate>Weekly</p>
                       <p class="mn__rewards__li__roi">{{ (dailyMnRoi * 7).toFixed(2) }}%</p>
-                      <p class="mn__rewards__li__value">{{ (mnDailyRewardESS * 7).toFixed(2) }} <span>ESS</span></p>
+                      <p class="mn__rewards__li__value">{{ (mnDailyRewardESS * 7).toFixed(2) }} <span>ESSX</span></p>
                     </li>
                     <li class="rewards__mn__periodical__li">
                       <p class="mn__rewards__li__title monthly" translate>Monthly</p>
                       <p class="mn__rewards__li__roi">{{ (dailyMnRoi * 30).toFixed(2) }}%</p>
-                      <p class="mn__rewards__li__value">{{ (mnDailyRewardESS * 30).toFixed(2) }} <span>ESS</span></p>
+                      <p class="mn__rewards__li__value">{{ (mnDailyRewardESS * 30).toFixed(2) }} <span>ESSX</span></p>
                     </li>
                     <li class="rewards__mn__periodical__li">
                       <p class="mn__rewards__li__title yearly" translate>Yearly</p>
                       <p class="mn__rewards__li__roi">{{ (dailyMnRoi * 365).toFixed(2) }}%</p>
-                      <p class="mn__rewards__li__value">{{ (mnDailyRewardESS * 365).toFixed(2) }} <span>ESS</span></p>
+                      <p class="mn__rewards__li__value">{{ (mnDailyRewardESS * 365).toFixed(2) }} <span>ESSX</span></p>
                     </li>
                   </ul>
                   <div class="rewards__mn__frequency">
@@ -389,7 +389,7 @@
                   </div>
 
                   <div class="rewards__mn__period__rewards staking__period">
-                      Specified time period reward: <span>{{totalStakingReward.toFixed(2)}} ESS</span>
+                      Specified time period reward: <span>{{totalStakingReward.toFixed(2)}} ESSX</span>
                   </div>
 
                   <div class="rewards__mn__stats">
@@ -398,22 +398,22 @@
                           <li class="rewards__mn__periodical__li">
                               <p class="mn__rewards__li__title daily" translate>Daily</p>
                               <p class="mn__rewards__li__roi">{{ dailyStRoi.toFixed(2) }}%</p>
-                              <p class="mn__rewards__li__value">{{ dailyStReward.toFixed(2) }} <span>ESS</span></p>
+                              <p class="mn__rewards__li__value">{{ dailyStReward.toFixed(2) }} <span>ESSX</span></p>
                           </li>
                           <li class="rewards__mn__periodical__li">
                               <p class="mn__rewards__li__title weekly" translate>Weekly</p>
                               <p class="mn__rewards__li__roi">{{ (dailyStRoi * 7).toFixed(2) }}%</p>
-                              <p class="mn__rewards__li__value">{{ (dailyStReward * 7).toFixed(2) }} <span>ESS</span></p>
+                              <p class="mn__rewards__li__value">{{ (dailyStReward * 7).toFixed(2) }} <span>ESSX</span></p>
                           </li>
                           <li class="rewards__mn__periodical__li">
                               <p class="mn__rewards__li__title monthly" translate>Monthly</p>
                               <p class="mn__rewards__li__roi">{{ (dailyStRoi * 30).toFixed(2) }}%</p>
-                              <p class="mn__rewards__li__value">{{ (dailyStReward * 30).toFixed(2) }} <span>ESS</span></p>
+                              <p class="mn__rewards__li__value">{{ (dailyStReward * 30).toFixed(2) }} <span>ESSX</span></p>
                           </li>
                           <li class="rewards__mn__periodical__li">
                               <p class="mn__rewards__li__title yearly" translate>Yearly</p>
                               <p class="mn__rewards__li__roi">{{ (dailyStRoi * 365).toFixed(2) }}%</p>
-                              <p class="mn__rewards__li__value">{{ (dailyStReward * 365).toFixed(2) }} <span>ESS</span></p>
+                              <p class="mn__rewards__li__value">{{ (dailyStReward * 365).toFixed(2) }} <span>ESSX</span></p>
                           </li>
                       </ul>
                       <div class="rewards__mn__frequency">

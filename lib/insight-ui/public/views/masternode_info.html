@@ -61,32 +61,43 @@
 <!--          <p class="mn__rewards__li__ess__value">{{ (getDailyIncome(blockchainInfo.blocks, tiers) * 365).toFixed(2) }} ESS</p>-->
 <!--        </li>-->
 <!--      </ul>-->
+      <section class="mn_stats rewards__mn" style="padding-top: 0px;">
 
-      <section class="mn_stats">
-        <h2 class="title" translate>MERCURY masternode stats</h2>
+        <div class="rewards__mn__top">
+          <div class="rewards__mn__mercury" data-ng-class="activeTab === 'Mercury' ? 'active' : ''" data-ng-click="changeTab('Mercury')">
+            Mercury masternode stats
+          </div>
+          <div class="rewards__mn__mars"
+               style="border-right: 1px solid #CAD8EA;"
+               data-ng-class="activeTab === 'Mars' ? 'active' : ''" data-ng-click="changeTab('Mars')">
+            Mars masternode stats
+          </div>
+          <div class="rewards__mn__mars" data-ng-class="activeTab === 'Staking' ? 'active' : ''" data-ng-click="changeTab('Staking')">
+            Staking stats
+          </div>
+        </div>
         <ul class="mn_stats__list">
-          <li class="mn_stats__li">
-            <span class="mn_stats__title" translate>ROI (annual)</span>
-            <span class="mn_stats__value">{{((getDailyIncome(blockchainInfo.blocks, tiers) * coinData.current_price * 365) / getMnWorth(coinData.current_price) * 100).toFixed(2) }}%</span>
-          </li>
-
-          <li class="mn_stats__li">
-            <span class="mn_stats__title" translate>Paid rewards for masternodes</span>
-            <span class="mn_stats__value">{{ getPaidRewards(blockchainInfo.blocks).toFixed(2) }} ESSX</span>
-          </li>
-          <li class="mn_stats__li">
-            <span class="mn_stats__title" translate>AVG masternode reward frequency</span>
-            <span class="mn_stats__value">{{ getRewardFrequency(tiers).toFixed(0) }} min</span>
-          </li>
-          <li class="mn_stats__li">
-            <span class="mn_stats__title" translate>Required coins for masternode</span>
-            <span class="mn_stats__value">100000 ESSX</span>
-          </li>
-          <li class="mn_stats__li">
-            <span class="mn_stats__title" translate>Required sum for masternode</span>
-            <span class="mn_stats__value">${{ getMnWorth(coinData.current_price).toFixed(2) }}</span>
-          </li>
-        </ul>
+            <li class="mn_stats__li">
+              <span class="mn_stats__title" translate>ROI (annual)</span>
+              <span class="mn_stats__value">{{ activeTab === 'Staking' ? '37.06' : ((getDailyIncome(blockchainInfo.blocks, tiers) * coinData.current_price * 365) / getMnWorth(coinData.current_price) * 100).toFixed(2) }}%</span>
+            </li>
+            <li class="mn_stats__li" ng-show="activeTab !== 'Staking'">
+              <span class="mn_stats__title" translate>Paid rewards for {{ activeTab === 'Staking' ? 'staking' : 'masternode'}}</span>
+              <span class="mn_stats__value">{{ getPaidRewards(blockchainInfo.blocks).toFixed(2) }} ESSX</span>
+            </li>
+            <li class="mn_stats__li">
+              <span class="mn_stats__title" translate>AVG {{ activeTab === 'Staking' ? 'staking' : 'masternode'}} reward frequency</span>
+              <span class="mn_stats__value">{{ activeTab === 'Staking' ? '6d 6h 1min' : getRewardFrequency(tiers).toFixed(0) + ' min'}}</span>
+            </li>
+            <li class="mn_stats__li">
+              <span class="mn_stats__title" translate>Required coins for {{ activeTab === 'Staking' ? 'staking' : 'masternode'}}</span>
+              <span class="mn_stats__value">{{activeTab === 'Mercury' ? '100,000' : activeTab === 'Mars' ? '300,000' : '10,000'}} ESSX</span>
+            </li>
+            <li class="mn_stats__li">
+              <span class="mn_stats__title" translate>Required sum for {{ activeTab === 'Staking' ? 'staking' : 'masternode'}}</span>
+              <span class="mn_stats__value">${{ getMnWorth(coinData.current_price).toFixed(2) }}</span>
+            </li>
+          </ul>
       </section>
 
       <div class="table__wrap-cn" data-ng-show="nodes.length">

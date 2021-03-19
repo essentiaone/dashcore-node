@@ -79,7 +79,7 @@
         <ul class="mn_stats__list">
             <li class="mn_stats__li">
               <span class="mn_stats__title" translate>ROI (annual)</span>
-              <span class="mn_stats__value">{{ activeTab === 'Staking' ? '37.06' : ((getDailyIncome(blockchainInfo.blocks, tiers) * coinData.current_price * 365) / getMnWorth(coinData.current_price) * 100).toFixed(2) }}%</span>
+              <span class="mn_stats__value" ng-bind="activeTab === 'Staking' ? '37.06%' : ((getDailyIncome(blockchainInfo.blocks, tiers) * coinData.current_price * 365) / getMnWorth(coinData.current_price) * 100).toFixed(2) + '%'"></span>
             </li>
             <li class="mn_stats__li" ng-show="activeTab !== 'Staking'">
               <span class="mn_stats__title" translate>Paid rewards for {{ activeTab === 'Staking' ? 'staking' : 'masternode'}}</span>
@@ -87,7 +87,7 @@
             </li>
             <li class="mn_stats__li">
               <span class="mn_stats__title" translate>AVG {{ activeTab === 'Staking' ? 'staking' : 'masternode'}} reward frequency</span>
-              <span class="mn_stats__value">{{ activeTab === 'Staking' ? '6d 6h 1min' : getRewardFrequency(tiers).toFixed(0) + ' min'}}</span>
+              <span class="mn_stats__value" ng-bind="activeTab === 'Staking' ? '6d 6h 1min' : getRewardFrequency(tiers).toFixed(0) + ' min'"></span>
             </li>
             <li class="mn_stats__li">
               <span class="mn_stats__title" translate>Required coins for {{ activeTab === 'Staking' ? 'staking' : 'masternode'}}</span>
